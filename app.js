@@ -3,6 +3,7 @@ var app = express();
 
 app.get('/', require('./routes/index'));
 
+app.get('*', require('./routes/default'));
 
 
 
