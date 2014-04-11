@@ -3,17 +3,26 @@ var mongojs = require('mongojs');
 var bcrypt = require('bcrypt');
 
 // Access the database
-var db = mongojs('db_RideOrDrive', ['users']);
+var db = mongojs('db_RideOrDrive', ['UserInformation']);
 
 // Register a new user
-module.exports.create = function(name, password, callback) {
+module.exports.create = function(name, password, confirmPassword,
+                                 firstName, lastName, birthday, gender,
+                                 phoneNumber, address, driverExperiance,
+                                 email, aboutMe,  callback) {
+    
+    if (password != confirmPassword) {
+        callback(false);
+    }
     
     bcrypt.hash(password, 10, function(error,hash) {
         if (error) throw error;
         
-        db.users.findAndModify({
+        db.UserInformation .findAndModify({
             query: {name:name},
-            update: {$setOnInsert:{password:hash}},
+            update: {$setOnInsert:{Password:hash, FirstName:firstName, LastName:lastName,
+                                    DateOfBirth:birthday, Gender:gender, Phone:phoneNumber, Address:address,
+                                    DrivingExperianceYears:driverExperiance, Email:email, AboutMe:aboutMe}},
             new: true,
             upsert: true
             

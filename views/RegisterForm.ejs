@@ -1,0 +1,60 @@
+<% include chunks/head %>
+
+        <div id = "registerBox">
+            
+            <p><i>Register Form</i></p>
+            
+            <div id = "pictureUpload">
+                <a href = ""> <img src ="http://www.iitk.ac.in/ame/sae/img/default2.gif" width = "100" height = "100"></a> <br>
+                <button type = "button" id = "uploadButton">Upload Picture (optional)</button>
+            </div>
+            
+            <form id = "registerForms" method = "post" action="/register">
+                <label for="f_username">Username: </label>
+                <input id = "f_username" placeholder= "Username" name = "username"> <br>
+                
+                <label for="f_password">Password: </label>
+                <input id = "f_password" type = "Password" placeholder= "Password" name = "password"> <br>
+                
+                <label for="f_confirmPassword">Confirm Password: </label>
+                <input id = "f_confirmPassword" type = "Password" placeholder = "Confirm Password" name = "confirm_password"> <br>
+                
+                <label for="f_firstName">First Name: </label>
+                <input id = "f_firstName" placeholder= "First Name" name = "firstName"> <br>
+                
+                <label for="f_lastName">Last Name: </label>
+                <input id = "f_lastName" placeholder= "Last Name" name = "lastName"> <br>
+                
+                <label for="f_birthday">Birthday: </label>
+                <input id = "f_birthday" type = "date" name = "birthday"> <br>
+                
+                <label for="f_gender">Gender: </label>
+                <select name = "gender">
+                    <option>Male</option>
+                    <option>Female</option>
+                    <option>Other</option>
+                </select>
+                
+                <label for="f_phoneNumber">Phone Number: </label>
+                <input id = "f_phoneNumber" placeholder= "Phone Number" name = "phoneNumber"> <br>
+                
+                <label for="f_address">Address: </label>
+                <input id = "f_address" placeholder = "Address" name = "address"> <br>
+                
+                <label for="f_yearsOfDriverExperience">Years of Driver Experience: </label>
+                <input id = "f_yearsOfDriverExperience" placeholder= "Years of Driver Experience" name = "driverExperiance"> <br>
+                
+                <label for="f_email">Email: </label>
+                <input id = "f_email" placeholder = "Email" name = "email"> <br>
+            
+                <label for ="tb_about">About Me: </label>
+                <textarea placeholder="About Me: " id= "tb_about" name = "aboutMe"></textarea>
+                <button type = "button" id = "signUpButton" type="submit">Sign-Up</button>
+                
+            </form>
+            
+            
+        </div>
+        
+
+<% include chunks/footer %>

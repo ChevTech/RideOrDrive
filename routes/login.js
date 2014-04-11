@@ -1,5 +1,5 @@
 // Login page: try to authenticate
-var users = require('/users');
+var users = require('../models/users');
 var validator = require('validator');
 
 module.exports = function(request,response) {
@@ -12,7 +12,6 @@ module.exports = function(request,response) {
         if (success) {
             request.session.username = name;
         }
-        
         else {
             request.session.error = "Wrong username or password.";
         }
