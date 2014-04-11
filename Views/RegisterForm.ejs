@@ -1,0 +1,54 @@
+<% include chunks/head %>
+
+        <div id = "registerBox">
+            
+            <p><i>Register Form</i></p>
+            
+            <div id = "pictureUpload">
+                <a href = ""> <img src ="http://www.iitk.ac.in/ame/sae/img/default2.gif" width = "100" height = "100"></a> <br>
+                <button type = "button" id = "uploadButton">Upload Picture (optional)</button>
+            </div>
+            
+            <div id = "registerForms">
+                <label for="f_username">Username: </label>
+                <input id = "f_username" placeholder= "Username"> <br>
+                
+                <label for="f_password">Password: </label>
+                <input id = "f_password" type = "Password" placeholder= "Password"> <br>
+                
+                <label for="f_confirmPassword">Confirm Password: </label>
+                <input id = "f_confirmPassword" type = "Password" placeholder = "Confirm Password"> <br>
+                
+                <label for="f_firstName">First Name: </label>
+                <input id = "f_firstName" placeholder= "First Name"> <br>
+                
+                <label for="f_lastName">Last Name: </label>
+                <input id = "f_lastName" placeholder= "Last Name"> <br>
+                
+                <label for="f_date">Date: </label>
+                <input id = "f_date" type = "date"> <br>
+                
+                <label for="f_phoneNumber">Phone Number: </label>
+                <input id = "f_phoneNumber" placeholder= "Phone Number"> <br>
+                
+                <label for="f_address">Address: </label>
+                <input id = "f_address" placeholder = "Address"> <br>
+                
+                <label for="f_yearsOfDriverExperience">Years of Driver Experience: </label>
+                <input id = "f_yearsOfDriverExperience" placeholder= "Years of Driver Experience"> <br>
+                
+                <label for="f_email">Email: </label>
+                <input id = "f_email" placeholder = "Email"> <br>
+            </div>
+            
+            <label for ="tb_about">About Me: </label>
+            <textarea placeholder="About Me: " id= "tb_about"></textarea>
+            
+            
+            <button type = "button" id = "signUpButton">Sign-Up</button>
+            
+            
+        </div>
+        
+
+<% include chunks/footer %>
