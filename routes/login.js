@@ -4,13 +4,13 @@ var validator = require('validator');
 
 module.exports = function(request,response) {
     
-    var name = validator.escape(request.body.name);
+    var username = validator.escape(request.body.username);
     var password = validator.escape(request.body.password);
     
-    users.retrieve(name, password, function(success) {
+    users.retrieve(username, password, function(success) {
         
         if (success) {
-            request.session.username = name;
+            request.session.username = username;
         }
         else {
             request.session.error = "Wrong username or password.";

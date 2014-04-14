@@ -12,14 +12,16 @@ app.use(express.static(__dirname+'/statics'));
 app.use(express.cookieParser());
 app.use(express.session({secret:'CS 340 3/6/2014'}));
 
-
-
 // Route the requests
 app.get('/', require('./routes/index'));
 app.post('/login', require('./routes/login'));
 app.post('/register', require('./routes/register'));
+app.post('/getRegisterForm', require('./routes/getRegisterForm'));
+
 app.get('/profile', require('./routes/profile'));
 app.get('/logout', require('./routes/logout'));
+
+
 
 
 

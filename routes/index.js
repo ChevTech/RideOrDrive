@@ -5,9 +5,7 @@ module.exports = function(request, response) {
    
    if (username) {
         response.render('PersonalPage', {username:username});
-   }
-   
-   else {
+   } else {
         response.render('LoginPage', {error:request.session.error});
         delete request.session.error;
    }

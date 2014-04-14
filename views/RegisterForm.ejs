@@ -1,4 +1,4 @@
-<% include chunks/head %>
+<% include chunks/header %>
 
         <div id = "registerBox">
             
@@ -9,7 +9,7 @@
                 <button type = "button" id = "uploadButton">Upload Picture (optional)</button>
             </div>
             
-            <form id = "registerForms" method = "post" action="/register">
+            <form id = "registerForm" method = "post" action="/register">
                 <label for="f_username">Username: </label>
                 <input id = "f_username" placeholder= "Username" name = "username"> <br>
                 
@@ -49,8 +49,7 @@
             
                 <label for ="tb_about">About Me: </label>
                 <textarea placeholder="About Me: " id= "tb_about" name = "aboutMe"></textarea>
-                <button type = "button" id = "signUpButton" type="submit">Sign-Up</button>
-                
+                <input id = "signUpButton" type="submit">
             </form>
             
             

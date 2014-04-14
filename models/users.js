@@ -6,7 +6,7 @@ var bcrypt = require('bcrypt');
 var db = mongojs('db_RideOrDrive', ['UserInformation']);
 
 // Register a new user
-module.exports.create = function(name, password, confirmPassword,
+module.exports.create = function(username, password, confirmPassword,
                                  firstName, lastName, birthday, gender,
                                  phoneNumber, address, driverExperiance,
                                  email, aboutMe,  callback) {
@@ -18,8 +18,8 @@ module.exports.create = function(name, password, confirmPassword,
     bcrypt.hash(password, 10, function(error,hash) {
         if (error) throw error;
         
-        db.UserInformation .findAndModify({
-            query: {name:name},
+        db.UserInformation.findAndModify({
+            query: {username:username},
             update: {$setOnInsert:{Password:hash, FirstName:firstName, LastName:lastName,
                                     DateOfBirth:birthday, Gender:gender, Phone:phoneNumber, Address:address,
                                     DrivingExperianceYears:driverExperiance, Email:email, AboutMe:aboutMe}},
@@ -34,9 +34,9 @@ module.exports.create = function(name, password, confirmPassword,
 };
 
 // Verify login credentials
-module.exports.retrieve = function(name, password, callback) {
+module.exports.retrieve = function(username, password, callback) {
     
-    db.users.findOne({name:name}, function(error, user) {
+    db.UserInformation.findOne({username:username}, function(error, user) {
         if (error) throw error;
         
         if (!user) {
@@ -44,7 +44,7 @@ module.exports.retrieve = function(name, password, callback) {
         }
         
         else {
-            bcrypt.compare(password, user.password, function(error, success) {
+            bcrypt.compare(password, user.Password, function(error, success) {
                 if (error) throw error;
                 callback(success);
             })
@@ -54,7 +54,7 @@ module.exports.retrieve = function(name, password, callback) {
 
 // Delete all users
 module.exports.deleteAll = function(callback) {
-    db.users.remove({}, function(error) {
+    db.UserInformation.remove({}, function(error) {
         if (error) throw error;
         callback();
     });

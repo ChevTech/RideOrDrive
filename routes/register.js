@@ -15,19 +15,23 @@ module.exports = function(request,response) {
     var birthday = request.body.birthday;
     var gender = request.body.gender;
     var phoneNumber = request.body.phoneNumber;
-    var address = request.body.phoneNumber;
-    var driverExperiance = request.body.driverExperiace;
+    var address = request.body.address;
+    var driverExperiance = request.body.driverExperiance;
     var email = request.body.email;
     var aboutMe = request.body.aboutMe;
     
-    users.create(name, password, confirmPassword, firstName, lastName, birthday, gender, phoneNumber, address, driverExperiance, email, aboutMe, function(success) {
+    users.create(username, password, confirmPassword,
+                 firstName, lastName, birthday,
+                 gender, phoneNumber, address,
+                 driverExperiance, email, aboutMe,
+                 function(success) {
         
         if (success) {
-            request.session.username = name;
+            request.session.username = username;
         }
         
         else {
-            request.session.error = 'Username '+name+' is not available. Or password doesnt match';
+            request.session.error = 'Username '+username+' is not available. Or password doesnt match';
         }
         
         response.redirect('/');
