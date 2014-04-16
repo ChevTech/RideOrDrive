@@ -1,14 +1,17 @@
 // Profile page: profile or redirect
+var users = require('../models/users');
 
 module.exports = function(request,response) {
     
     var username = request.session.username;
     
-    if (username) {
-        response.render('PersonalPage', {username:username});
-    }
-    
-    else {
-        response.redirect('/');
-    }
-};
+    users.getUserInformation(username, function(user){
+        
+        if (user) {            
+            response.render('ProfilePage', {user:user});
+        }else{
+            // Implement error if user info not found.
+            response.redirect('/');
+        }
+    });
+}

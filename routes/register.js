@@ -28,12 +28,9 @@ module.exports = function(request,response) {
         
         if (success) {
             request.session.username = username;
-        }
-        
-        else {
+        } else {
             request.session.error = 'Username '+username+' is not available. Or password doesnt match';
         }
-        
         response.redirect('/');
     });
 };

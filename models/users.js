@@ -52,6 +52,21 @@ module.exports.retrieve = function(username, password, callback) {
     });
 };
 
+// Retrieve User Information for profile pages
+module.exports.getUserInformation  = function(username, callback) {
+    
+    db.UserInformation.findOne({username:username}, function(error, user) {
+        if (error) throw error;
+        
+        if (!user) {
+            callback(false);
+        }else{
+            callback(user);
+        }
+    });
+};
+
+
 // Delete all users
 module.exports.deleteAll = function(callback) {
     db.UserInformation.remove({}, function(error) {

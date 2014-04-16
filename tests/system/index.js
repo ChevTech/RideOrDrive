@@ -11,7 +11,7 @@ exports['setup'] = function(test) {
 };
 
 exports['make an account (success)'] = function(test) {
-    test.expect(2);
+    test.expect(3);
     
     browser.visit('http://localhost:9090/', function() {
         
@@ -20,7 +20,7 @@ exports['make an account (success)'] = function(test) {
         
         //Check to see if the sign-up button works and gets the registerForm
         browser.pressButton('#getRegisterForm', function() {
-            test.ok(browser.query('registerForm'));
+            test.ok(browser.query('#registerForm'));
             console.log("got the the register form");
             
             //Test the registerForm        
@@ -28,13 +28,6 @@ exports['make an account (success)'] = function(test) {
                 fill('#f_username', 'username').
                 fill('#f_password', 'password').
                 fill('#f_confirmPassword', 'password').
-                fill('#f_firstName', 'FirstName').
-                fill('#f_lastName', 'LastName').
-                fill('#f_phoneNumber', 'PhoneNumber').
-                fill('#f_address', 'address').
-                fill('#f_yearsOfDriverExperience', 'YearsOfDriverExperience').
-                fill('#f_email', 'email').
-                fill('#tb_about', 'about').  
                 pressButton('#signUpButton', function() {
                     console.log("Register button pressed");
                     //test.ok(browser.query('#logout'));
@@ -64,7 +57,6 @@ exports['make an account (failure)'] = function(test) {
             });
     });
 }
-
 */
 
 exports['log in (success)'] = function(test) {
