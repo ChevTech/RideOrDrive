@@ -1,0 +1,276 @@
+/* Christian Yarros
+    Ride Or Drive Login Page*/
+
+
+
+/* Small Screen Default */
+nav , sections, aside, footer {
+}
+
+/* Medium Screen Accomodation */
+@media screen and (min-width: 480px) {
+}
+
+/* Large Screen Accomodation */
+@media screen and (min-width: 800px) {
+    
+    
+    body{
+        background-color: white;
+        min-width: 980px;
+    }
+    
+    
+/* Header (Constant for every page) */    
+    #header {
+        display: inline-block;
+        width: 100%;
+        background-color: green;
+    }
+    
+        #header #websiteLogo {
+            display: inline-block;
+            float: left;
+            margin-top: 10px;
+            margin-left: 10px;
+        }
+    
+        #header #websiteTitle {
+            display: inline-block;
+            float: right;
+            margin: 10px;
+            font-family: Geneva;
+            text-align: left;
+            letter-spacing: 0.2em;
+            color: white;
+        }
+    
+/* Specific to LoginPage */
+
+
+    #websiteBio {
+        float:left;
+        display: inline-block;
+        width: 45%;
+        padding: 20px;
+        font-family: Garamond;
+        letter-spacing: 0.1em;
+        color: green;
+    }
+    
+
+    #loginArea{
+        float: right;
+        display: inline-block;
+        width: 50%;
+    }
+
+        #loginForms {
+            margin-top: 50px;
+            border: dotted;
+            padding: 40px;
+            border-color: white;
+        }
+    
+        #signup {
+            padding: 20px;
+            font-family: sans-serif;
+            letter-spacing: 0.2em;
+            color: white;
+        }
+    
+    #loginButton, #signUpButton {
+        padding-left: 20px;
+        padding-right: 20px;
+        margin-left: 50px;
+        background-color: green;
+        border-radius:6px;
+        color: white;
+        font-family: Garamond;
+        font-size: 20px;
+        text-decoration: none;
+        cursor: pointer;
+        border:none;
+    }
+    
+
+/* Specific to RegisterForm page */    
+    
+    #registerBox {
+        overflow: auto;
+        display: table;
+        padding-left: 50px;
+        padding-right: 50px;
+        padding-bottom:10px;
+        margin: 25px;
+        width: 80%;
+        border: 2px solid white;
+        font-style: italic;
+        font-family: sans-serif;
+        text-align: left;
+        letter-spacing: 0.2em;
+        color: white;
+        min-width: 800px;
+    }
+    
+        #registerBox #tb_about {
+            float: right;
+            clear: right;
+            display: inline-block;
+            margin: 30px;
+            height: 300px;
+            width: 300px;
+        }
+        
+        #registerBox #registerButton {
+            display: block;
+            margin: 30px;
+            float: right;
+            clear: right;
+        }
+    
+    
+    #pictureUpload {
+        float: right;
+        clear: right;
+    }
+    
+        #pictureUpload img {
+            float: right;
+            padding: 10px;
+            margin: 10px;
+        }
+        
+        #pictureUpload #uploadButton {
+            display: inline-block;
+            float: right;
+            clear: right;
+        }
+    
+    
+    #registerForms {
+        float: left;
+        display: inline-block;
+    }
+    
+        #registerForms input {
+            margin: 5px;
+            width:375px;
+            display:block;
+            border: 1px solid #999;
+            height: 25px;
+            -webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+            -moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+            box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+        }
+        
+/* Specific to PersonalPage */
+
+    #navBar {
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+    }
+    
+        #navBar h3 {
+           border: solid;
+           padding: 10px;
+           margin: 5px;
+           display: inline-block;
+           background-color: green;
+           font-style: italic;
+           font-family: sans-serif;
+           text-align: left;
+           letter-spacing: 0.2em;
+           color: white;
+           border-radius: 2px;
+        }
+
+        #navBar h3:hover {
+            text-decoration: underline;
+        }
+    
+    
+    #searchBox {
+        margin-top: 25px;
+        margin-right: auto;
+        margin-left: auto;
+        border: 2px solid white;
+        border-radius: 10px;
+        width: 750px;
+        height: 250px;
+        display: block;
+        padding: 10px;
+    }
+    
+        #searchBox input {
+            margin-left: 75px;
+            margin-right: 75px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            display: inline-block;
+            width:200px;
+            border: 1px solid #999;
+            height: 25px;
+            box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);     
+        }
+    
+        #searchBox #dayTimeInput {
+            margin-left: 75px;
+            margin-right: 75px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            width:200px;
+            display: inline-block;
+        }
+        
+        #searchBox #date {
+            margin-left: 75px;
+            margin-right: 75px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+    
+        #searchBox #rideRequestButton #driveOfferButton {
+            float: right;
+            padding: 10px;
+            margin-left: 50px;
+            margin-top: 25px;
+            background-color: green;
+            border-radius:6px;
+            color: white;
+            font-family: sans-serif;
+            font-size: 15px;
+            text-decoration: none;
+            cursor: pointer;
+            border:none;
+        }
+    
+    #travelWall {
+        overflow: auto;
+        background:transparent;
+        margin-top: 50px;
+        margin-right: auto;
+        margin-left: auto;
+        border: 2px solid white;
+        border-radius: 10px;
+        width: 750px;
+        height: 400px;
+        display: block;
+        padding: 10px;
+    }
+    
+    
+    
+    
+/* Footer (Constant for every page) */       
+    #websiteContact {
+        text-align: center;
+        width: 100%;
+        float: left;
+        display: inline-block;
+        margin-top: 250px;
+    }
+    
+}
