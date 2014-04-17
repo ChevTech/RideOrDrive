@@ -1,0 +1,16 @@
+<% include chunks/header %>
+<% include chunks/nav %>
+       
+    <div id = "Profile">
+        <p>First Name: <%= user.FirstName %> </p>
+        <p>Last Name: <%= user.LastName %> </p>
+        <p>Birthday: <%= user.Birthday %></p>
+        <p>Gender: <%= user.Gender %></p>
+        <p>Phone Number: <%= user.Phone %></p>
+        <p>Address: <%= user.Address %> </p>
+        <p>Years of Driver Experience: <%= user.DrivingExperienceYears %> </p>
+        <p>Email: <%= user.Email %></p>
+        <p>About Me: <%= user.AboutMe %></p>
+    </div>
+    
+<% include chunks/footer %>
