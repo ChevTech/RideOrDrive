@@ -5,23 +5,53 @@
             
             <p><i>Search Form</i></p>
             
-            <label for="fromInput">To: </label>
-            <input id = "fromInput" type = "From:" placeholder= "From: ">
-            <label for="toInput">From:  </label>
-            <input id = "toInput" type = "To:" placeholder = "To:">
+            <label for="f_fromInput">To: </label>
+            <input id = "f_fromInput">
+            <label for="f_toInput">From:  </label>
+            <input id = "f_toInput">
             
-            <label for="dayTimeInput">Time of Day: </label>
-                <select id = "daytimeInput">
-                    <option>Time of Day</option>
-                    <option>Morning (4am-Noon)</option>
-                    <option>Day (noon-8pm)</option>
-                    <option>Night (8pm-4am</option>
-                </select>
-
-            <label for="date">Time of Day: </label>
-            <input id = "date" type = "date"> 
+           <div id = "timeOfDeparture">
             
+                <!-- TIME INPUT HERE -->
+                
+                <h3>Time of Departure (required)</h3>
+                
+                <label for="f_day">Day:</label>
+                <input id = "f_day" name = "required" type = "text">
+                    
+                <label for="f_hour"> Hour: </label>
+                <input id = f_hour" name = "required" type = "number">
+                    
+                <label for="f_minute"> Minute: </label>
+                <input id = f_minute" name = "required" type = "number"> 
+                
+                <label for="f_amPM"> AM/PM: </label>
+                <input id = f_amPM" name = "required" type = "text"> 
+                
+            </div>
+           
+           
+           <div id = "timeOfArrival">
             
+                <!-- TIME INPUT HERE -->
+                
+                <h3>Time of Arrival (optional)</h3>
+                
+            
+                <label for="f_day">Day:</label>
+                <input id = "f_day" type = "text">
+                    
+                <label for="f_hour"> Hour: </label>
+                <input id = f_hour" type = "number">
+                    
+                <label for="f_minute"> Minute: </label>
+                <input id = f_minute" type = "number"> 
+                
+                <label for="f_amPM"> AM/PM: </label>
+                <input id = f_amPM" type = "text"> 
+                
+            </div>
+           
             <button id = "rideRequestButton" type = "button">Request A Ride!</button>
             <button id = "driveOfferButton" type = "button">Offer To Drive!</button>
             
