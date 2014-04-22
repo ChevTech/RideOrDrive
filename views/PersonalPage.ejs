@@ -1,29 +1,56 @@
 <% include chunks/header %>
 <% include chunks/nav %>
 
+
         <div id = "searchBox">
             
-            <p><i>Search Form</i></p>
-            
-            <label for="fromInput">To: </label>
-            <input id = "fromInput" type = "From:" placeholder= "From: ">
-            <label for="toInput">From:  </label>
-            <input id = "toInput" type = "To:" placeholder = "To:">
-            
-            <label for="dayTimeInput">Time of Day: </label>
-                <select id = "daytimeInput">
-                    <option>Time of Day</option>
-                    <option>Morning (4am-Noon)</option>
-                    <option>Day (noon-8pm)</option>
-                    <option>Night (8pm-4am</option>
-                </select>
-
-            <label for="date">Time of Day: </label>
-            <input id = "date" type = "date"> 
+            <h3 class = "title">Search Form</h3>
+      
+            <label for="f_fromInput">To: </label>
+            <input id = "f_fromInput">
+            <label for="f_toInput">From:  </label>
+            <input id = "f_toInput"> <br>
             
             
-            <button id = "rideRequestButton" type = "button">Request A Ride!</button>
-            <button id = "driveOfferButton" type = "button">Offer To Drive!</button>
+            <div id = "timeOfDeparture">
+                
+                <!-- TIME INPUT HERE -->                
+                <h4 class = "title">Time of Departure (required)</h4>
+                
+                <label for="f_day">Date:</label>
+                <input id = "f_day" name = "required" type = "text"> <br>
+                    
+                <label for="f_hour"> Hour: </label>
+                <input id = f_hour" name = "required" type = "number"><br>
+                    
+                <label for="f_minute"> Minute: </label>
+                <input id = f_minute" name = "required" type = "number">
+            
+            </div>
+           
+           
+            <div id = "timeOfArrival">
+                
+                <!-- TIME INPUT HERE -->
+                        
+                <h4 class = "title">Time of Arrival (optional)</h4>
+                    
+                
+                <label for="f_day">Day:</label>
+                <input id = "f_day" type = "text"><br>
+                        
+                <label for="f_hour"> Hour: </label>
+                <input id = f_hour" type = "number"> <br>
+                    
+                <label for="f_minute"> Minute: </label>
+                <input id = f_minute" type = "number"> 
+                    
+                    
+            </div>
+           
+            <button class = "button" id = "rideRequestButton" type = "button" onclick = "rideRequest()">Search for Riders!</button>
+            <button class = "button" id = "driveOfferButton" type = "button" onclick = "driveOffer()">Search for Drivers!</button>
+            
             
         </div>
     

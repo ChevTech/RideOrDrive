@@ -15,6 +15,52 @@ nav , sections, aside, footer {
 @media screen and (min-width: 800px) {
     
     
+    .title {
+        font-style: italic;
+        font-family: sans-serif;
+        text-align: left;
+        letter-spacing: 0.2em;
+        color: green;
+    }
+    
+    .text, label {
+        font-family: sans-serif;
+        letter-spacing: 0.1em;
+        color: green;
+    }
+    
+    input, select {
+        width:200px;
+        display:block;
+        border: 1px solid #999;
+        height: 25px;
+        box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+    }
+    
+    .button {
+        background-color: green;
+        border-radius:6px;
+        color: white;
+        font-family: Garamond;
+        font-size: 20px;
+        text-decoration: none;
+        cursor: pointer;
+        border:none;
+        padding: 5px;
+    }
+    
+    .box {
+        border: 2px solid white;
+        font-style: italic;
+        font-family: sans-serif;
+        text-align: left;
+        letter-spacing: 0.2em;
+        color: green;
+        overflow: auto;
+        display: table;
+    }
+    
+      
     body{
         background-color: white;
         min-width: 980px;
@@ -39,9 +85,7 @@ nav , sections, aside, footer {
             display: inline-block;
             float: right;
             margin: 10px;
-            font-family: Geneva;
             text-align: left;
-            letter-spacing: 0.2em;
             color: white;
         }
     
@@ -53,9 +97,6 @@ nav , sections, aside, footer {
         display: inline-block;
         width: 45%;
         padding: 20px;
-        font-family: Garamond;
-        letter-spacing: 0.1em;
-        color: green;
     }
     
 
@@ -72,44 +113,30 @@ nav , sections, aside, footer {
             border-color: white;
         }
     
-        #signup {
+        #signUpMessage {
             padding: 20px;
-            font-family: sans-serif;
-            letter-spacing: 0.2em;
-            color: white;
         }
     
-    #loginButton, #signUpButton {
+    #login_submit, #registerForm {
+        float: right;
+        clear: right;
+        display: block;
         padding-left: 20px;
         padding-right: 20px;
         margin-left: 50px;
-        background-color: green;
-        border-radius:6px;
-        color: white;
-        font-family: Garamond;
-        font-size: 20px;
-        text-decoration: none;
-        cursor: pointer;
-        border:none;
     }
     
 
 /* Specific to RegisterForm page */    
     
     #registerBox {
+        border: groove;
         overflow: auto;
-        display: table;
-        padding-left: 50px;
-        padding-right: 50px;
+        padding-left: 100px;
+        padding-right: 100px;
         padding-bottom:10px;
         margin: 25px;
         width: 80%;
-        border: 2px solid white;
-        font-style: italic;
-        font-family: sans-serif;
-        text-align: left;
-        letter-spacing: 0.2em;
-        color: white;
         min-width: 800px;
     }
     
@@ -118,11 +145,12 @@ nav , sections, aside, footer {
             clear: right;
             display: inline-block;
             margin: 30px;
-            height: 300px;
-            width: 300px;
+            height: 200px;
+            width: 200px;
         }
         
-        #registerBox #registerButton {
+        
+        #registerBox #signUpButton {
             display: block;
             margin: 30px;
             float: right;
@@ -147,22 +175,24 @@ nav , sections, aside, footer {
             clear: right;
         }
     
-    
+
     #registerForms {
         float: left;
-        display: inline-block;
+        display: table;
     }
     
         #registerForms input {
             margin: 5px;
-            width:375px;
             display:block;
-            border: 1px solid #999;
-            height: 25px;
-            -webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
-            -moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
-            box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
         }
+        
+    #aboutMe {
+        margin-top: 100px;
+        display: inline-block;
+        float: right;
+        clear: right;
+
+    }
         
 /* Specific to PersonalPage */
 
@@ -177,17 +207,15 @@ nav , sections, aside, footer {
            padding: 10px;
            margin: 5px;
            display: inline-block;
+           border-radius: 5px;
+           border-width: thin;
            background-color: green;
-           font-style: italic;
-           font-family: sans-serif;
-           text-align: left;
-           letter-spacing: 0.2em;
-           color: white;
-           border-radius: 2px;
         }
+        
+        #navBar 
 
-        #navBar h3:hover {
-            text-decoration: underline;
+        #navBar a:hover {
+            color: white;
         }
     
     
@@ -195,33 +223,40 @@ nav , sections, aside, footer {
         margin-top: 25px;
         margin-right: auto;
         margin-left: auto;
-        border: 2px solid white;
+        border: 2px solid black;
         border-radius: 10px;
-        width: 750px;
-        height: 250px;
+        width: 1000px;
+        height: 600px;
         display: block;
         padding: 10px;
     }
     
         #searchBox input {
-            margin-left: 75px;
-            margin-right: 75px;
+            margin-left: 50px;
+            margin-right: 50px;
             margin-top: 20px;
             margin-bottom: 20px;
             display: inline-block;
-            width:200px;
+            width:100px;
             border: 1px solid #999;
             height: 25px;
             box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);     
         }
     
-        #searchBox #dayTimeInput {
-            margin-left: 75px;
+        #searchBox #timeOfDeparture, #timeOfArrival {
+            border: groove;
+            padding: 20px;
+            margin-left: 20px;
             margin-right: 75px;
             margin-top: 20px;
             margin-bottom: 20px;
-            width:200px;
             display: inline-block;
+        }
+        
+        #searchBox #timeOfArrival {
+            float: right;
+            clear: right;
+            display: block;
         }
         
         #searchBox #date {
@@ -232,19 +267,13 @@ nav , sections, aside, footer {
             display: inline-block;
         }
     
-        #searchBox #rideRequestButton #driveOfferButton {
-            float: right;
-            padding: 10px;
+        #searchBox #rideRequestButton, #driveOfferButton {
+            display: inline-block;
+            float: left;
+            clear: right;
+            padding: 10px; 
             margin-left: 50px;
-            margin-top: 25px;
-            background-color: green;
-            border-radius:6px;
-            color: white;
-            font-family: sans-serif;
-            font-size: 15px;
-            text-decoration: none;
-            cursor: pointer;
-            border:none;
+            margin-top: 50px;
         }
     
     #travelWall {
@@ -253,15 +282,13 @@ nav , sections, aside, footer {
         margin-top: 50px;
         margin-right: auto;
         margin-left: auto;
-        border: 2px solid white;
+        border: 2px solid black;
         border-radius: 10px;
         width: 750px;
         height: 400px;
         display: block;
         padding: 10px;
     }
-    
-    
     
     
 /* Footer (Constant for every page) */       
