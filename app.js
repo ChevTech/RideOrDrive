@@ -21,6 +21,10 @@ app.get('/getRegisterForm', require('./routes/getRegisterForm'));
 
 app.get('/profile', require('./routes/profile'));
 app.get('/logout', require('./routes/logout'));
+app.get('/history', require('./routes/history'));
+app.get('/currentposts', require('./routes/currentposts'));
+app.get('/createpost', require('./routes/createpost'));
+app.get('/notifications', require('./routes/notifications'));
 
 
 
