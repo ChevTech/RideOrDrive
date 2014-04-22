@@ -1,0 +1,60 @@
+<% include chunks/header %>
+<% include chunks/nav %>
+            
+            <p><i>Edit Profile</i></p>
+            
+            <div id = "pictureUpload">
+                <a href = ""> <img src ="http://www.iitk.ac.in/ame/sae/img/default2.gif" width = "100" height = "100"></a> <br>
+                <button type = "button" id = "uploadButton">Upload Picture (optional)</button>
+            </div>
+                   
+            <form id = "f_editProfile" method = "post" action="/register">
+                <label for="f_username">Username: </label>
+                <input id = "f_username" name = "username" type = "Text" value = <%=user.Username %>> <br>
+                
+                <label for="f_password">Password: </label>
+                <input id = "f_password" type = "Password" name = "password" value = <%=user.Password%>> <br>
+            
+                <label for="f_confirmPassword">Confirm Password: </label>
+                <input id = "f_confirmPassword" type = "Password" name = "confirm_password" value = <%=user.Password%>> <br>
+                
+                <label for="f_firstName">First Name: </label>
+                <input id = "f_firstName" name = "firstName" type = "Text" value = <%=user.FirstName %>> <br>
+                
+                <label for="f_lastName">Last Name: </label>
+                <input id = "f_lastName" name = "lastName" type = "Text" value = <%=user.LastName %>> <br>
+                
+                <label for="f_birthday">Birthday: </label>
+                <input id = "f_birthday" type = "date" name = "birthday" value = <%=user.DateOfBirth %>> <br>
+                
+                <label for="f_gender">Gender: </label>
+                <select id = "Gender" name = "gender" selected = "Female"> <!--value = <%=user.Gender %>>-->
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+                
+                <script>
+                    //var gender = <%= user.Gender%>;
+                    //document.getElementById('Gender').options[0].innerHTML = <%= user.Gender%>;
+                </script>
+
+                <label for="f_phoneNumber">Phone Number: </label>
+                <input id = "f_phoneNumber" name = "phoneNumber" type = "Text" value = <%=user.Phone %>> <br>
+                
+                <label for="f_address">Address: </label>
+                <input id = "f_address" name = "address" type = "Text" value = <%=user.Address %>> <br>
+                
+                <label for="f_yearsOfDriverExperience">Years of Driver Experience: </label>
+                <input id = "f_yearsOfDriverExperience" name = "driverExperiance" type = "Text" value = <%=user.DrivingExperianceYears %>> <br>
+                
+                <label for="f_email">Email: </label>
+                <input id = "f_email" name = "email" type = "Text" value = <%=user.Email %>> <br>
+            
+                <label for ="tb_about">About Me: </label>
+                <textarea id= "tb_about" name = "aboutMe"  type = "Text" value = <%=user.AboutMe %>></textarea>
+                <input id = "signUpButton" type="submit">
+            </form>     
+
+<% include chunks/footer %>
+    
+

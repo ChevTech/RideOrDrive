@@ -6,20 +6,16 @@ var bcrypt = require('bcrypt');
 var db = mongojs('db_RideOrDrive', ['UserInformation']);
 
 // Register a new user
-module.exports.create = function(username, password, confirmPassword,
+module.exports.create =function(username, password, confirmPassword,
                                  firstName, lastName, birthday, gender,
                                  phoneNumber, address, driverExperiance,
                                  email, aboutMe,  callback) {
-    
-    if (password != confirmPassword) {
-        callback(false);
-    }
-    
+
     bcrypt.hash(password, 10, function(error,hash) {
         if (error) throw error;
         
         db.UserInformation.findAndModify({
-            query: {username:username},
+            query: {Username:username},
             update: {$setOnInsert:{Password:hash, FirstName:firstName, LastName:lastName,
                                     DateOfBirth:birthday, Gender:gender, Phone:phoneNumber, Address:address,
                                     DrivingExperianceYears:driverExperiance, Email:email, AboutMe:aboutMe}},
@@ -28,17 +24,31 @@ module.exports.create = function(username, password, confirmPassword,
             
         }, function(error, user) {
             if (error) throw error;
-            callback(user.password == hash);
+            callback(true);
         });
     });
+};
+
+
+// Update user information
+module.exports.update = function(SearchCriteria, username, password, confirmPassword,
+                                 firstName, lastName, birthday, gender,
+                                 phoneNumber, address, driverExperiance,
+                                 email, aboutMe,  callback) {
+    
+    //PROBLEM WITH PASSWORD RE-STORING.
+    db.UserInformation.update({username:SearchCriteria},{$set: {username:username, Password:password, FirstName:firstName,
+                                  LastName:lastName,DateOfBirth:birthday, Gender:gender, Phone:phoneNumber,
+                                  Address:address, DrivingExperianceYears:driverExperiance, Email:email, AboutMe:aboutMe}});
+    callback(true);
 };
 
 // Verify login credentials
 module.exports.retrieve = function(username, password, callback) {
     
-    db.UserInformation.findOne({username:username}, function(error, user) {
+    db.UserInformation.findOne({Username:username}, function(error, user) {
         if (error) throw error;
-        
+        console.log(user);
         if (!user) {
             callback(false);
         }
@@ -47,7 +57,8 @@ module.exports.retrieve = function(username, password, callback) {
             bcrypt.compare(password, user.Password, function(error, success) {
                 if (error) throw error;
                 callback(success);
-            })
+                console.log(success);
+            });
         }
     });
 };
@@ -55,7 +66,7 @@ module.exports.retrieve = function(username, password, callback) {
 // Retrieve User Information for profile pages
 module.exports.getUserInformation  = function(username, callback) {
     
-    db.UserInformation.findOne({username:username}, function(error, user) {
+    db.UserInformation.findOne({Username:username}, function(error, user) {
         if (error) throw error;
         
         if (!user) {

@@ -1,4 +1,4 @@
-// Registration page: try to register
+//Edit Profile Page
 var users = require('../models/users');
 var validator = require('validator');
 
@@ -20,40 +20,19 @@ module.exports = function(request,response) {
     var email = request.body.email;
     var aboutMe = request.body.aboutMe;
     
-    var SessionUsername = request.session.username;
-    
-    if (SessionUsername) {
-        console.log("person is logged in");
-        users.update(SessionUsername, username, password, confirmPassword,
+    users.create(username, password, confirmPassword,
                  firstName, lastName, birthday,
                  gender, phoneNumber, address,
                  driverExperiance, email, aboutMe,
                  function(success) {
         
-        console.log(password);
+        console.log(success);
         if (success) {
             request.session.username = username;
         } else {
             //This Error always gets set. WHY??????
             request.session.error = 'Username '+username+' is not available. Or password doesnt match';
         }
-            response.redirect('/');
-        });
-    }else{
-        console.log("person is not logged in");
-        users.create(username, password, confirmPassword,
-                 firstName, lastName, birthday,
-                 gender, phoneNumber, address,
-                 driverExperiance, email, aboutMe,
-                 function(success) {
-        
-        if (success) {
-            request.session.username = username;
-        } else {
-            //This Error always gets set. WHY??????
-            request.session.error = 'Username '+username+' is not available. Or password doesnt match';
-        }
-            response.redirect('/');
-        });
-    }
+        response.redirect('/');
+    });
 };

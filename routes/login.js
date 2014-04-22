@@ -8,7 +8,7 @@ module.exports = function(request,response) {
     var password = validator.escape(request.body.password);
     
     users.retrieve(username, password, function(success) {
-        
+        console.log(success);
         if (success) {
             request.session.username = username;
         }

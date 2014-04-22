@@ -4,13 +4,19 @@
     <div id = "Profile">
         <p>First Name: <%= user.FirstName %> </p>
         <p>Last Name: <%= user.LastName %> </p>
-        <p>Birthday: <%= user.Birthday %></p>
+        <p>Birthday: <%= user.DateOfBirth %></p>
         <p>Gender: <%= user.Gender %></p>
         <p>Phone Number: <%= user.Phone %></p>
         <p>Address: <%= user.Address %> </p>
-        <p>Years of Driver Experience: <%= user.DrivingExperienceYears %> </p>
+        <p>Years of Driver Experience: <%= user.DrivingExperianceYears %> </p>
         <p>Email: <%= user.Email %></p>
         <p>About Me: <%= user.AboutMe %></p>
     </div>
+    
+    <form id = "f_editProfile" method="get" action="/getEditProfilePage">
+    </form>   
+    <button id = "getEditRegisterForm" type="submit" form = "f_editProfile">Edit Profile</button>
+    
+    
     
 <% include chunks/footer %>
