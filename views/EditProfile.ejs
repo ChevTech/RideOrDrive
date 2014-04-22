@@ -29,15 +29,10 @@
                 
                 <label for="f_gender">Gender: </label>
                 <select id = "Gender" name = "gender" selected = "Female"> <!--value = <%=user.Gender %>>-->
-                    <option value="Male">Male</option>
-                    <option value="Female">Female</option>
+                    <option value="Male" <% if (user.Gender === "Male") { %> selected <% } %>>Male</option>
+                    <option value="Female" <% if (user.Gender === "Female") { %> selected <% } %>> Female</option>
                 </select>
                 
-                <script>
-                    //var gender = <%= user.Gender%>;
-                    //document.getElementById('Gender').options[0].innerHTML = <%= user.Gender%>;
-                </script>
-
                 <label for="f_phoneNumber">Phone Number: </label>
                 <input id = "f_phoneNumber" name = "phoneNumber" type = "Text" value = <%=user.Phone %>> <br>
                 
