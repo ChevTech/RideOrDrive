@@ -1,9 +1,8 @@
 // A model for a visitor collection
 var mongojs = require('mongojs');
-var bcrypt = require('bcrypt');
 
 // Access the database
-var db = mongojs('db_RideOrDrive', ['UserInformation']);
+var db = mongojs('db_RideOrDrive', ['RiderPosts']);
 
 // Register a new user
 module.exports.create =function(username, password, confirmPassword,
