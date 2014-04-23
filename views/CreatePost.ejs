@@ -14,13 +14,13 @@
                 <h4 class = "title">Time of Departure (required)</h4>
                 
                 <label for="f_day">Date:</label>
-                <input id = "f_day" name = "DepartureDate" type = "text" required> <br>
+                <input id = "f_day" name = "DepartureDate" type = "date" required> <br>
                     
                 <label for="f_hour"> Hour: </label>
-                <input id = f_hour" name = "DepartureHour" type = "number" required><br>
+                <input id = f_hour" name = "DepartureHour" type = "number" min = "0" max = "24" required><br>
                     
                 <label for="f_minute"> Minute: </label>
-                <input id = f_minute" name = "DepartureMinute" type = "number" required>
+                <input id = f_minute" name = "DepartureMinute" type = "number" min = "0" max = "60" required>
             
             </div>
            
@@ -31,41 +31,31 @@
                 <h4 class = "title">Time of Arrival (optional)</h4>
                     
                 <label for="f_day">Day:</label>
-                <input id = "f_day" name = "ArrivalDate" type = "text"><br>
+                <input id = "f_day" name = "ArrivalDate" type = "date"><br>
                         
                 <label for="f_hour"> Hour: </label>
-                <input id = f_hour" name = "ArrivalHour" type = "number"> <br>
+                <input id = f_hour" name = "ArrivalHour" type = "number" min = "0" max = "24"> <br>
                     
                 <label for="f_minute"> Minute: </label>
-                <input id = f_minute" name = "ArrivalMinute" type = "number">
-                    
-                <label for="f_passengers">Passengers</label>
-                <input id ="f_passengers" name = "Passengers" type = "number">
-                
-                <label for="f_seats">Seats Available</label>
-                <input id ="f_seats" name = "SeatsAvailable" type = "number">
-                    
-                <label for="f_fare">Fare</label>
-                <input id ="f_fare" name = "Fare" type = "number">
-              
+                <input id = f_minute" name = "ArrivalMinute" type = "number" min = "0" max = "60">
             </div>
-            <input id="submitRiderPost" type = "submit">
+            
+            <label for="f_passengers">Passengers</label>
+            <input id ="f_passengers" name = "Passengers" type = "number" min ="0" max = "10" required>
+                
+            <label for="f_seats">Seats Available</label>
+            <input id ="f_seats" name = "SeatsAvailable" type = "number" min = "0" max = "10" required>
+                    
+            <label for="f_fare">Fare</label>
+            <input id ="f_fare" name = "Fare" type = "number" min = "0" required>   
+                
+            <input id="submitPost" type = "submit">
         </form>
-    
-    
-    
-    <div id = "travelWall">
-
-        Put all your stuff here and it will scroll.  You can change the width and height to your needs.  and the background as well by putting background-color: #000000  instead of background.
-
-    </div>
-    
-    
-<% include chunks/footer %><% include chunks/header %>
-<% include chunks/nav %>
-
-<!-- User will be able to post requests for a ride -->
-
-<p> This is the Create A Post page </p>
-
+        
+        <label for = "f_RideOrDriveOption">Are you a rider or driver?</label>
+            <select id = "f_RideOrDriveOption" name = "RideOrDriveOption">
+                <option name="rider">Rider</option>
+                <option name="driver">Driver</option>
+            </select>
+            
 <% include chunks/footer %>

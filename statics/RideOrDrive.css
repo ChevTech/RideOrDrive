@@ -14,6 +14,9 @@ nav , sections, aside, footer {
 /* Large Screen Accomodation */
 @media screen and (min-width: 800px) {
     
+    a{
+        color: white;
+    }
     
     .title {
         font-style: italic;
@@ -200,6 +203,7 @@ nav , sections, aside, footer {
         margin-left: auto;
         margin-right: auto;
         display: block;
+        width: 100%;
     }
     
         #navBar h3 {
@@ -211,11 +215,9 @@ nav , sections, aside, footer {
            border-width: thin;
            background-color: green;
         }
-        
-        #navBar 
 
         #navBar a:hover {
-            color: white;
+            text-decoration: none;
         }
     
     
@@ -237,7 +239,7 @@ nav , sections, aside, footer {
             margin-top: 20px;
             margin-bottom: 20px;
             display: inline-block;
-            width:100px;
+            width:150px;
             border: 1px solid #999;
             height: 25px;
             box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);     
@@ -254,9 +256,6 @@ nav , sections, aside, footer {
         }
         
         #searchBox #timeOfArrival {
-            float: right;
-            clear: right;
-            display: block;
         }
         
         #searchBox #date {

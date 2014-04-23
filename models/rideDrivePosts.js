@@ -2,14 +2,14 @@
 var mongojs = require('mongojs');
 
 // Access the database
-var db = mongojs('db_RideOrDrive', ['RiderPosts']);
+var db = mongojs('db_RideOrDrive', ['rideDrivePosts']);
 
 // Register a new user
-module.exports.createRiderPost = function(username, FromLocation, ToLocation,
+module.exports.createPost = function(username, FromLocation, ToLocation,
                                  DepartureDate, DepartureHour, DepartureMinute,
                                  ArrivalDate, ArrivalHour, ArrivalMinute,
                                  Passengers, SeatsAvailable, Fare, callback) {
-    db.RiderPosts.findAndModify({
+    db.rideDrivePosts.findAndModify({
             query: {Username:username},
             update: {$setOnInsert:{FromLocation:FromLocation, ToLocation:ToLocation, DepartureDate:DepartureDate,
                                     DepartureHour:DepartureHour, DepartureMinute:DepartureMinute,
