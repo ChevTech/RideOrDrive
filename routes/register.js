@@ -24,20 +24,15 @@ module.exports = function(request,response) {
     
     if (SessionUsername) {
         console.log("person is logged in");
-        users.update(SessionUsername, username, password, confirmPassword,
-                 firstName, lastName, birthday,
+        users.update(SessionUsername, firstName, lastName, birthday,
                  gender, phoneNumber, address,
                  driverExperiance, email, aboutMe,
                  function(success) {
-        
-        console.log(password);
+                    
         if (success) {
-            request.session.username = username;
-        } else {
-            //This Error always gets set. WHY??????
-            request.session.error = 'Username '+username+' is not available. Or password doesnt match';
-        }
             response.redirect('/');
+        }
+        //If error during profile information change. Print Error to screen.
         });
     }else{
         console.log("person is not logged in");

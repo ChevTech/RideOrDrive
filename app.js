@@ -16,17 +16,16 @@ app.use(express.session({secret:'CS 340 3/6/2014'}));
 app.get('/', require('./routes/index'));
 app.post('/login', require('./routes/login'));
 app.post('/register', require('./routes/register'));
+app.post('/createPost', require('./routes/createPost'));
 
 app.get('/getRegisterForm', require('./routes/getRegisterForm'));
 app.get('/getEditProfilePage', require('./routes/getEditProfilePage'));
-
+app.get('/getCreatePost', require('./routes/getCreatePost'));
 app.get('/profile', require('./routes/profile'));
 app.get('/logout', require('./routes/logout'));
 app.get('/history', require('./routes/history'));
 app.get('/currentposts', require('./routes/currentposts'));
-app.get('/createpost', require('./routes/createpost'));
 app.get('/notifications', require('./routes/notifications'));
-
 
 
 

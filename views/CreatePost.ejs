@@ -1,6 +1,69 @@
 <% include chunks/header %>
 <% include chunks/nav %>
 
+        <form method ='post' action='/createPost'>
+            <label for="f_fromInput">From: </label>
+            <input id = "f_fromInput" name="FromLocation">
+            <label for="f_toInput">To:  </label>
+            <input id = "f_toInput" name="ToLocation"> <br>
+            
+            
+            <div id = "timeOfDeparture">
+                
+                <!-- TIME INPUT HERE -->                
+                <h4 class = "title">Time of Departure (required)</h4>
+                
+                <label for="f_day">Date:</label>
+                <input id = "f_day" name = "DepartureDate" type = "text" required> <br>
+                    
+                <label for="f_hour"> Hour: </label>
+                <input id = f_hour" name = "DepartureHour" type = "number" required><br>
+                    
+                <label for="f_minute"> Minute: </label>
+                <input id = f_minute" name = "DepartureMinute" type = "number" required>
+            
+            </div>
+           
+            <div id = "timeOfArrival">
+                
+                <!-- TIME INPUT HERE -->
+                        
+                <h4 class = "title">Time of Arrival (optional)</h4>
+                    
+                <label for="f_day">Day:</label>
+                <input id = "f_day" name = "ArrivalDate" type = "text"><br>
+                        
+                <label for="f_hour"> Hour: </label>
+                <input id = f_hour" name = "ArrivalHour" type = "number"> <br>
+                    
+                <label for="f_minute"> Minute: </label>
+                <input id = f_minute" name = "ArrivalMinute" type = "number">
+                    
+                <label for="f_passengers">Passengers</label>
+                <input id ="f_passengers" name = "Passengers" type = "number">
+                
+                <label for="f_seats">Seats Available</label>
+                <input id ="f_seats" name = "SeatsAvailable" type = "number">
+                    
+                <label for="f_fare">Fare</label>
+                <input id ="f_fare" name = "Fare" type = "number">
+              
+            </div>
+            <input id="submitRiderPost" type = "submit">
+        </form>
+    
+    
+    
+    <div id = "travelWall">
+
+        Put all your stuff here and it will scroll.  You can change the width and height to your needs.  and the background as well by putting background-color: #000000  instead of background.
+
+    </div>
+    
+    
+<% include chunks/footer %><% include chunks/header %>
+<% include chunks/nav %>
+
 <!-- User will be able to post requests for a ride -->
 
 <p> This is the Create A Post page </p>
