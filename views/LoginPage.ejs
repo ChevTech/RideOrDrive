@@ -1,8 +1,8 @@
 <%include chunks/header %>
 
         <div id = "websiteBio">
-            <p> <h3 class = "title">The Ultimate Travel Hub Has Arrived.</h3> <h4 class = "text"> Coordinate car pools, plan road trips, and save money in the process.
-            With RideOrDrive, getting from point A to point B has never been easier.</h4></p>
+            <h3 class = "title" id = "slogan">The Ultimate Travel Hub Has Arrived.</h3> <h4 class = "text"> Coordinate car pools, plan road trips, and save money in the process.
+            With RideOrDrive, getting from point A to point B has never been easier.</h4>
         </div>
         
         <form id="login" method="post" action="/login">
@@ -13,7 +13,7 @@
                 <label for="password">Password: </label>
                 <input class = "form" id = "password" type = "password" name = "password">
                 <input class = "button" id = "login_submit" type="submit">
-                <a href ="/changePassword">Change Password</a>
+                <a class = "text" href ="/changePassword">Change Password</a>
             </fieldset>
         </form>
         
@@ -21,9 +21,8 @@
             <p class = "text" id="error"><%= error %></p>
         <% } %>
         
-        <h1 class = "text">Don't have an account?</h1>
-        
        <form id = "registerForm" method="get" action="/getRegisterForm">
+            <h1 class = "text">Don't have an account?</h1>
             <button class = "button" id = "getRegisterForm" type="submit"> Sign Up!</button>
        </form>
        

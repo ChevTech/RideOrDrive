@@ -30,7 +30,7 @@
                         
                 <h4 class = "title">Time of Arrival (optional)</h4>
                     
-                <label for="f_day">Day:</label>
+                <label for="f_day">Date:</label>
                 <input id = "f_day" name = "ArrivalDate" type = "date"><br>
                         
                 <label for="f_hour"> Hour: </label>
@@ -38,24 +38,26 @@
                     
                 <label for="f_minute"> Minute: </label>
                 <input id = f_minute" name = "ArrivalMinute" type = "number" min = "0" max = "60">
-            </div>
+            </div><br>
             
-            <label for="f_passengers">Passengers</label>
+            <label for="f_passengers">Current Number of Passengers (Driver Option): </label>
             <input id ="f_passengers" name = "Passengers" type = "number" min ="0" max = "10" required>
                 
-            <label for="f_seats">Seats Available</label>
+            <label for="f_seats">Number of Seats Available (Driver Option): </label>
             <input id ="f_seats" name = "SeatsAvailable" type = "number" min = "0" max = "10" required>
                     
-            <label for="f_fare">Fare</label>
-            <input id ="f_fare" name = "Fare" type = "number" min = "0" required>   
+            <label for="f_fare">Fare: </label>
+            <input id ="f_fare" name = "Fare" type = "number" min = "0" required>    <br>
                 
-            <input id="submitPost" type = "submit">
-        </form>
+            
         
-        <label for = "f_RideOrDriveOption">Are you a rider or driver?</label>
+            <label for = "f_RideOrDriveOption">Are you a passenger or driver?</label>
             <select id = "f_RideOrDriveOption" name = "RideOrDriveOption">
                 <option name="rider">Rider</option>
                 <option name="driver">Driver</option>
-            </select>
+            </select> <br>
+                
+            <input class = "button" id="submitPost" type = "submit">
+        </form>
             
 <% include chunks/footer %>

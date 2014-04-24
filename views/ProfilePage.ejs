@@ -1,7 +1,7 @@
 <% include chunks/header %>
 <% include chunks/nav %>
        
-    <div id = "Profile">
+    <div class = "text" id = "Profile">
         <p>First Name: <%= user.FirstName %> </p>
         <p>Last Name: <%= user.LastName %> </p>
         <p>Birthday: <%= user.DateOfBirth %></p>
@@ -15,7 +15,7 @@
     
     <form id = "f_editProfile" method="get" action="/getEditProfilePage">
     </form>   
-    <button id = "getEditRegisterForm" type="submit" form = "f_editProfile">Edit Profile</button>
+    <button class = "button" id = "getEditRegisterForm" type="submit" form = "f_editProfile">Edit Profile</button>
     
     
     

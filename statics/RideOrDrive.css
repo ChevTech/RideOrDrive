@@ -19,7 +19,6 @@ nav , sections, aside, footer {
     }
     
     .title {
-        font-style: italic;
         font-family: sans-serif;
         text-align: left;
         letter-spacing: 0.2em;
@@ -27,9 +26,10 @@ nav , sections, aside, footer {
     }
     
     .text, label {
-        font-family: sans-serif;
+        font-family: Century Gothic, sans-serif;
         letter-spacing: 0.1em;
         color: green;
+        line-height: 2em;
     }
     
     input, select {
@@ -44,8 +44,8 @@ nav , sections, aside, footer {
         background-color: green;
         border-radius:6px;
         color: white;
-        font-family: Garamond;
-        font-size: 20px;
+        font-family: sans-serif;
+        font-size: 15px;
         text-decoration: none;
         cursor: pointer;
         border:none;
@@ -65,7 +65,7 @@ nav , sections, aside, footer {
     
       
     body{
-        background-color: white;
+        background-color: rgb(248,248,248) ;
         min-width: 980px;
     }
     
@@ -85,11 +85,13 @@ nav , sections, aside, footer {
         }
     
         #header #websiteTitle {
+            font-family: Copperplate, sans-serif;
+            font-size: 20px;
             display: inline-block;
             float: right;
-            margin: 10px;
             text-align: left;
             color: white;
+            margin-right: 10px;
         }
     
 /* Specific to LoginPage */
@@ -99,14 +101,16 @@ nav , sections, aside, footer {
         float:left;
         display: inline-block;
         width: 45%;
-        padding: 20px;
+    }
+    
+    #websiteBio #slogan {
+        font-family: Copperplate, sans-serif;
+        font-size: 25px;
     }
     
 
-    #loginArea{
-        float: right;
-        display: inline-block;
-        width: 50%;
+    #login{
+        margin-top: 20px;
     }
 
         #loginForms {
@@ -120,7 +124,7 @@ nav , sections, aside, footer {
             padding: 20px;
         }
     
-    #login_submit, #registerForm {
+    #login_submit, #registerForm, #getRegisterForm {
         float: right;
         clear: right;
         display: block;
@@ -204,6 +208,7 @@ nav , sections, aside, footer {
         margin-right: auto;
         display: block;
         width: 100%;
+        min-width: 1160px;
     }
     
         #navBar h3 {
@@ -221,7 +226,7 @@ nav , sections, aside, footer {
         }
     
     
-    #searchBox {
+/*    #searchBox {
         margin-top: 25px;
         margin-right: auto;
         margin-left: auto;
@@ -232,8 +237,8 @@ nav , sections, aside, footer {
         display: block;
         padding: 10px;
     }
-    
-        #searchBox input {
+*/    
+        #searchBox input, select {
             margin-left: 50px;
             margin-right: 50px;
             margin-top: 20px;
@@ -245,7 +250,7 @@ nav , sections, aside, footer {
             box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);     
         }
     
-        #searchBox #timeOfDeparture, #timeOfArrival {
+/*        #searchBox #timeOfDeparture, #timeOfArrival {
             border: groove;
             padding: 20px;
             margin-left: 20px;
@@ -254,9 +259,7 @@ nav , sections, aside, footer {
             margin-bottom: 20px;
             display: inline-block;
         }
-        
-        #searchBox #timeOfArrival {
-        }
+*/        
         
         #searchBox #date {
             margin-left: 75px;
@@ -281,7 +284,7 @@ nav , sections, aside, footer {
         margin-top: 50px;
         margin-right: auto;
         margin-left: auto;
-        border: 2px solid black;
+        border: 2px groove;
         border-radius: 10px;
         width: 750px;
         height: 400px;
