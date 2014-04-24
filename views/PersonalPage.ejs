@@ -5,6 +5,13 @@
         <div id = "searchBox">
             
             <h3 class = "title">Search Form</h3>
+                
+                <label for = "f_RideOrDriveOption"> I am... </label>
+                <select id = "f_RideOrDriveOption" name = "RideOrDriveOption" required>
+                    <option name="rider">Riding</option>
+                    <option name="driver">Driving</option>
+                </select>
+            
       
             <label for="f_fromInput">To: </label>
             <input id = "f_fromInput">
@@ -18,13 +25,13 @@
                 <h4 class = "title">Time of Departure (required)</h4>
                 
                 <label for="f_day">Date:</label>
-                <input id = "f_day" name = "required" type = "date"> <br>
+                <input id = "f_day" name = "required" type = "date"> 
                     
                 <label for="f_hour"> Hour: </label>
-                <input id = f_hour" name = "required" type = "number"><br>
+                <input id = f_hour" name = "required" type = "number" min="0" max="24">
                     
                 <label for="f_minute"> Minute: </label>
-                <input id = f_minute" name = "required" type = "number">
+                <input id = f_minute" name = "required" type = "number" min="0" max="60"> <br>
             
             </form>
            
@@ -37,24 +44,18 @@
                     
                 
                 <label for="f_day">Date:</label>
-                <input id = "f_day" type = "date"><br>
+                <input id = "f_day" type = "date">
                         
                 <label for="f_hour"> Hour: </label>
-                <input id = f_hour" type = "number" min="0" max="24"> <br>
+                <input id = f_hour" type = "number" min="0" max="24"> 
                     
                 <label for="f_minute"> Minute: </label>
-                <input id = f_minute" type = "number" min="0" max="60"> <br> 
-                    
-                <label for = "f_RideOrDriveOption">Are you a rider or driver?</label>
-                <select id = "f_RideOrDriveOption" name = "RideOrDriveOption" required>
-                    <option name="rider">Rider</option>
-                    <option name="driver">Driver</option>
-                </select>        
+                <input id = f_minute" type = "number" min="0" max="60"> <br>     
                                 
             </form>
            
            <!-- Need to change onclick function, rideRequest() is not defined -->
-            <button class = "button" id = "rideRequestButton" type = "button" onclick = "rideRequest()">Search!</button>
+            <input class = "button" id = "rideRequestButton" onclick = "rideRequest()" type = "submit">
             
             
         </div>

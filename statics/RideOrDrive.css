@@ -226,18 +226,18 @@ nav , sections, aside, footer {
         }
     
     
-/*    #searchBox {
+    #searchBox {
         margin-top: 25px;
         margin-right: auto;
         margin-left: auto;
         border: 2px solid black;
         border-radius: 10px;
         width: 1000px;
-        height: 600px;
+        height: 500px;
         display: block;
         padding: 10px;
     }
-*/    
+    
         #searchBox input, select {
             margin-left: 50px;
             margin-right: 50px;
@@ -271,9 +271,8 @@ nav , sections, aside, footer {
     
         #searchBox #rideRequestButton, #driveOfferButton {
             display: inline-block;
-            float: left;
+            float: right;
             clear: right;
-            padding: 10px; 
             margin-left: 50px;
             margin-top: 50px;
         }
