@@ -209,20 +209,31 @@ nav , sections, aside, footer {
         display: block;
         width: 100%;
         min-width: 1160px;
+        margin-top: 10px;
     }
+
     
         #navBar h3 {
            border: solid;
-           padding: 10px;
-           margin: 5px;
+           padding-left: 10px;
+           padding-right: 10px;
+           padding-top: 2px;
+           padding-bottom: 2px;
+           margin: 2px;
            display: inline-block;
            border-radius: 5px;
            border-width: thin;
            background-color: green;
+           box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
         }
 
-        #navBar a:hover {
+        #navBar a {
             text-decoration: none;
+        }
+        
+        #navBar a:hover {
+            color: #fff;
+            text-shadow: -1px 1px 5px #03c, 1px -1px 5px #FFF;
         }
     
     
@@ -230,12 +241,13 @@ nav , sections, aside, footer {
         margin-top: 25px;
         margin-right: auto;
         margin-left: auto;
-        border: 2px solid black;
+        border: 2px groove;
         border-radius: 10px;
-        width: 1000px;
+        width: 970px;
         height: 500px;
         display: block;
         padding: 10px;
+        box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
     }
     
         #searchBox input, select {
@@ -244,7 +256,7 @@ nav , sections, aside, footer {
             margin-top: 20px;
             margin-bottom: 20px;
             display: inline-block;
-            width:150px;
+            width: 150px;
             border: 1px solid #999;
             height: 25px;
             box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);     
