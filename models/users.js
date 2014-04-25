@@ -29,6 +29,25 @@ module.exports.create =function(username, password, confirmPassword,
     });
 };
 
+module.exports.updatePassword = function(SearchCriteria, password, newPassword, callback){
+    
+    retrieve(SearchCriteria, password, function(success) {
+        if (success) {   
+            bcrypt.hash(newPassword, 10, function(error,hash) {
+                if (error) throw error;
+                
+            db.UserInformation.update(
+                {Username:SearchCriteria},
+                {$set: {Password:hash}});
+            
+            callback(true);
+            });
+        }else{
+            callback(false);
+        };
+    });
+};
+
 
 // Update user information
 module.exports.update = function(SearchCriteria, firstName, lastName, birthday, gender,
@@ -42,11 +61,11 @@ module.exports.update = function(SearchCriteria, firstName, lastName, birthday, 
 };
 
 // Verify login credentials
-module.exports.retrieve = function(username, password, callback) {
+retrieve = function(username, password, callback) {
     
     db.UserInformation.findOne({Username:username}, function(error, user) {
         if (error) throw error;
-        console.log(user);
+        
         if (!user) {
             callback(false);
         }
@@ -55,11 +74,12 @@ module.exports.retrieve = function(username, password, callback) {
             bcrypt.compare(password, user.Password, function(error, success) {
                 if (error) throw error;
                 callback(success);
-                console.log(success);
             });
         }
     });
 };
+
+module.exports.retrieve = retrieve;
 
 // Retrieve User Information for profile pages
 module.exports.getUserInformation  = function(username, callback) {

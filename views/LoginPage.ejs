@@ -8,6 +8,9 @@
         <form id="login" method="post" action="/login">
             <fieldset>
                 <legend>Login</legend>
+                <% if (error) { %>
+                    <p class = "text" id="error"><%= error %></p>
+                <% } %>
                 <label for="username">Username: </label>
                 <input class = "form" id = "username" type = "text" name = "username">
                 <label for="password">Password: </label>
@@ -16,10 +19,6 @@
                 <a class = "text" href ="/changePassword">Change Password</a>
             </fieldset>
         </form>
-        
-        <% if (error) { %>
-            <p class = "text" id="error"><%= error %></p>
-        <% } %>
         
        <form id = "registerForm" method="get" action="/getRegisterForm">
             <h1 class = "text">Don't have an account?</h1>

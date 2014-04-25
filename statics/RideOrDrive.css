@@ -107,10 +107,10 @@ nav , sections, aside, footer {
         font-family: Copperplate, sans-serif;
         font-size: 25px;
     }
-    
 
     #login{
         margin-top: 20px;
+        padding-right: 20%;
     }
 
         #loginForms {
@@ -124,7 +124,7 @@ nav , sections, aside, footer {
             padding: 20px;
         }
     
-    #login_submit, #registerForm, #getRegisterForm {
+    #login_submit, #changePassword_submit, #registerForm, #getRegisterForm {
         float: right;
         clear: right;
         display: block;
@@ -133,7 +133,16 @@ nav , sections, aside, footer {
         margin-left: 50px;
     }
     
+    #changePassword {
+        float: right;
+        display: inline-block;
+        padding-right: 42.5%;
+    }
 
+    #error {
+        color: red;
+    }
+    
 /* Specific to RegisterForm page */    
     
     #registerBox {
