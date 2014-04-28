@@ -1,8 +1,8 @@
 // Registration page: try to register
-var rideDrivePosts = require('../models/rideDrivePosts');
+var posts = require('../models/posts');
 
 module.exports = function(request,response) {
-   
+    
     //Username and Password gets validated
     var username = request.session.username;
    
@@ -19,7 +19,10 @@ module.exports = function(request,response) {
     var SeatsAvailable = request.body.SeatsAvailable;
     var Fare = request.body.Fare;
     
-    rideDrivePosts.createPost(username, FromLocation, ToLocation, DepartureDate, DepartureHour, DepartureMinute, ArrivalDate,
+    var typeOfPost = request.body.RideOrDriveOption;
+    
+    if (typeOfPost === "Rider"){
+       posts.createRiderPost(username, FromLocation, ToLocation, DepartureDate, DepartureHour, DepartureMinute, ArrivalDate,
                      ArrivalHour, ArrivalMinute, Passengers, SeatsAvailable, Fare, function(success){
                         
                         if (success) {
@@ -27,4 +30,16 @@ module.exports = function(request,response) {
                             response.redirect('/');
                         }
                      });
+    }else if (typeOfPost === "Driver") {
+        posts.createDriverPost(username, FromLocation, ToLocation, DepartureDate, DepartureHour, DepartureMinute, ArrivalDate,
+                     ArrivalHour, ArrivalMinute, Passengers, SeatsAvailable, Fare, function(success){
+                        
+                        if (success) {
+                            console.log('A Post has been submitted'); //Callback from riderPosts -> createRiderPost function. Returns true if data inserted properly.
+                            response.redirect('/');
+                            
+                            //NEED TO SUBMIT A FRIEDLY MESSAGE TO USER THAT POST IS SUCCESFULLY SUBMITTED.
+                        }
+                     });
+    }
 };

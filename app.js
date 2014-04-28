@@ -23,10 +23,10 @@ app.post('/createPost', require('./routes/createPost'));
 app.get('/getRegisterForm', require('./routes/getRegisterForm'));
 app.get('/getEditProfilePage', require('./routes/getEditProfilePage'));
 app.get('/getCreatePost', require('./routes/getCreatePost'));
+app.get('/getCurrentPosts', require('./routes/getCurrentPosts'));
 app.get('/profile', require('./routes/profile'));
 app.get('/logout', require('./routes/logout'));
 app.get('/history', require('./routes/history'));
-app.get('/currentposts', require('./routes/currentposts'));
 app.get('/notifications', require('./routes/notifications'));
 app.get('/changePassword', require('./routes/getChangePassword'));
 
