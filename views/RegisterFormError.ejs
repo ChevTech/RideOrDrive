@@ -50,6 +50,9 @@
             
             
             <form id = "registerForms" method = "post" action="/register">
+                
+                <p style="color:#ff0000;">The username you entered already exists. Please enter a different username.</p>
+                
                 <label for="f_username">Username : </label>
                 <label style="color:#ff0000;">*</label>
                 <input id = "f_username" name = "username" required><br>
@@ -68,11 +71,11 @@
                 
                 <label for="f_firstName">First Name: </label>
                 <label style="color:#ff0000;">*</label>
-                <input id = "f_firstName" name = "firstName" required> <br>
+                <input id = "f_firstName" name = "firstName" value = <%=datalist.firstName%> required> <br>
                 
                 <label for="f_lastName">Last Name: </label>
                 <label style="color:#ff0000;">*</label>
-                <input id = "f_lastName" name = "lastName" required> <br>
+                <input id = "f_lastName" name = "lastName" value = <%=datalist.lastName%>  required> <br>
                 
                 <label for="f_birthday">Birthday: </label>
                 <label style="color:#ff0000;">*</label>
@@ -81,31 +84,33 @@
                     <script>
                         var selector = document.getElementById('birthday_day')
                         for (var i=1; i<32; i++){
-                            selector.options[i-1] = new Option(i.toString(), i);
+                            selector.options[i-1] = new Option(i.toString(), i.toString());
                         }
+                        selector.selectedIndex = <%=datalist.birthday_day%> - 1;
                     </script>
                 </select>
                 <select id="birthday_month" name="birthday_month">
-                    <option value="January">January</option>
-                    <option value="February">February</option>
-                    <option value="March">March</option>
-                    <option value="April">April</option>
-                    <option value="May">May</option>
-                    <option value="June">June</option>
-                    <option value="July">July</option>
-                    <option value="August">August</option>
-                    <option value="September">September</option>
-                    <option value="October">October</option>
-                    <option value="November">November</option>
-                    <option value="December">December</option>
+                    <option value="January" <% if (datalist.birthday_month === "January") { %> selected <% } %>>January</option>
+                    <option value="February" <% if (datalist.birthday_month === "February") { %> selected <% } %>>February</option>
+                    <option value="March" <% if (datalist.birthday_month === "March") { %> selected <% } %>>March</option>
+                    <option value="April" <% if (datalist.birthday_month === "April") { %> selected <% } %>>April</option>
+                    <option value="May" <% if (datalist.birthday_month === "May") { %> selected <% } %>>May</option>
+                    <option value="June" <% if (datalist.birthday_month === "June") { %> selected <% } %>>June</option>
+                    <option value="July" <% if (datalist.birthday_month === "July") { %> selected <% } %>>July</option>
+                    <option value="August" <% if (datalist.birthday_month === "August") { %> selected <% } %>>August</option>
+                    <option value="September" <% if (datalist.birthday_month === "September") { %> selected <% } %>>September</option>
+                    <option value="October" <% if (datalist.birthday_month === "October") { %> selected <% } %>>October</option>
+                    <option value="November" <% if (datalist.birthday_month === "November") { %> selected <% } %>>November</option>
+                    <option value="December" <% if (datalist.birthday_month === "December") { %> selected <% } %>>December</option>
                 </select>
                 <select id="birthday_year" name="birthday_year">
                     <script>
                         var selector = document.getElementById('birthday_year')
                         for (var i=0; i<= 100; i++){
                             var year = new Date().getFullYear() - 100 + i;
-                            selector.options[i] = new Option(year.toString(), year);
+                            selector.options[i] = new Option(year.toString(), year.toString());
                         }
+                        selector.selectedIndex = <%=datalist.birthday_year%> + 100 - new Date().getFullYear();
                     </script>
                 </select>
                 <br>
@@ -114,25 +119,25 @@
                 <label style="color:#ff0000;">*</label>
                 <br>
                 <select name = "gender">
-                    <option value="Male">Male</option>
-                    <option value="Female">Female</option>
+                        <option value="Male" <% if (datalist.gender === "Male") { %> selected <% } %>>Male</option>
+                        <option value="Female" <% if (datalist.gender === "Female") { %> selected <% } %>> Female</option> 
                 </select> <br>
                 
                 <label for="f_phoneNumber">Phone Number: </label>
-                <input id = "f_phoneNumber" name = "phoneNumber"> <br>
+                <input id = "f_phoneNumber" name = "phoneNumber" value = <%=datalist.phoneNumber%>> <br>
                 
                 <label for="f_address">Address: </label>
-                <input id = "f_address" name = "address"> <br>
+                <input id = "f_address" name = "address" value = <%=datalist.address%>> <br>
                 
                 <label for="f_yearsOfDriverExperience">Years of Driver Experience: </label>
-                <input id = "f_yearsOfDriverExperience" name = "driverExperience"> <br>
+                <input id = "f_yearsOfDriverExperience" name = "driverExperience" value = <%=datalist.driverExperience%>> <br>
                 
                 <label for="f_email">Email: </label>
-                <input id = "f_email" name = "email"> <br>
+                <input id = "f_email" name = "email" value = <%=datalist.email%>> <br>
             
                 <div class = "box" id = "aboutMe">
                     <label for ="tb_about">About Me: </label>
-                    <textarea id= "tb_about" name = "AboutMe"></textarea>
+                    <input id= "tb_about" name = "AboutMe" value=<%=datalist.aboutMe%>></textarea>
                 </div>
                 
                 <button class = "button" id = "signUpButton" type="submit"> Submit </button>

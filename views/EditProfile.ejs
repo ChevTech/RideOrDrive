@@ -7,6 +7,7 @@
             <div id = "editProfileArea">
                 <div id = "pictureUpload">
                     <a href = ""> <img src ="http://www.iitk.ac.in/ame/sae/img/default2.gif" width = "100" height = "100"></a> <br>
+                    <input type="file" name="dataFile" id="fileChooser" />
                     <button type = "button" id = "uploadButton">Upload Picture (optional)</button>
                 </div>
                        
@@ -17,8 +18,43 @@
                     <label for="f_lastName">Last Name: </label>
                     <input id = "f_lastName" name = "lastName" type = "Text" value = <%=user.LastName %>> <br>
                 
-                    <label for="f_birthday">Birthday: </label>
-                    <input id = "f_birthday" type = "date" name = "birthday" value = <%=user.DateOfBirth %>> <br>
+                <label for="f_birthday">Birthday: </label>
+                <label style="color:#ff0000;">*</label>
+                <br>
+                <select id ="birthday_day" name = "birthday_day">
+                    <script>
+                        var selector = document.getElementById('birthday_day')
+                        for (var i=1; i<32; i++){
+                            selector.options[i-1] = new Option(i.toString(), i.toString());
+                        }
+                        selector.selectedIndex = <%=user.BirthdayDate%> - 1;
+                    </script>
+                </select>
+                <select id="birthday_month" name="birthday_month">
+                    <option value="January" <% if (user.BirthdayMonth === "January") { %> selected <% } %>>January</option>
+                    <option value="February" <% if (user.BirthdayMonth === "February") { %> selected <% } %>>February</option>
+                    <option value="March" <% if (user.BirthdayMonth === "March") { %> selected <% } %>>March</option>
+                    <option value="April" <% if (user.BirthdayMonth === "April") { %> selected <% } %>>April</option>
+                    <option value="May" <% if (user.BirthdayMonth === "May") { %> selected <% } %>>May</option>
+                    <option value="June" <% if (user.BirthdayMonth === "June") { %> selected <% } %>>June</option>
+                    <option value="July" <% if (user.BirthdayMonth === "July") { %> selected <% } %>>July</option>
+                    <option value="August" <% if (user.BirthdayMonth === "August") { %> selected <% } %>>August</option>
+                    <option value="September" <% if (user.BirthdayMonth === "September") { %> selected <% } %>>September</option>
+                    <option value="October" <% if (user.BirthdayMonth === "October") { %> selected <% } %>>October</option>
+                    <option value="November" <% if (user.BirthdayMonth === "November") { %> selected <% } %>>November</option>
+                    <option value="December" <% if (user.BirthdayMonth === "December") { %> selected <% } %>>December</option>
+                </select>
+                <select id="birthday_year" name="birthday_year">
+                    <script>
+                        var selector = document.getElementById('birthday_year')
+                        for (var i=0; i<= 100; i++){
+                            var year = new Date().getFullYear() - 100 + i;
+                            selector.options[i] = new Option(year.toString(), year.toString());
+                        }
+                        selector.selectedIndex = <%=user.BirthdayYear%> + 100 - new Date().getFullYear();
+                    </script>
+                </select>
+                <br>
                 
                     <label for="f_gender">Gender: </label>
                     <select id = "Gender" name = "gender" selected = "Female"> <!--value = <%=user.Gender %>>-->
