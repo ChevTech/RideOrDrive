@@ -7,8 +7,8 @@ var db = mongojs('db_RideOrDrive', ['UserInformation']);
 
 // Register a new user
 module.exports.create =function(username, password, confirmPassword,
-                                 firstName, lastName, birthday, gender,
-                                 phoneNumber, address, driverExperiance,
+                                 firstName, lastName, birthday_day, birthday_month, birthday_year, gender,
+                                 phoneNumber, address, driverExperience,
                                  email, aboutMe,  callback) {
 
     bcrypt.hash(password, 10, function(error,hash) {
@@ -17,8 +17,8 @@ module.exports.create =function(username, password, confirmPassword,
         db.UserInformation.findAndModify({
             query: {Username:username},
             update: {$setOnInsert:{Password:hash, FirstName:firstName, LastName:lastName,
-                                    DateOfBirth:birthday, Gender:gender, Phone:phoneNumber, Address:address,
-                                    DrivingExperianceYears:driverExperiance, Email:email, AboutMe:aboutMe}},
+                                    BirthdayDate:birthday_day, BirthdayMonth:birthday_month, BirthdayYear:birthday_year, Gender:gender, Phone:phoneNumber, Address:address,
+                                    DrivingExperienceYears:driverExperience, Email:email, AboutMe:aboutMe}},
             new: true,
             upsert: true
             
@@ -50,12 +50,12 @@ module.exports.updatePassword = function(SearchCriteria, password, newPassword, 
 
 
 // Update user information
-module.exports.update = function(SearchCriteria, firstName, lastName, birthday, gender,
-                                 phoneNumber, address, driverExperiance,
+module.exports.update = function(SearchCriteria, firstName, lastName, birthday_day, birthday_month, birthday_year, gender,
+                                 phoneNumber, address, driverExperience,
                                  email, aboutMe,  callback) {
     
-    db.UserInformation.update({Username:SearchCriteria},{$set: {FirstName:firstName,LastName:lastName,DateOfBirth:birthday,
-                                                                Gender:gender, Phone:phoneNumber, Address:address, DrivingExperianceYears:driverExperiance,
+    db.UserInformation.update({Username:SearchCriteria},{$set: {FirstName:firstName,LastName:lastName, BirthdayDate:birthday_day, BirthdayMonth:birthday_month, BirthdayYear:birthday_year,
+                                                                Gender:gender, Phone:phoneNumber, Address:address, DrivingExperienceYears:driverExperience,
                                                                 Email:email, AboutMe:aboutMe}});
     callback(true);
 };
