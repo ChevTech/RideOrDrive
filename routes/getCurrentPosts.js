@@ -9,11 +9,16 @@ module.exports = function(request,response) {
         
         var currentPosts = [];
         var getDate = new Date();
-        var currentDate = getDate.getFullYear + "-" + getDate.getMonth + "-" + getDate.getDate;
+        var year  = getDate.getFullYear();
+        var month = getDate.getMonth() + 1;
+        var day   = getDate.getDate();
+        var currentDate = year + "-" + month + "-" + day;
         
         posts.forEach(function(post) {
-            console.log(post.DepartureDate);
-            console.log(currentDate);
+            if (currentDate <= post.DepartureDate)
+                currentPosts.push(post);
         });
+        
+        response.render('ViewCurrentPosts', {currentPosts:currentPosts});
     });
 };

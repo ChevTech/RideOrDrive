@@ -13,13 +13,13 @@ app.use(express.cookieParser());
 app.use(express.session({secret:'CS 340 3/6/2014'}));
 
 // Route the requests
-app.get('/', require('./routes/index'));
+
 app.post('/login', require('./routes/login'));
 app.post('/register', require('./routes/register'));
 app.post('/changePassword', require('./routes/changePassword'));
 app.post('/createPost', require('./routes/createPost'));
 
-
+app.get('/', require('./routes/index'));
 app.get('/getRegisterForm', require('./routes/getRegisterForm'));
 app.get('/getEditProfilePage', require('./routes/getEditProfilePage'));
 app.get('/getCreatePost', require('./routes/getCreatePost'));

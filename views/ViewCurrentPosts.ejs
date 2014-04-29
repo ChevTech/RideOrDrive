@@ -3,6 +3,18 @@
 
 <!-- User will be able to view his or her active posts -->
 
-<p> This is the Current Posts page </p>
+<%currentPosts.forEach(function(post) { %>
+    <div>
+        <p>From: <%=post.FromLocation%></p>
+        <p>To: <%=post.ToLocation%></p>
+        
+        <h4 class = "title">Time of Departure</h4>
+        <p>Departure Date: <%=post.DepartureDate%></p>
+        <p>Departure Time: </p>
+        <p>Number of Passengers: <%=post.Passengers%></p>
+        <p>Seats Available: <%=post.SeatsAvailable%></p>
+        <p>Fare: <%=post.Fare%></p>
+    </div>
+<%})%>
 
 <% include chunks/footer %>
