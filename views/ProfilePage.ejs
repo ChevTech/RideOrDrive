@@ -4,18 +4,18 @@
     <div class = "text" id = "Profile">
         <p>First Name: <%= user.FirstName %> </p>
         <p>Last Name: <%= user.LastName %> </p>
-        <p>Birthday: <%= user.DateOfBirth %></p>
+        <p>Birthday: <%= user.BirthdayDate %> <%= user.BirthdayMonth%>, <%=user.BirthdayYear%></p>
         <p>Gender: <%= user.Gender %></p>
         <p>Phone Number: <%= user.Phone %></p>
         <p>Address: <%= user.Address %> </p>
-        <p>Years of Driver Experience: <%= user.DrivingExperianceYears %> </p>
+        <p>Years of Driver Experience: <%= user.DrivingExperienceYears %> </p>
         <p>Email: <%= user.Email %></p>
         <p>About Me: <%= user.AboutMe %></p>
     </div>
     
     <form id = "f_editProfile" method="get" action="/getEditProfilePage">
-    </form>   
-    <button class = "button" id = "getEditRegisterForm" type="submit" form = "f_editProfile">Edit Profile</button>
+        <button class = "button" id = "getEditRegisterForm" type="submit" form = "f_editProfile">Edit Profile</button>
+    </form>
     
     
     

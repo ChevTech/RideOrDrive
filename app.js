@@ -18,6 +18,7 @@ app.post('/login', require('./routes/login'));
 app.post('/register', require('./routes/register'));
 app.post('/changePassword', require('./routes/changePassword'));
 app.post('/createPost', require('./routes/createPost'));
+app.post('/editProfile', require('./routes/editProfile'));
 
 app.get('/', require('./routes/index'));
 app.get('/getRegisterForm', require('./routes/getRegisterForm'));

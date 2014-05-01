@@ -58,35 +58,3 @@ module.exports = function(request,response) {
     });
 
 };
-
-
-    
-//    var SessionUsername = request.session.username;
-//    
-//    
-//    if (SessionUsername) {
-//        console.log("person is logged in");
-//        users.update(SessionUsername, firstName, lastName, birthday_day, birthday_month, birthday_year,
-//                 gender, phoneNumber, address, driverExperiance, email, aboutMe,
-//                 function(success) {
-//                    
-//        if (success) {
-//            response.redirect('/');
-//        }
-//        //If error during profile information change. Print Error to screen.
-//        });
-//    }else{
-//        console.log("person is not logged in");
-//        users.create(username, password, confirmPassword,
-//                 firstName, lastName, birthday_day, birthday_month, birthday_year,
-//                 gender, phoneNumber, address, driverExperiance, email, aboutMe,
-//                 function(success) {
-//	            if (success) {
-//		        request.session.username = username;
-//		    } else {
-//		        //This Error always gets set. WHY??????
-//		        request.session.error = 'Username '+username+' is not available. Or password doesnt match';
-//		    }
-//	        response.redirect('/');
-//        });
-//    };

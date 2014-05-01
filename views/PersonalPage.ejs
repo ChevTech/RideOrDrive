@@ -1,23 +1,184 @@
 <% include chunks/header %>
 <% include chunks/nav %>
 
-
+    <form method="post" action="/getSearchResults">
         <div id = "searchBox">
             
             <h3 class = "title">Search Form</h3>
                 
-                <label for = "f_RideOrDriveOption"> I am... </label>
-                <select id = "f_RideOrDriveOption" name = "RideOrDriveOption" required>
-                    <option name="rider">Riding</option>
-                    <option name="driver">Driving</option>
+            <label for = "f_RideOrDriveOption"> I am... </label>
+            <select id = "f_RideOrDriveOption" name = "RideOrDriveOption" required>
+                <option name="rider">Riding</option>
+                <option name="driver">Driving</option>
+            </select>
+            <br>
+            
+            <h4 class = "title">From: </h4>
+            <label for = "f_fromAddress">Address: </label>
+            <input id = "f_fromAddress" name = "fromAddress" type = "text" required>
+            <label for = "f_fromCity">City: </label>
+            <input id = "f_fromCity" name = "fromCity" required>
+            <label for = "f_fromState">State: </label>
+            <input id = "f_fromState" name = "fromState" required>
+            <br>
+            
+            <h4 class = "title">To: </h4>
+            <label for = "f_toAddress">Address: </label>
+            <input id = "f_toAddress" name = "toAddress" type = "text" required>
+            <label for = "f_toCity">City: </label>
+            <input id = "f_toCity" name = "toCity" required>
+            <label for = "f_toState">State: </label>
+            <input id = "f_toState" name = "toState" required>
+            <br>
+
+            <div id = "timeOfDeparture">
+                
+                <!-- TIME INPUT HERE -->                
+                <h4 class = "title">Departure (required)</h4>
+                
+                <label>Day: </label>
+                <select id ="f_DepartureDay" name = "DepartureDay">
+                    <script>
+                        var selector = document.getElementById('f_DepartureDay');
+                        for (var i=1; i<32; i++){
+                            selector.options[i-1] = new Option(i.toString(), i.toString());
+                        }
+                    </script>
                 </select>
-            
-      
-            <label for="f_fromInput">To: </label>
-            <input id = "f_fromInput">
-            <label for="f_toInput">From:  </label>
-            <input id = "f_toInput"> <br>
-            
+                <script>
+                    var selector = document.getElementById('f_DepartureDay');
+                    var date = new Date();
+                    var day = date.getDate();
+                    selector.selectedIndex = day - 1
+                </script>
+                <select id="f_DepartureMonth" name="DepartureMonth">
+                    <option value="1">January</option>
+                    <option value="2">February</option>
+                    <option value="3">March</option>
+                    <option value="4">April</option>
+                    <option value="5">May</option>
+                    <option value="6">June</option>
+                    <option value="7">July</option>
+                    <option value="8">August</option>
+                    <option value="9">September</option>
+                    <option value="10">October</option>
+                    <option value="11">November</option>
+                    <option value="12">December</option>
+                </select>
+                <script>
+                    var selector = document.getElementById('f_DepartureMonth');
+                    var date = new Date();
+                    var month = date.getMonth();
+                    selector.selectedIndex = month
+                </script>
+                <select id="f_DepartureYear" name="DepartureYear">
+                    <script>
+                        var selector = document.getElementById('f_DepartureYear')
+                        for (var i=0; i<= 1; i++){
+                            var year = new Date().getFullYear() + i;
+                            selector.options[i] = new Option(year.toString(), year.toString());
+                        }
+                    </script>
+                </select>
+                <br>
+                
+                <label>Time: </label>
+                <select id ="f_DepartureHour" name = "DepartureHour">
+                    <script>
+                        var selector = document.getElementById('f_DepartureHour');
+                        for (var i=1; i<13; i++){
+                            selector.options[i-1] = new Option(i.toString(), i.toString());
+                        }
+                    </script>
+                </select>
+                <label>:</label>
+                <select id ="f_DepartureMinute" name = "DepartureMinute">
+                    <script>
+                        var selector = document.getElementById('f_DepartureMinute');
+                        for (var i=1; i<12; i++){
+                            selector.options[i-1] = new Option((5*i).toString(), (5*i).toString());
+                        }
+                    </script>
+                </select>
+                <select id ="f_DepartureMeridian" name = "DepartureMeridian">
+                    <option value="am">am</option>
+                    <option value="pm">pm</option>
+                </select>
+                
+            </div>
+           
+            <div id = "timeOfArrival">              
+                <h4 class = "title">Time of Arrival (Optional)</h4>
+                
+                <label>Day: </label>
+                <select id ="f_ArrivalDay" name = "ArrivalDay">
+                    <script>
+                        var selector = document.getElementById('f_ArrivalDay')
+                        for (var i=1; i<32; i++){
+                            selector.options[i-1] = new Option(i.toString(), i.toString());
+                        }
+                    </script>
+                </select>
+                <script>
+                    var selector = document.getElementById('f_ArrivalDay');
+                    var date = new Date();
+                    var day = date.getDate();
+                    selector.selectedIndex = day - 1
+                </script>
+                <select id="f_ArrivalMonth" name="ArrivalMonth">
+                    <option value="1">January</option>
+                    <option value="2">February</option>
+                    <option value="3">March</option>
+                    <option value="4">April</option>
+                    <option value="5">May</option>
+                    <option value="6">June</option>
+                    <option value="7">July</option>
+                    <option value="8">August</option>
+                    <option value="9">September</option>
+                    <option value="10">October</option>
+                    <option value="11">November</option>
+                    <option value="12">December</option>
+                </select>
+                <script>
+                    var selector = document.getElementById('f_ArrivalMonth');
+                    var date = new Date();
+                    var month = date.getMonth();
+                    selector.selectedIndex = month
+                </script>
+                <select id="f_ArrivalYear" name="ArrivalYear">
+                    <script>
+                        var selector = document.getElementById('f_ArrivalYear')
+                        for (var i=0; i<= 1; i++){
+                            var year = new Date().getFullYear() + i;
+                            selector.options[i] = new Option(year.toString(), year.toString());
+                        }
+                    </script>
+                </select>
+                <br>
+                
+                <label>Time: </label>
+                <select id ="f_ArrivalHour" name = "ArrivalHour">
+                    <script>
+                        var selector = document.getElementById('f_ArrivalHour');
+                        for (var i=1; i<13; i++){
+                            selector.options[i-1] = new Option(i.toString(), i.toString());
+                        }
+                    </script>
+                </select>
+                <label>:</label>
+                <select id ="f_ArrivalMinute" name = "ArrivalMinute">
+                    <script>
+                        var selector = document.getElementById('f_ArrivalMinute');
+                        for (var i=1; i<12; i++){
+                            selector.options[i-1] = new Option((5*i).toString(), (5*i).toString());
+                        }
+                    </script>
+                </select>
+                <select id ="f_ArrivalMeridian" name = "ArrivalMeridian">
+                    <option value="am">am</option>
+                    <option value="pm">pm</option>
+                </select>
+            </div>
             
             <form id = "timeOfDeparture">
                 
@@ -67,6 +228,6 @@
         Put all your stuff here and it will scroll.  You can change the width and height to your needs.  and the background as well by putting background-color: #000000  instead of background.
 
     </div>
-    
+    </form>
     
 <% include chunks/footer %>
