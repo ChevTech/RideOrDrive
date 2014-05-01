@@ -1,16 +1,23 @@
 <% include chunks/header %>
 <% include chunks/nav %>
             
-            <p><i>Edit Profile</i></p>
+            <p class = "text">Edit Profile</p>
             
             <form id = "f_editProfile" method = "post" action="/editProfile">
             <div id = "editProfileArea">
+<<<<<<< HEAD
                     
                 <div id = "pictureUpload">
                     <a href = ""> <img src ="http://www.iitk.ac.in/ame/sae/img/default2.gif" width = "100" height = "100"></a> <br>
                     <input type="file" name="dataFile" id="fileChooser" />
                     <button type = "button" id = "uploadButton">Upload Picture (optional)</button>
                 </div>    
+=======
+                       
+                <form id = "f_editProfile" method = "post" action="/register">
+                    
+                    <div id = "edit_profileInput">
+>>>>>>> 00f4f5bf04be5af5d99be9f88f3af3b6e369007b
                     <label for="f_firstName">First Name: </label>
                     <input id = "f_firstName" name = "firstName" type = "Text" value = <%=user.FirstName %>> <br>
                 
@@ -19,7 +26,8 @@
                 
                 <label for="f_birthday">Birthday: </label>
                 <label style="color:#ff0000;">*</label>
-                <br>
+                
+                <div id = "edit_birthdayInput">
                 <select id ="birthday_day" name = "birthday_day">
                     <script>
                         var selector = document.getElementById('birthday_day')
@@ -53,12 +61,13 @@
                         selector.selectedIndex = <%=user.BirthdayYear%> + 100 - new Date().getFullYear();
                     </script>
                 </select>
-                <br>
+                </div>
+                <br> 
                 
                     <label for="f_gender">Gender: </label>
-                    <select id = "Gender" name = "gender" selected = "Female"> <!--value = <%=user.Gender %>>-->
-                        <option value="Male" <% if (user.Gender === "Male") { %> selected <% } %>>Male</option>
-                        <option value="Female" <% if (user.Gender === "Female") { %> selected <% } %>> Female</option>
+                    <select id = "edit_gender" name = "gender" selected = "Female"> <!--value = <%=user.Gender %>>-->
+                        <option value="Male" <% if (user.edit_gender === "Male") { %> selected <% } %>>Male</option>
+                        <option value="Female" <% if (user.edit_gender === "Female") { %> selected <% } %>> Female</option>
                     </select> <br>
                 
                     <label for="f_phoneNumber">Phone Number: </label>
@@ -72,14 +81,30 @@
                     
                     <label for="f_email">Email: </label>
                     <input id = "f_email" name = "email" type = "Text" value = <%=user.Email %>> <br>
+                    
+                    </div>
                 
+<<<<<<< HEAD
                     <label for ="tb_about">About Me: </label>
                     <textarea id= "tb_about" name = "aboutMe"  type = "Text" value = <%=user.AboutMe %>></textarea> <br>
                     <button class = "button" id = "editProfile" type="submit" form = "f_editProfile">Submit</button>    
+=======
+                    <div id = "edit_aboutMe">
+                        <label for ="edit_tb_about">About Me: </label>
+                        <textarea id= "edit_tb_about" name = "aboutMe"  type = "Text" value = <%=user.AboutMe %>></textarea>
+                    </div>
+                    
+                    <div id = "edit_pictureUpload">
+                        <a href = ""> <img src ="http://www.iitk.ac.in/ame/sae/img/default2.gif" width = "100" height = "100"></a> <br>
+                        <input type="file" name="dataFile" id="fileChooser" class = "fileChooser" />
+                    </div>
+                    
+                    <button class = "button" id = "edit_signUpButton" type="submit"> Submit </button>
+                </form>     
+>>>>>>> 00f4f5bf04be5af5d99be9f88f3af3b6e369007b
             </div>
         </form> 
 
 
 <% include chunks/footer %>
     
-
