@@ -1,0 +1,39 @@
+/* Large Screen Accomodation */
+@media screen and (min-width: 800px) {
+    
+    #websiteBio {
+        float:left;
+        display: inline-block;
+        width: 45%;
+    }
+    
+    #websiteBio #slogan {
+        font-family: Copperplate, sans-serif;
+        font-size: 25px;
+    }
+    
+
+    #login{
+        margin-top: 20px;
+    }
+
+        #loginForms {
+            margin-top: 50px;
+            border: dotted;
+            padding: 40px;
+            border-color: white;
+        }
+    
+        #signUpMessage {
+            padding: 20px;
+        }
+    
+    #login_submit, #registerForm, #getRegisterForm {
+        float: right;
+        clear: right;
+        display: block;
+        padding-left: 20px;
+        padding-right: 20px;
+        margin-left: 50px;
+    }
+}
