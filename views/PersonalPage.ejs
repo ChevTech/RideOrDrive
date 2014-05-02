@@ -179,41 +179,6 @@
                     <option value="pm">pm</option>
                 </select>
             </div>
-            
-            <form id = "timeOfDeparture">
-                
-                <!-- TIME INPUT HERE -->                
-                <h4 class = "title">Time of Departure (required)</h4>
-                
-                <label for="f_day">Date:</label>
-                <input id = "f_day" name = "required" type = "date"> 
-                    
-                <label for="f_hour"> Hour: </label>
-                <input id = f_hour" name = "required" type = "number" min="0" max="24">
-                    
-                <label for="f_minute"> Minute: </label>
-                <input id = f_minute" name = "required" type = "number" min="0" max="60"> <br>
-            
-            </form>
-           
-           
-            <form id = "timeOfArrival">
-                
-                <!-- TIME INPUT HERE -->
-                        
-                <h4 class = "title">Time of Arrival (optional)</h4>
-                    
-                
-                <label for="f_day">Date:</label>
-                <input id = "f_day" type = "date">
-                        
-                <label for="f_hour"> Hour: </label>
-                <input id = f_hour" type = "number" min="0" max="24"> 
-                    
-                <label for="f_minute"> Minute: </label>
-                <input id = f_minute" type = "number" min="0" max="60"> <br>     
-                                
-            </form>
            
            <!-- Need to change onclick function, rideRequest() is not defined -->
             <input class = "button" id = "rideRequestButton" onclick = "rideRequest()" type = "submit">
