@@ -1,0 +1,18 @@
+ /* Large Screen Accomodation */
+@media screen and (min-width: 800px) {
+
+    #currentPosts p {
+        display: inline;
+    }
+
+    #currentPosts {
+        border: groove 5px;
+        margin: 10px;
+        margin-top: 50px;
+        margin-left: auto;
+        margin-right: auto;
+        width: 80%;
+    }
+
+
+}
