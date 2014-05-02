@@ -13,6 +13,7 @@
             </select>
             <br>
             
+            <div id = "pp_from">
             <h4 class = "title">From: </h4>
             <label for = "f_fromAddress">Address: </label>
             <input id = "f_fromAddress" name = "fromAddress" type = "text" required>
@@ -21,7 +22,9 @@
             <label for = "f_fromState">State: </label>
             <input id = "f_fromState" name = "fromState" required>
             <br>
+            </div>
             
+            <div id = "pp_to">
             <h4 class = "title">To: </h4>
             <label for = "f_toAddress">Address: </label>
             <input id = "f_toAddress" name = "toAddress" type = "text" required>
@@ -30,11 +33,12 @@
             <label for = "f_toState">State: </label>
             <input id = "f_toState" name = "toState" required>
             <br>
+            </div>
 
             <div id = "timeOfDeparture">
                 
                 <!-- TIME INPUT HERE -->                
-                <h4 class = "title">Departure (required)</h4>
+                <h4 class = "title">Time of Departure (required)</h4>
                 
                 <label>Day: </label>
                 <select id ="f_DepartureDay" name = "DepartureDay">
@@ -82,6 +86,7 @@
                 </select>
                 <br>
                 
+                <div id = "pp_departTime">
                 <label>Time: </label>
                 <select id ="f_DepartureHour" name = "DepartureHour">
                     <script>
@@ -104,7 +109,7 @@
                     <option value="am">am</option>
                     <option value="pm">pm</option>
                 </select>
-                
+                </div>
             </div>
            
             <div id = "timeOfArrival">              
@@ -156,6 +161,7 @@
                 </select>
                 <br>
                 
+                <div id = "pp_arriveTime">
                 <label>Time: </label>
                 <select id ="f_ArrivalHour" name = "ArrivalHour">
                     <script>
@@ -179,47 +185,11 @@
                     <option value="pm">pm</option>
                 </select>
             </div>
+           
+            </div>
             
-            <form id = "timeOfDeparture">
-                
-                <!-- TIME INPUT HERE -->                
-                <h4 class = "title">Time of Departure (required)</h4>
-                
-                <label for="f_day">Date:</label>
-                <input id = "f_day" name = "required" type = "date"> 
-                    
-                <label for="f_hour"> Hour: </label>
-                <input id = f_hour" name = "required" type = "number" min="0" max="24">
-                    
-                <label for="f_minute"> Minute: </label>
-                <input id = f_minute" name = "required" type = "number" min="0" max="60"> <br>
-            
-            </form>
-           
-           
-            <form id = "timeOfArrival">
-                
-                <!-- TIME INPUT HERE -->
-                        
-                <h4 class = "title">Time of Arrival (optional)</h4>
-                    
-                
-                <label for="f_day">Date:</label>
-                <input id = "f_day" type = "date">
-                        
-                <label for="f_hour"> Hour: </label>
-                <input id = f_hour" type = "number" min="0" max="24"> 
-                    
-                <label for="f_minute"> Minute: </label>
-                <input id = f_minute" type = "number" min="0" max="60"> <br>     
-                                
-            </form>
-           
            <!-- Need to change onclick function, rideRequest() is not defined -->
-            <input class = "button" id = "rideRequestButton" onclick = "rideRequest()" type = "submit">
-            
-            
-        </div>
+            <input class = "button" id = "searchButton" onclick = "rideRequest()" type = "submit">
     
     
     
@@ -230,4 +200,4 @@
     </div>
     </form>
     
-<% include chunks/footer %>
+<% include chunks/footer %>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
