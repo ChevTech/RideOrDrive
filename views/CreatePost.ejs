@@ -1,8 +1,12 @@
 <% include chunks/header %>
 <% include chunks/nav %>
 
+
+<h2 class = "title">Create a Post!</h2>
+
         <form method ='post' action='/createPost'>
             
+            <div id = "createPostBox">
             <!-- Checks if the user is a rider or a driver-->
             <label for = "f_RideOrDriveOption">Are you a passenger or driver?</label>
             <select id = "f_RideOrDriveOption" name = "RideOrDriveOption">
@@ -11,7 +15,7 @@
             </select>
             <br>
             
-            <div id="fromLocation">
+            <div id="cp_fromLocation">
             <h4 class = "title">From: </h4>
             <label for = "f_fromAddress">Address: </label>
             <input id = "f_fromAddress" name = "fromAddress" type = "text" required>
@@ -22,7 +26,7 @@
             <br>
             </div>
             
-            <div id="toLocation">
+            <div id="cp_toLocation">
             <h4 class = "title">To: </h4>
             <label for = "f_toAddress">Address: </label>
             <input id = "f_toAddress" name = "toAddress" type = "text" required>
@@ -33,7 +37,7 @@
             <br>
             </div>
             
-            <div id = "timeOfDeparture">
+            <div id = "cp_timeOfDeparture">
                 
                 <!-- TIME INPUT HERE -->                
                 <h4 class = "title">Departure (required)</h4>
@@ -99,7 +103,7 @@
                         }
                     </script>
                 </select>
-                <label>:</label>
+                <label></label>
                 <select id ="f_DepartureMinute" name = "DepartureMinute">
                     <script>
                         var selector = document.getElementById('f_DepartureMinute');
@@ -115,7 +119,7 @@
                 
             </div>
            
-            <div id = "timeOfArrival">              
+            <div id = "cp_timeOfArrival">              
                 <h4 class = "title">Time of Arrival (Optional)</h4>
                 
                 <!-- Time of arrival input here-->
@@ -178,7 +182,7 @@
                         }
                     </script>
                 </select>
-                <label>:</label>
+                <label></label>
                 <select id ="f_ArrivalMinute" name = "ArrivalMinute">
                     <script>
                         var selector = document.getElementById('f_ArrivalMinute');
@@ -193,16 +197,21 @@
                 </select>
             </div>
             
+            
+            <div id = "cp_extraInfo">
             <label for="f_passengers">Current Number of Passengers (Driver Option): </label>
-            <input id ="f_passengers" name = "Passengers" type = "number" min ="0" max = "10" required>
+            <input id ="f_passengers" name = "Passengers" type = "number" min ="0" max = "10" required><br>
             
             <label for="f_seats">Number of Seats Available (Driver Option): </label>
-            <input id ="f_seats" name = "SeatsAvailable" type = "number" min = "0" max = "10" required>
+            <input id ="f_seats" name = "SeatsAvailable" type = "number" min = "0" max = "10" required> <br>
                     
             <label for="f_fare">Fare: </label>
-            <input id ="f_fare" name = "Fare" type = "number" min = "0" required>    <br>
+            <input id ="f_fare" name = "Fare" type = "number" min = "0" required>
+            </div>   <br>
   
             <input class = "button" id="submitPost" type = "submit">
+                
+            </div>
         </form>
             
-<% include chunks/footer %>
+<% include chunks/footer %>      
