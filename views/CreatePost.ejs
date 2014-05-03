@@ -1,7 +1,12 @@
 <% include chunks/header %>
 <% include chunks/nav %>
 
+        <h2 class = "title">Create a Post!</h2>
+
         <form method ='post' action='/createPost'>
+            
+            <div id = "createPostBox">
+            
             
             <!-- Shows the driver options only if the user is a driver-->
             <script>
@@ -159,6 +164,8 @@
                 
             </div>
             
+            <div id = "cp_extraInfo">
+            
             <label for="f_passengers">Number of Passengers: </label>
             <select id ="f_passengers" name = "Passengers">
                 <option value="1">1</option>
@@ -166,7 +173,7 @@
                 <option value="3">3</option>
                 <option value="4">4</option>
                 <option value="5 or more">5 or more</option>
-            </select>
+            </select> <br>
             
             <label for="f_fare">Fare: $ </label>
             <input id ="f_fare" name = "Fare" type="text">    <br>
@@ -185,8 +192,79 @@
                 </select>
             </div>
             <br>
+                
+            </div>
             
             <input class = "button" id="submitPost" type = "submit">
+                
+            </div>
         </form>
+        
+        
+        <style>
+            /* Large Screen Accomodation */
+@media screen and (min-width: 800px) {
+
+    #createPostBox {
+        margin-top: 25px;
+        margin-right: auto;
+        margin-left: auto;
+        border: 2px groove;
+        border-radius: 10px;
+        width: 80%;
+        height: 520px;
+        display: block;
+        padding: 40px;
+        box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+    }
+    
+            #createPostBox input {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            display: inline;
+            width: 150px;
+            border: 1px solid #999;
+            height: 25px;
+            box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);     
+        }
+        
+        #createPostBox select {
+            display: inline-block;
+        }
+        
+    #toLocation, #fromLocation {
+        border: solid white;
+        margin: 20px;
+    }
+        
+    #timeOfDeparture {
+        border: solid white;
+        margin-top: 30px;
+        display: inline;
+        float: left;
+        margin-bottom: 20px;
+        width: 400px;
+        margin:10px;
+    }
+
+    #timeOfDeparture select,  #timeOfArrival select{
+        float: right;
+        width: 75px;
+    }
+    
+    #cp_extraInfo {
+        float:left;
+        display: inline-block;
+    }
+    
+     #submitPost input {
+            margin-top: 50px;
+            float: right;
+            clear: right;
+        }
+
+}
+
+        </style>
             
-<% include chunks/footer %>
+<% include chunks/footer %>                                                                                                                                                                                                                         
