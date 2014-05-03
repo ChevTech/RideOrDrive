@@ -12,8 +12,9 @@
                 <option name="driver">Driving</option>
             </select>
             <br>
-            
+
             <!-- The location where the user will be leaving from-->
+            <div id = "pp_from">
             <h4 class = "title">From: </h4>
             <label for = "f_fromAddress">Address: </label>
             <input id = "f_fromAddress" name = "fromAddress" type = "text" required>
@@ -34,8 +35,10 @@
                 </script>
             </select>
             <br>
+            </div>
             
             <!-- The location where the user will be going to-->
+            <div id = "pp_to">
             <h4 class = "title">To: </h4>
             <label for = "f_toAddress">Address: </label>
             <input id = "f_toAddress" name = "toAddress" type = "text" required>
@@ -56,12 +59,12 @@
                 </script>
             </select>
             <br>
+            </div>
 
             <div id = "timeOfDeparture">
                 
                 <!-- TIME INPUT HERE -->                
                 <h4 class = "title">Departure:</h4>
-                
                 <label>Day: </label>
                 <select id ="f_DepartureDay" name = "DepartureDay">
                     <script>
@@ -108,6 +111,7 @@
                 </select>
                 <br>
                 
+                <div id = "pp_departTime">
                 <label>Time: </label>
                 <select id ="f_DepartureHour" name = "DepartureHour">
                     <script>
@@ -121,7 +125,7 @@
                         }
                     </script>
                 </select>
-                <label>:</label>
+                <label></label>
                 <select id ="f_DepartureMinute" name = "DepartureMinute">
                     <script>
                         var selector = document.getElementById('f_DepartureMinute');
@@ -138,15 +142,10 @@
                     <option value="am">am</option>
                     <option value="pm">pm</option>
                 </select>
-                
+                </div>
             </div>
-           
            <!-- Need to change onclick function, rideRequest() is not defined -->
-            <input class = "button" id = "rideRequestButton" onclick = "rideRequest()" type = "submit">
-            
-            
-        </div>
-    
+            <input class = "button" id = "rideRequestButton" onclick = "rideRequest()" type = "submit">    
     
     
     <div id = "travelWall">
