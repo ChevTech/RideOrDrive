@@ -3,11 +3,23 @@
 
         <form method ='post' action='/createPost'>
             
+            <!-- Shows the driver options only if the user is a driver-->
+            <script>
+                function checkOption(){
+                    if (document.getElementById('f_RideOrDriveOption').value === "driver"){
+                        document.getElementById('f_driverOptions').hidden = false;    
+                    }
+                    else{
+                        document.getElementById('f_driverOptions').hidden = true;
+                    }
+                }  
+            </script>
+            
             <!-- Checks if the user is a rider or a driver-->
             <label for = "f_RideOrDriveOption">Are you a passenger or driver?</label>
-            <select id = "f_RideOrDriveOption" name = "RideOrDriveOption">
-                <option name="rider">Rider</option>
-                <option name="driver">Driver</option>
+            <select id = "f_RideOrDriveOption" name = "RideOrDriveOption" onchange="checkOption()">
+                <option value="rider">Rider</option>
+                <option value="driver">Driver</option>
             </select>
             <br>
             
@@ -18,7 +30,19 @@
             <label for = "f_fromCity">City: </label>
             <input id = "f_fromCity" name = "fromCity" required>
             <label for = "f_fromState">State: </label>
-            <input id = "f_fromState" name = "fromState" required>
+            <select id = "f_fromState" name = "fromState">
+                <script>
+                    var selector = document.getElementById('f_fromState');
+                    var states = ["Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "Florida", "Georgia", "Hawaii",
+                                  "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan",
+                                  "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey", "New Mexico",
+                                  "New York", "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island","South Carolina",
+                                  "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"];
+                    for (var i=0; i<states.length; i++){
+                        selector.options[i] = new Option(states[i], states[i]);
+                    }
+                </script>
+            </select>
             <br>
             </div>
             
@@ -29,21 +53,33 @@
             <label for = "f_toCity">City: </label>
             <input id = "f_toCity" name = "toCity" required>
             <label for = "f_toState">State: </label>
-            <input id = "f_toState" name = "toState" required>
+            <select id = "f_toState" name = "toState">
+                <script>
+                    var selector = document.getElementById('f_toState');
+                    var states = ["Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "Florida", "Georgia", "Hawaii",
+                                  "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan",
+                                  "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey", "New Mexico",
+                                  "New York", "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island","South Carolina",
+                                  "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"];
+                    for (var i=0; i<states.length; i++){
+                        selector.options[i] = new Option(states[i], states[i]);
+                    }
+                </script>
+            </select>
             <br>
             </div>
             
             <div id = "timeOfDeparture">
                 
                 <!-- TIME INPUT HERE -->                
-                <h4 class = "title">Departure (required)</h4>
+                <h4 class = "title">Departure:</h4>
                 
                 <label>Day: </label>
                 <select id ="f_DepartureDay" name = "DepartureDay">
                     <script>
                         var selector = document.getElementById('f_DepartureDay');
                         for (var i=1; i<32; i++){
-                            selector.options[i-1] = new Option(i.toString(), i.toString());
+                            selector.options[i-1] = new Option(i, i);
                         }
                     </script>
                 </select>
@@ -95,7 +131,11 @@
                     <script>
                         var selector = document.getElementById('f_DepartureHour');
                         for (var i=1; i<13; i++){
-                            selector.options[i-1] = new Option(i.toString(), i.toString());
+                            var hour = i.toString();
+                            if (i<10){
+                                hour = "0" + i.toString();
+                            }
+                            selector.options[i-1] = new Option(hour, i);
                         }
                     </script>
                 </select>
@@ -103,8 +143,12 @@
                 <select id ="f_DepartureMinute" name = "DepartureMinute">
                     <script>
                         var selector = document.getElementById('f_DepartureMinute');
-                        for (var i=1; i<12; i++){
-                            selector.options[i-1] = new Option((5*i).toString(), (5*i).toString());
+                        for (var i=0; i<12; i++){
+                            var minute = (5*i).toString();
+                            if (i<2){
+                                minute = "0" + (5*i).toString();
+                            }
+                            selector.options[i] = new Option(minute, 5*i);
                         }
                     </script>
                 </select>
@@ -114,94 +158,34 @@
                 </select>
                 
             </div>
-           
-            <div id = "timeOfArrival">              
-                <h4 class = "title">Time of Arrival (Optional)</h4>
-                
-                <!-- Time of arrival input here-->
-                <label>Day: </label>
-                <select id ="f_ArrivalDay" name = "ArrivalDay">
-                    <script>
-                        var selector = document.getElementById('f_ArrivalDay')
-                        for (var i=1; i<32; i++){
-                            selector.options[i-1] = new Option(i.toString(), i.toString());
-                        }
-                    </script>
-                </select>
-                
-                <!-- Sets the day to the current day of the month-->
-                <script>
-                    var selector = document.getElementById('f_ArrivalDay');
-                    var date = new Date();
-                    var day = date.getDate();
-                    selector.selectedIndex = day - 1
-                </script>
-                <select id="f_ArrivalMonth" name="ArrivalMonth">
-                    <option value="1">January</option>
-                    <option value="2">February</option>
-                    <option value="3">March</option>
-                    <option value="4">April</option>
-                    <option value="5">May</option>
-                    <option value="6">June</option>
-                    <option value="7">July</option>
-                    <option value="8">August</option>
-                    <option value="9">September</option>
-                    <option value="10">October</option>
-                    <option value="11">November</option>
-                    <option value="12">December</option>
-                </select>
-                
-                <!-- Sets the month to the current month-->
-                <script>
-                    var selector = document.getElementById('f_ArrivalMonth');
-                    var date = new Date();
-                    var month = date.getMonth();
-                    selector.selectedIndex = month
-                </script>
-                <select id="f_ArrivalYear" name="ArrivalYear">
-                    <script>
-                        var selector = document.getElementById('f_ArrivalYear')
-                        for (var i=0; i<= 1; i++){
-                            var year = new Date().getFullYear() + i;
-                            selector.options[i] = new Option(year.toString(), year.toString());
-                        }
-                    </script>
-                </select>
-                <br>
-                
-                <label>Time: </label>
-                <select id ="f_ArrivalHour" name = "ArrivalHour">
-                    <script>
-                        var selector = document.getElementById('f_ArrivalHour');
-                        for (var i=1; i<13; i++){
-                            selector.options[i-1] = new Option(i.toString(), i.toString());
-                        }
-                    </script>
-                </select>
-                <label>:</label>
-                <select id ="f_ArrivalMinute" name = "ArrivalMinute">
-                    <script>
-                        var selector = document.getElementById('f_ArrivalMinute');
-                        for (var i=1; i<12; i++){
-                            selector.options[i-1] = new Option((5*i).toString(), (5*i).toString());
-                        }
-                    </script>
-                </select>
-                <select id ="f_ArrivalMeridian" name = "ArrivalMeridian">
-                    <option value="am">am</option>
-                    <option value="pm">pm</option>
+            
+            <label for="f_passengers">Number of Passengers: </label>
+            <select id ="f_passengers" name = "Passengers">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5 or more">5 or more</option>
+            </select>
+            
+            <label for="f_fare">Fare: $ </label>
+            <input id ="f_fare" name = "Fare" type="text">    <br>
+            
+            <div id="f_driverOptions" hidden="true">
+                <label for="f_travelTime">Travel Time</label>
+                <input id="f_travelTime" name="TravelTime>
+            
+                <label for="f_seats">Seats Available: </label>
+                <select id ="f_seats" name = "SeatsAvailable">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5 or more">5 or more</option>
                 </select>
             </div>
+            <br>
             
-            <label for="f_passengers">Current Number of Passengers (Driver Option): </label>
-            <input id ="f_passengers" name = "Passengers" type = "number" min ="0" max = "10" required>
-            
-            <label for="f_seats">Number of Seats Available (Driver Option): </label>
-            <input id ="f_seats" name = "SeatsAvailable" type = "number" min = "0" max = "10" required>
-                    
-            <label for="f_fare">Fare: </label>
-            <input id ="f_fare" name = "Fare" type = "number" min = "0" required>    <br>
-  
             <input class = "button" id="submitPost" type = "submit">
         </form>
             
