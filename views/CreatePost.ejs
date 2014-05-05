@@ -5,7 +5,7 @@
 
         <form method ='post' action='/createPost'>
             
-            <div id = "createPostBox">
+            <div id = "cp_Box">
             
             
             <!-- Shows the driver options only if the user is a driver-->
@@ -28,7 +28,7 @@
             </select>
             <br>
             
-            <div id="fromLocation">
+            <div id="cp_fromLocation">
             <h4 class = "title">From: </h4>
             <label for = "f_fromAddress">Address: </label>
             <input id = "f_fromAddress" name = "fromAddress" type = "text" required>
@@ -51,7 +51,7 @@
             <br>
             </div>
             
-            <div id="toLocation">
+            <div id="cp_toLocation">
             <h4 class = "title">To: </h4>
             <label for = "f_toAddress">Address: </label>
             <input id = "f_toAddress" name = "toAddress" type = "text" required>
@@ -74,7 +74,7 @@
             <br>
             </div>
             
-            <div id = "timeOfDeparture">
+            <div id = "cp_timeOfDeparture">
                 
                 <!-- TIME INPUT HERE -->                
                 <h4 class = "title">Departure:</h4>
@@ -203,11 +203,11 @@
                 
             </div>
             
-            <div id = "createPostButton">
+            <div id = "cp_Button">
             <input class = "button" id="submitPost" type = "submit">
             </div>    
                 
             </div>
         </form>
             
-<% include chunks/footer %>                                                                                                                                                                                                                                                           
+<% include chunks/footer %>                                                                                                                                                                                                                                                                   
