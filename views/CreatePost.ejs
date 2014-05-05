@@ -79,7 +79,9 @@
                 <!-- TIME INPUT HERE -->                
                 <h4 class = "title">Departure:</h4>
                 
+                
                 <label>Day: </label>
+                <div id = "cp_day">
                 <select id ="f_DepartureDay" name = "DepartureDay">
                     <script>
                         var selector = document.getElementById('f_DepartureDay');
@@ -129,9 +131,13 @@
                         }
                     </script>
                 </select>
+                </div>
                 <br>
                 
+                
+                
                 <label>Time: </label>
+                <div id = "cp_time">
                 <select id ="f_DepartureHour" name = "DepartureHour">
                     <script>
                         var selector = document.getElementById('f_DepartureHour');
@@ -144,7 +150,6 @@
                         }
                     </script>
                 </select>
-                <label>:</label>
                 <select id ="f_DepartureMinute" name = "DepartureMinute">
                     <script>
                         var selector = document.getElementById('f_DepartureMinute');
@@ -161,10 +166,13 @@
                     <option value="am">am</option>
                     <option value="pm">pm</option>
                 </select>
+                </div>
                 
             </div>
             
             <div id = "cp_extraInfo">
+            
+            <h4 class = "title">Extra Info: </h4>
             
             <label for="f_passengers">Number of Passengers: </label>
             <select id ="f_passengers" name = "Passengers">
@@ -195,76 +203,11 @@
                 
             </div>
             
+            <div id = "createPostButton">
             <input class = "button" id="submitPost" type = "submit">
+            </div>    
                 
             </div>
         </form>
-        
-        
-        <style>
-            /* Large Screen Accomodation */
-@media screen and (min-width: 800px) {
-
-    #createPostBox {
-        margin-top: 25px;
-        margin-right: auto;
-        margin-left: auto;
-        border: 2px groove;
-        border-radius: 10px;
-        width: 80%;
-        height: 520px;
-        display: block;
-        padding: 40px;
-        box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
-    }
-    
-            #createPostBox input {
-            margin-top: 20px;
-            margin-bottom: 20px;
-            display: inline;
-            width: 150px;
-            border: 1px solid #999;
-            height: 25px;
-            box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);     
-        }
-        
-        #createPostBox select {
-            display: inline-block;
-        }
-        
-    #toLocation, #fromLocation {
-        border: solid white;
-        margin: 20px;
-    }
-        
-    #timeOfDeparture {
-        border: solid white;
-        margin-top: 30px;
-        display: inline;
-        float: left;
-        margin-bottom: 20px;
-        width: 400px;
-        margin:10px;
-    }
-
-    #timeOfDeparture select,  #timeOfArrival select{
-        float: right;
-        width: 75px;
-    }
-    
-    #cp_extraInfo {
-        float:left;
-        display: inline-block;
-    }
-    
-     #submitPost input {
-            margin-top: 50px;
-            float: right;
-            clear: right;
-        }
-
-}
-
-        </style>
             
-<% include chunks/footer %>                                                                                                                                                                                                                         
+<% include chunks/footer %>                                                                                                                                                                                                                                                           
