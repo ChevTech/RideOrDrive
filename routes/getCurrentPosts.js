@@ -16,12 +16,12 @@ module.exports = function(request,response) {
    	 var day   = getDate.getDate();
    	 var currentDate = year + "-" + month + "-" + day;
 
-         RiderPosts.forEach(function(post) {
+         posts.forEach(function(post) {
              if (currentDate <= post.DepartureDate){
                  currentPosts.push(post);   		
 		}
        	});
 
-	 response.render('ViewCurrentPosts', {currentPost:currentPost});
+	 response.render('ViewCurrentPosts', {currentPosts:currentPosts});
 	});
 };

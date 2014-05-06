@@ -25,17 +25,12 @@
             Departure Time: <p><%=post.DepartureHour%>:<%=post.DepartureMinute%> <%=post.DepartureMeridian%></p>
         </div> <br>
         
-        <div id = "currentPosts_timeOfArrival">
-            Arrival Date: <p><%=post.ArrivalDate%></p>
-            Arrival Time: <p><%=post.ArrivalHour%>:<%=post.ArrivalMinute%> <%=post.ArrivalMeridian%></p>           
-        </div>
-        
         <div id = "currentPosts_extraInfo">
         Number of Passengers: <p><%=post.Passengers%></p>
         Seats Available: <p><%=post.SeatsAvailable%></p>
         Fare: <p><%=post.Fare%></p>
         </div>
     </div>
-<%}%>
+<% }); %>
 
 <% include chunks/footer %>
