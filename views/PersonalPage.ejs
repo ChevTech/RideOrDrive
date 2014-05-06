@@ -3,10 +3,11 @@
 
     <form method="post" id = "searchBoxForm" action="/getSearchResults">
         
+        <p class = "text"> - Welcome to the Search Page, where you can find posts that meet your needs. Give it a try!</p>
+        
+        
         <!-- Search Box is an area that takes user inputs to generate results in the Travel Wall -->
         <div id = "pp_searchBox">
-            
-            <h2 class = "title">Search</h2>
                 
             <label for = "f_RideOrDriveOption"> I am... </label>
             <select id = "f_RideOrDriveOption" name = "RideOrDriveOption" required>
@@ -110,7 +111,6 @@
                         }
                     </script>
                 </select>
-                <br>
                 
                 <label>Time: </label>
                 <select id ="f_DepartureHour" name = "DepartureHour">
@@ -148,4 +148,4 @@
             <button class = "button" id = "rideRequestButton" type="submit"> Search </button>
     </form>
     
-<% include chunks/footer %>
+<% include chunks/footer %>                                                           
