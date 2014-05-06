@@ -4,7 +4,7 @@ var match = require('../modules/stringMatchModule');
 
 module.exports = function(request, response){
     
-    var username = session.request.username;
+    var username = request.session.username;
     
     //get all the information from the page
     var option = request.body.RideOrDriveOption;
@@ -34,7 +34,7 @@ module.exports = function(request, response){
     var searches = [];
     
     //retrieves the relevant searches
-    posts.retrieveSearches(option, function(posts){
+    posts.retrieveSearches(option, fromState, toState, day, month, year, function(posts){
         posts.forEach(function(post) {
             
             //checks if the cities entered by the user matches closely with any of the cities posted or not
