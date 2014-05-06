@@ -64,7 +64,7 @@ module.exports.close = function(callback) {
 
 //returns search results
 module.exports.retrieveSearches = function(type, fromState, toState, day, month, year, callback){
-        if(type === "rider"){
+        if(type === "driver"){
                 db_rider.RiderPosts.find(
                         {$and:[{FromState:fromState}, {ToState:toState}, {Month:month}, {Year:year},
                                 {Day:{$gt:day - 1}}, {Day:{$lt:day+1}}]},
