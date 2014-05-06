@@ -39,7 +39,7 @@ module.exports = function(request,response) {
     var DepartureDate = DepartureYear + "-" + DepartureMonth + "-" + DepartureDay;
     var ArrivalDate   = ArrivalYear + "-" + ArrivalMonth + "-" + ArrivalDay;
     
-    if (typeOfPost === "Rider"){
+    if (typeOfPost === "rider"){
        posts.createRiderPost(username, FromAddress, FromCity, FromState, ToAddress, ToCity, ToState, DepartureDate, DepartureHour, DepartureMinute, DepartureMeridian,
                              ArrivalDate, ArrivalHour, ArrivalMinute, ArrivalMeridian, Passengers, SeatsAvailable, Fare, function(success){
                         
@@ -48,7 +48,7 @@ module.exports = function(request,response) {
                             response.redirect('/');
                         }
                      });
-    }else if (typeOfPost === "Driver") {
+    }else if (typeOfPost === "driver") {
         posts.createDriverPost(username, FromAddress, FromCity, FromState, ToAddress, ToCity, ToState, DepartureDate, DepartureHour, DepartureMinute, DepartureMeridian,
                              ArrivalDate, ArrivalHour, ArrivalMinute, ArrivalMeridian, Passengers, SeatsAvailable, Fare, function(success){
                         
