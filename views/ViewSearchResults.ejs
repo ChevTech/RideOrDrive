@@ -17,9 +17,9 @@
             <div id = "pp_from">
             <h4 class = "title">From: </h4>
             <label for = "f_fromAddress">Address: </label>
-            <input id = "f_fromAddress" name = "fromAddress" type = "text" value=<%= data.criteria.fromAddress%> required>
+            <input id = "f_fromAddress" name = "fromAddress" type = "text" value="<%= data.criteria.fromAddress%>" required>
             <label for = "f_fromCity">City: </label>
-            <input id = "f_fromCity" name = "fromCity" value=<%=data.criteria.fromCity%> required>
+            <input id = "f_fromCity" name = "fromCity" value="<%=data.criteria.fromCity%>" required>
             <label for = "f_fromState">State: </label>
             <select id = "f_fromState" name = "fromState">
                 <script>
@@ -32,7 +32,7 @@
                     for (var i=0; i<states.length; i++){
                         selector.options[i] = new Option(states[i], states[i]);
                     }
-                    selector.selectedIndex = states.indexOf(<%=data.criteria.fromState%>);
+                    selector.selectedIndex = states.indexOf("<%=data.criteria.fromState%>");
                 </script>
             </select>
             <br>
@@ -42,9 +42,9 @@
             <div id = "pp_to">
             <h4 class = "title">To: </h4>
             <label for = "f_toAddress">Address: </label>
-            <input id = "f_toAddress" name = "toAddress" type = "text" value=<%=data.criteria.toAddress%> required>
+            <input id = "f_toAddress" name = "toAddress" type = "text" value="<%=data.criteria.toAddress%>" required>
             <label for = "f_toCity">City: </label>
-            <input id = "f_toCity" name = "toCity" value=<%=data.criteria.toCity%> required>
+            <input id = "f_toCity" name = "toCity" value="<%=data.criteria.toCity%>" required>
             <label for = "f_toState">State: </label>
             <select id = "f_toState" name = "toState">
                 <script>
@@ -57,11 +57,13 @@
                     for (var i=0; i<states.length; i++){
                         selector.options[i] = new Option(states[i], states[i]);
                     }
-                    selector.selectedIndex = states.indexOf(<%=data.criteria.toState%>);
+                    selector.selectedIndex = states.indexOf("<%=data.criteria.toState%>");
                 </script>
             </select>
             <br>
             </div>
+            
+            
 
             <div id = "timeOfDeparture">
                 
@@ -149,6 +151,9 @@
     <div id = "travelWall">
         <h2 class = "title">Search Results</h2>
         
+        <% if (data.searches.length === 0) {%>
+            <p>There are no results to display. Please try nearby locations or a different date.</p>
+        <% } else{%>
         <%data.searches.post.forEach(function(post) { %>
             
             <form method="post" action="/connect">
@@ -174,6 +179,7 @@
                 Fare: <p><%=post.Fare%></p>
             </div>
         <%})%>
+        <%}%>
     </div>
     
 <% include chunks/footer %>
