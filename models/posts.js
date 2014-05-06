@@ -66,7 +66,7 @@ module.exports.close = function(callback) {
 module.exports.retrieveSearches = function(type, fromState, toState, day, month, year, callback){
         if(type === "rider"){
                 db_rider.RiderPosts.find(
-                        {$and:[{FromState:fromState}, {ToState:toState}, {Month:month}, {Year:Year},
+                        {$and:[{FromState:fromState}, {ToState:toState}, {Month:month}, {Year:year},
                                 {Day:{$gt:day - 1}}, {Day:{$lt:day+1}}]},
                         function(error, posts){
                                 if(error) throw error;
@@ -75,7 +75,7 @@ module.exports.retrieveSearches = function(type, fromState, toState, day, month,
         }
         else{
                 db_driver.DriverPosts.find(
-                         {$and:[{FromState:fromState}, {ToState:toState}, {Month:month}, {Year:Year},
+                         {$and:[{FromState:fromState}, {ToState:toState}, {Month:month}, {Year:year},
                                 {Day:{$gt:day - 1}}, {Day:{$lt:day+1}}]},
                          function(error, posts){
                                 if(error) throw error;
