@@ -8,11 +8,6 @@ module.exports = function(request,response) {
     posts.retrieveUserPosts(username, function(posts){
         
         var currentPosts = [];
-        var getDate = new Date();
-        var year  = getDate.getFullYear();
-        var month = getDate.getMonth() + 1;
-        var day   = getDate.getDate();
-        var currentDate = year + "-" + month + "-" + day;
         
         posts.forEach(function(post) {
             if (currentDate <= post.DepartureDate)

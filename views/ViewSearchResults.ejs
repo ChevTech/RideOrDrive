@@ -8,8 +8,8 @@
                 
             <label for = "f_RideOrDriveOption"> I am... </label>
             <select id = "f_RideOrDriveOption" name = "RideOrDriveOption" required>
-                <option value="rider">Riding</option>
-                <option value="driver">Driving</option>
+                <option value="rider" <% if (data.criteria.option === "rider"){%> selected <% } %>>Riding</option>
+                <option value="driver" <% if (data.criteria.option === "driver"){%> selected <% } %>>Driving</option>
             </select>
             <br>
 
@@ -17,9 +17,9 @@
             <div id = "pp_from">
             <h4 class = "title">From: </h4>
             <label for = "f_fromAddress">Address: </label>
-            <input id = "f_fromAddress" name = "fromAddress" type = "text" required>
+            <input id = "f_fromAddress" name = "fromAddress" type = "text" value=<%= data.criteria.fromAddress%> required>
             <label for = "f_fromCity">City: </label>
-            <input id = "f_fromCity" name = "fromCity" required>
+            <input id = "f_fromCity" name = "fromCity" value=<%=data.criteria.fromCity%> required>
             <label for = "f_fromState">State: </label>
             <select id = "f_fromState" name = "fromState">
                 <script>
@@ -32,6 +32,7 @@
                     for (var i=0; i<states.length; i++){
                         selector.options[i] = new Option(states[i], states[i]);
                     }
+                    selector.selectedIndex = states.indexOf(<%=data.criteria.fromState%>);
                 </script>
             </select>
             <br>
@@ -41,9 +42,9 @@
             <div id = "pp_to">
             <h4 class = "title">To: </h4>
             <label for = "f_toAddress">Address: </label>
-            <input id = "f_toAddress" name = "toAddress" type = "text" required>
+            <input id = "f_toAddress" name = "toAddress" type = "text" value=<%=data.criteria.toAddress%> required>
             <label for = "f_toCity">City: </label>
-            <input id = "f_toCity" name = "toCity" required>
+            <input id = "f_toCity" name = "toCity" value=<%=data.criteria.toCity%> required>
             <label for = "f_toState">State: </label>
             <select id = "f_toState" name = "toState">
                 <script>
@@ -56,6 +57,7 @@
                     for (var i=0; i<states.length; i++){
                         selector.options[i] = new Option(states[i], states[i]);
                     }
+                    selector.selectedIndex = states.indexOf(<%=data.criteria.toState%>);
                 </script>
             </select>
             <br>
@@ -72,34 +74,25 @@
                         for (var i=1; i<32; i++){
                             selector.options[i-1] = new Option(i, i);
                         }
+                        selector.selectedIndex = <%=data.criteria.departureDay%>
                     </script>
                 </select>
-                <script>
-                    var selector = document.getElementById('f_DepartureDay');
-                    var date = new Date();
-                    var day = date.getDate();
-                    selector.selectedIndex = day - 1
-                </script>
+                
                 <select id="f_DepartureMonth" name="DepartureMonth">
-                    <option value="1">January</option>
-                    <option value="2">February</option>
-                    <option value="3">March</option>
-                    <option value="4">April</option>
-                    <option value="5">May</option>
-                    <option value="6">June</option>
-                    <option value="7">July</option>
-                    <option value="8">August</option>
-                    <option value="9">September</option>
-                    <option value="10">October</option>
-                    <option value="11">November</option>
-                    <option value="12">December</option>
+                    <option value="1" <% if (data.criteria.departureMonth === "1"){%> selected <% } %>>January</option>
+                    <option value="2" <% if (data.criteria.departureMonth === "2"){%> selected <% } %>>February</option>
+                    <option value="3" <% if (data.criteria.departureMonth === "3"){%> selected <% } %>>March</option>
+                    <option value="4" <% if (data.criteria.departureMonth === "4"){%> selected <% } %>>April</option>
+                    <option value="5" <% if (data.criteria.departureMonth === "5"){%> selected <% } %>>May</option>
+                    <option value="6" <% if (data.criteria.departureMonth === "6"){%> selected <% } %>>June</option>
+                    <option value="7" <% if (data.criteria.departureMonth === "7"){%> selected <% } %>>July</option>
+                    <option value="8" <% if (data.criteria.departureMonth === "8"){%> selected <% } %>>August</option>
+                    <option value="9" <% if (data.criteria.departureMonth === "9"){%> selected <% } %>>September</option>
+                    <option value="10" <% if (data.criteria.departureMonth === "10"){%> selected <% } %>>October</option>
+                    <option value="11" <% if (data.criteria.departureMonth === "11"){%> selected <% } %>>November</option>
+                    <option value="12" <% if (data.criteria.departureMonth === "12"){%> selected <% } %>>December</option>
                 </select>
-                <script>
-                    var selector = document.getElementById('f_DepartureMonth');
-                    var date = new Date();
-                    var month = date.getMonth();
-                    selector.selectedIndex = month
-                </script>
+                
                 <select id="f_DepartureYear" name="DepartureYear">
                     <script>
                         var selector = document.getElementById('f_DepartureYear')
@@ -107,6 +100,7 @@
                             var year = new Date().getFullYear() + i;
                             selector.options[i] = new Option(year.toString(), year.toString());
                         }
+                        selector.selectedIndex = <%=data.criteria.departureYear%> - new Date().getFullYear();
                     </script>
                 </select>
                 <br>
@@ -123,6 +117,7 @@
                             }
                             selector.options[i-1] = new Option(hour, i);
                         }
+                        selector.selectedIndex = <%=data.criteria.departureHour%> - 1;
                     </script>
                 </select>
                 <label></label>
@@ -136,21 +131,49 @@
                             }
                             selector.options[i] = new Option(minute, (5*i));
                         }
+                        selector.selectedIndex = <%=data.criteria.departureMinute%> / 5;
                     </script>
                 </select>
                 <select id ="f_DepartureMeridian" name = "DepartureMeridian">
-                    <option value="am">am</option>
-                    <option value="pm">pm</option>
+                    <option value="am" <% if (data.criteria.departureMeridian === "am"){%> selected <% } %>>am</option>
+                    <option value="pm" <% if (data.criteria.departureMeridian === "pm"){%> selected <% } %>>pm</option>
                 </select>
                 </div>
             </div>
             <!-- Need to change onclick function, rideRequest() is not defined -->
             <button class = "button" id = "rideRequestButton" type="submit"> Search </button>
             
-        <div id = "travelWall">
-            Put all your stuff here and it will scroll.  You can change the width and height to your needs.  and the background as well by putting background-color: #000000  instead of background.
-        </div>
         </div>
     </form>
+    
+    <div id = "travelWall">
+        <h2 class = "title">Search Results</h2>
+        
+        <%data.searches.post.forEach(function(post) { %>
+            
+            <form method="post" action="/connect">
+                <label></label>
+                <label>From: <%=post.FromStreet%>, <%=post.FromCity%>, <%=post.FromState%></label>
+                <label>To: <%=post.ToStreet%>, <%=post.ToCity%>, <%=post.ToState%></label>
+                <label>Depart: <%=post.Day%>-<%=post.Month%>-<%=post.Year%> at <%=post.Hour%>:<%=post.Minute%> <%=post.Meridian%></label>
+            </form>
+            <div id = "currentPosts" class = "text">
+                <div id = "location">
+                From: <p><%=post.FromLocation%> </p> 
+                To: <p><%=post.ToLocation%> </p> 
+            </div> <br>
+                
+            <div id = "currentPosts_timeOfDeparture"> 
+                Departure Date: <p> <%=post.DepartureDate%></p>
+                Departure Time: <p></p>
+            </div> <br>
+                
+            <div id = "currentPosts_extraInfo">
+                Number of Passengers: <p><%=post.Passengers%></p>
+                Seats Available: <p><%=post.SeatsAvailable%></p>
+                Fare: <p><%=post.Fare%></p>
+            </div>
+        <%})%>
+    </div>
     
 <% include chunks/footer %>

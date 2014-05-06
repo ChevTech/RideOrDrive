@@ -30,7 +30,6 @@ module.exports.createRiderPost = function(username, FromLocation, ToLocation,
 };
 
 module.exports.retrieveUserPosts = function(username, callback){
-        console.log(username);
         db_rider.RiderPosts.find({Username:username}, function(error, posts) {
                 if (error) throw error;
                 callback(posts);
@@ -52,3 +51,27 @@ module.exports.close = function(callback) {
         callback();
     });
 }
+
+
+
+//returns search results
+module.exports.retrieveSearches = function(type, fromState, toState, day, month, year, callback){
+        if(type === "rider"){
+                db_rider.RiderPosts.find(
+                        {$and:[{FromState:fromState}, {ToState:toState}, {Month:month}, {Year:Year},
+                                {Day:{$gt:day - 1}}, {Day:{$lt:day+1}}]},
+                        function(error, posts){
+                                if(error) throw error;
+                                callback(posts);
+                        });
+        }
+        else{
+                db_driver.DriverPosts.find(
+                         {$and:[{FromState:fromState}, {ToState:toState}, {Month:month}, {Year:Year},
+                                {Day:{$gt:day - 1}}, {Day:{$lt:day+1}}]},
+                         function(error, posts){
+                                if(error) throw error;
+                                callback(posts);
+                        });
+        }
+};
