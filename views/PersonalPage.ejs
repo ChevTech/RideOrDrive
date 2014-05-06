@@ -1,10 +1,12 @@
 <% include chunks/header %>
 <% include chunks/nav %>
 
-    <form method="post" action="/getSearchResults">
-        <div id = "searchBox">
+    <form method="post" id = "searchBoxForm" action="/getSearchResults">
+        
+        <!-- Search Box is an area that takes user inputs to generate results in the Travel Wall -->
+        <div id = "pp_searchBox">
             
-            <h3 class = "title">Search Form</h3>
+            <h2 class = "title">Search</h2>
                 
             <label for = "f_RideOrDriveOption"> I am... </label>
             <select id = "f_RideOrDriveOption" name = "RideOrDriveOption" required>
@@ -15,56 +17,55 @@
 
             <!-- The location where the user will be leaving from-->
             <div id = "pp_from">
-            <h4 class = "title">From: </h4>
-            <label for = "f_fromAddress">Address: </label>
-            <input id = "f_fromAddress" name = "fromAddress" type = "text" required>
-            <label for = "f_fromCity">City: </label>
-            <input id = "f_fromCity" name = "fromCity" required>
-            <label for = "f_fromState">State: </label>
-            <select id = "f_fromState" name = "fromState">
-                <script>
-                    var selector = document.getElementById('f_fromState');
-                    var states = ["Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "Florida", "Georgia", "Hawaii",
-                                  "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan",
-                                  "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey", "New Mexico",
-                                  "New York", "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island","South Carolina",
-                                  "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"];
-                    for (var i=0; i<states.length; i++){
-                        selector.options[i] = new Option(states[i], states[i]);
-                    }
-                </script>
-            </select>
-            <br>
+                <h4 class = "title">From: </h4>
+                <label for = "f_fromAddress">Address: </label>
+                <input id = "f_fromAddress" name = "fromAddress" type = "text" required> <br>
+                <label for = "f_fromCity">City: </label>
+                <input id = "f_fromCity" name = "fromCity" required> <br>
+                <label for = "f_fromState">State: </label>
+                <select id = "f_fromState" name = "fromState">
+                    <script>
+                        var selector = document.getElementById('f_fromState');
+                        var states = ["Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "Florida", "Georgia", "Hawaii",
+                                      "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan",
+                                      "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey", "New Mexico",
+                                      "New York", "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island","South Carolina",
+                                      "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"];
+                        for (var i=0; i<states.length; i++){
+                            selector.options[i] = new Option(states[i], states[i]);
+                        }
+                    </script>
+                </select>
+                <br>
             </div>
 
             <!-- The location where the user will be going to-->
             <div id = "pp_to">
-            <h4 class = "title">To: </h4>
-            <label for = "f_toAddress">Address: </label>
-            <input id = "f_toAddress" name = "toAddress" type = "text" required>
-            <label for = "f_toCity">City: </label>
-            <input id = "f_toCity" name = "toCity" required>
-            <label for = "f_toState">State: </label>
-            <select id = "f_toState" name = "toState">
-                <script>
-                    var selector = document.getElementById('f_toState');
-                    var states = ["Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "Florida", "Georgia", "Hawaii",
+                <h4 class = "title">To: </h4>
+                <label for = "f_toAddress">Address: </label>
+                <input id = "f_toAddress" name = "toAddress" type = "text" required> <br>
+                <label for = "f_toCity">City: </label>
+                <input id = "f_toCity" name = "toCity" required> <br>
+                <label for = "f_toState">State: </label>
+                <select id = "f_toState" name = "toState">
+                  <script>
+                        var selector = document.getElementById('f_toState');
+                        var states = ["Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "Florida", "Georgia", "Hawaii",
                                   "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan",
                                   "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey", "New Mexico",
                                   "New York", "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island","South Carolina",
                                   "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"];
-                    for (var i=0; i<states.length; i++){
+                        for (var i=0; i<states.length; i++){
                         selector.options[i] = new Option(states[i], states[i]);
                     }
-                </script>
-            </select>
-            <br>
+                    </script>
+                </select>
             </div>
 
-            <div id = "timeOfDeparture">
-                
-                <!-- TIME INPUT HERE -->                
-                <h4 class = "title">Departure:</h4>
+            
+            <!-- The time that the user will depart for his or her location -->
+            <div id = "pp_timeOfDeparture">                     
+                <h4 class = "title">Departure Time:</h4>
                 <label>Day: </label>
                 <select id ="f_DepartureDay" name = "DepartureDay">
                     <script>
@@ -111,7 +112,6 @@
                 </select>
                 <br>
                 
-                <div id = "pp_departTime">
                 <label>Time: </label>
                 <select id ="f_DepartureHour" name = "DepartureHour">
                     <script>
@@ -142,15 +142,10 @@
                     <option value="am">am</option>
                     <option value="pm">pm</option>
                 </select>
-                </div>
             </div>
+            
             <!-- Need to change onclick function, rideRequest() is not defined -->
             <button class = "button" id = "rideRequestButton" type="submit"> Search </button>
-            
-        <div id = "travelWall">
-            Put all your stuff here and it will scroll.  You can change the width and height to your needs.  and the background as well by putting background-color: #000000  instead of background.
-        </div>
-        </div>
     </form>
     
 <% include chunks/footer %>
