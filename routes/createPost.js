@@ -7,10 +7,10 @@ module.exports = function(request,response) {
     var username = request.session.username;
    
     //To and From Location
-    var FromAddress       = request.body.fromAddress;
+    var FromStreet        = request.body.fromAddress;
     var FromCity          = request.body.fromCity;
     var FromState         = request.body.fromState;
-    var ToAddress         = request.body.toAddress;
+    var ToStreet          = request.body.toAddress;
     var ToCity            = request.body.toCity;
     var ToState           = request.body.toState;
    
@@ -22,26 +22,18 @@ module.exports = function(request,response) {
     var DepartureMinute   = request.body.DepartureMinute;
     var DepartureMeridian = request.body.DepartureMeridian;
     
-    //Arrival Information
-    var ArrivalDay     = request.body.ArrivalDay;
-    var ArrivalMonth   = request.body.ArrivalMonth;
-    var ArrivalYear    = request.body.ArrivalYear;
-    var ArrivalHour     = request.body.ArrivalHour;
-    var ArrivalMinute   = request.body.ArrivalMinute;
-    var ArrivalMeridian = request.body.ArrivalMeridian;
-    
     //Trip Information
-    var Passengers      = request.body.Passengers;
-    var SeatsAvailable  = request.body.SeatsAvailable;
-    var Fare            = request.body.Fare;
+    var Passengers        = request.body.Passengers;
+    var SeatsAvailable    = request.body.SeatsAvailable;
+    var Fare              = request.body.Fare;
+    var TravelTime        = request.body.TravelTime;
     
-    var typeOfPost    = request.body.RideOrDriveOption;
-    var DepartureDate = DepartureYear + "-" + DepartureMonth + "-" + DepartureDay;
-    var ArrivalDate   = ArrivalYear + "-" + ArrivalMonth + "-" + ArrivalDay;
+    var typeOfPost        = request.body.RideOrDriveOption;
+    var DepartureDate     = DepartureYear + "-" + DepartureMonth + "-" + DepartureDay;
     
     if (typeOfPost === "rider"){
-       posts.createRiderPost(username, FromAddress, FromCity, FromState, ToAddress, ToCity, ToState, DepartureDate, DepartureHour, DepartureMinute, DepartureMeridian,
-                             ArrivalDate, ArrivalHour, ArrivalMinute, ArrivalMeridian, Passengers, SeatsAvailable, Fare, function(success){
+       posts.createRiderPost(username, FromStreet, FromCity, FromState, ToStreet, ToCity, ToState, DepartureDate, DepartureHour, DepartureMinute, DepartureMeridian,
+                             Passengers, Fare, function(success){
                         
                         if (success) {
                             console.log('A Post has been submitted'); //Callback from riderPosts -> createRiderPost function. Returns true if data inserted properly.
@@ -49,8 +41,8 @@ module.exports = function(request,response) {
                         }
                      });
     }else if (typeOfPost === "driver") {
-        posts.createDriverPost(username, FromAddress, FromCity, FromState, ToAddress, ToCity, ToState, DepartureDate, DepartureHour, DepartureMinute, DepartureMeridian,
-                             ArrivalDate, ArrivalHour, ArrivalMinute, ArrivalMeridian, Passengers, SeatsAvailable, Fare, function(success){
+        posts.createDriverPost(username, FromStreet, FromCity, FromState, ToStreet, ToCity, ToState, DepartureDate, DepartureHour, DepartureMinute, DepartureMeridian,
+                             Passengers, SeatsAvailable, Fare, TravelTime, function(success){
                         
                         if (success) {
                             console.log('A Post has been submitted'); //Callback from riderPosts -> createRiderPost function. Returns true if data inserted properly.
