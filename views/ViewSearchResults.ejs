@@ -1,39 +1,25 @@
 <% include chunks/header %>
 <% include chunks/nav %>
 
-        <h2 class = "title">Create a Post!</h2>
-
-        <form method ='post' action='/createPost'>
+    <form method="post" action="/getSearchResults">
+        <div id = "searchBox">
             
-            <div id = "cp_Box">
-            
-            
-            <!-- Shows the driver options only if the user is a driver-->
-            <script>
-                function checkOption(){
-                    if (document.getElementById('f_RideOrDriveOption').value === "driver"){
-                        document.getElementById('f_driverOptions').hidden = false;    
-                    }
-                    else{
-                        document.getElementById('f_driverOptions').hidden = true;
-                    }
-                }  
-            </script>
-            
-            <!-- Checks if the user is a rider or a driver-->
-            <label for = "f_RideOrDriveOption">Are you a passenger or driver?</label>
-            <select id = "f_RideOrDriveOption" name = "RideOrDriveOption" onchange="checkOption()">
-                <option value="rider">Rider</option>
-                <option value="driver">Driver</option>
+            <h3 class = "title">Search Form</h3>
+                
+            <label for = "f_RideOrDriveOption"> I am... </label>
+            <select id = "f_RideOrDriveOption" name = "RideOrDriveOption" required>
+                <option value="rider" <% if (data.criteria.option === "rider"){%> selected <% } %>>Riding</option>
+                <option value="driver" <% if (data.criteria.option === "driver"){%> selected <% } %>>Driving</option>
             </select>
             <br>
-            
-            <div id="cp_fromLocation">
+
+            <!-- The location where the user will be leaving from-->
+            <div id = "pp_from">
             <h4 class = "title">From: </h4>
             <label for = "f_fromAddress">Address: </label>
-            <input id = "f_fromAddress" name = "fromAddress" type = "text" required>
+            <input id = "f_fromAddress" name = "fromAddress" type = "text" value=<%= data.criteria.fromAddress%> required>
             <label for = "f_fromCity">City: </label>
-            <input id = "f_fromCity" name = "fromCity" required>
+            <input id = "f_fromCity" name = "fromCity" value=<%=data.criteria.fromCity%> required>
             <label for = "f_fromState">State: </label>
             <select id = "f_fromState" name = "fromState">
                 <script>
@@ -46,17 +32,19 @@
                     for (var i=0; i<states.length; i++){
                         selector.options[i] = new Option(states[i], states[i]);
                     }
+                    selector.selectedIndex = states.indexOf(<%=data.criteria.fromState%>);
                 </script>
             </select>
             <br>
             </div>
-            
-            <div id="cp_toLocation">
+
+            <!-- The location where the user will be going to-->
+            <div id = "pp_to">
             <h4 class = "title">To: </h4>
             <label for = "f_toAddress">Address: </label>
-            <input id = "f_toAddress" name = "toAddress" type = "text" required>
+            <input id = "f_toAddress" name = "toAddress" type = "text" value=<%=data.criteria.toAddress%> required>
             <label for = "f_toCity">City: </label>
-            <input id = "f_toCity" name = "toCity" required>
+            <input id = "f_toCity" name = "toCity" value=<%=data.criteria.toCity%> required>
             <label for = "f_toState">State: </label>
             <select id = "f_toState" name = "toState">
                 <script>
@@ -69,58 +57,41 @@
                     for (var i=0; i<states.length; i++){
                         selector.options[i] = new Option(states[i], states[i]);
                     }
+                    selector.selectedIndex = states.indexOf(<%=data.criteria.toState%>);
                 </script>
             </select>
             <br>
             </div>
-            
-            <div id = "cp_timeOfDeparture">
+
+            <div id = "timeOfDeparture">
                 
                 <!-- TIME INPUT HERE -->                
                 <h4 class = "title">Departure:</h4>
-                
-                
                 <label>Day: </label>
-                <div id = "cp_day">
                 <select id ="f_DepartureDay" name = "DepartureDay">
                     <script>
                         var selector = document.getElementById('f_DepartureDay');
                         for (var i=1; i<32; i++){
                             selector.options[i-1] = new Option(i, i);
                         }
+                        selector.selectedIndex = <%=data.criteria.departureDay%>
                     </script>
                 </select>
                 
-                <!-- Sets the day to the current day of the month-->
-                <script>
-                    var selector = document.getElementById('f_DepartureDay');
-                    var date = new Date();
-                    var day = date.getDate();
-                    selector.selectedIndex = day - 1
-                </script>
-                
                 <select id="f_DepartureMonth" name="DepartureMonth">
-                    <option value="1">January</option>
-                    <option value="2">February</option>
-                    <option value="3">March</option>
-                    <option value="4">April</option>
-                    <option value="5">May</option>
-                    <option value="6">June</option>
-                    <option value="7">July</option>
-                    <option value="8">August</option>
-                    <option value="9">September</option>
-                    <option value="10">October</option>
-                    <option value="11">November</option>
-                    <option value="12">December</option>
+                    <option value="1" <% if (data.criteria.departureMonth === "1"){%> selected <% } %>>January</option>
+                    <option value="2" <% if (data.criteria.departureMonth === "2"){%> selected <% } %>>February</option>
+                    <option value="3" <% if (data.criteria.departureMonth === "3"){%> selected <% } %>>March</option>
+                    <option value="4" <% if (data.criteria.departureMonth === "4"){%> selected <% } %>>April</option>
+                    <option value="5" <% if (data.criteria.departureMonth === "5"){%> selected <% } %>>May</option>
+                    <option value="6" <% if (data.criteria.departureMonth === "6"){%> selected <% } %>>June</option>
+                    <option value="7" <% if (data.criteria.departureMonth === "7"){%> selected <% } %>>July</option>
+                    <option value="8" <% if (data.criteria.departureMonth === "8"){%> selected <% } %>>August</option>
+                    <option value="9" <% if (data.criteria.departureMonth === "9"){%> selected <% } %>>September</option>
+                    <option value="10" <% if (data.criteria.departureMonth === "10"){%> selected <% } %>>October</option>
+                    <option value="11" <% if (data.criteria.departureMonth === "11"){%> selected <% } %>>November</option>
+                    <option value="12" <% if (data.criteria.departureMonth === "12"){%> selected <% } %>>December</option>
                 </select>
-                
-                <!-- Sets the month to the current month-->
-                <script>
-                    var selector = document.getElementById('f_DepartureMonth');
-                    var date = new Date();
-                    var month = date.getMonth();
-                    selector.selectedIndex = month
-                </script>
                 
                 <select id="f_DepartureYear" name="DepartureYear">
                     <script>
@@ -129,15 +100,13 @@
                             var year = new Date().getFullYear() + i;
                             selector.options[i] = new Option(year.toString(), year.toString());
                         }
+                        selector.selectedIndex = <%=data.criteria.departureYear%> - new Date().getFullYear();
                     </script>
                 </select>
-                </div>
                 <br>
                 
-                
-                
+                <div id = "pp_departTime">
                 <label>Time: </label>
-                <div id = "cp_time">
                 <select id ="f_DepartureHour" name = "DepartureHour">
                     <script>
                         var selector = document.getElementById('f_DepartureHour');
@@ -148,8 +117,10 @@
                             }
                             selector.options[i-1] = new Option(hour, i);
                         }
+                        selector.selectedIndex = <%=data.criteria.departureHour%> - 1;
                     </script>
                 </select>
+                <label></label>
                 <select id ="f_DepartureMinute" name = "DepartureMinute">
                     <script>
                         var selector = document.getElementById('f_DepartureMinute');
@@ -158,56 +129,51 @@
                             if (i<2){
                                 minute = "0" + (5*i).toString();
                             }
-                            selector.options[i] = new Option(minute, 5*i);
+                            selector.options[i] = new Option(minute, (5*i));
                         }
+                        selector.selectedIndex = <%=data.criteria.departureMinute%> / 5;
                     </script>
                 </select>
                 <select id ="f_DepartureMeridian" name = "DepartureMeridian">
-                    <option value="am">am</option>
-                    <option value="pm">pm</option>
+                    <option value="am" <% if (data.criteria.departureMeridian === "am"){%> selected <% } %>>am</option>
+                    <option value="pm" <% if (data.criteria.departureMeridian === "pm"){%> selected <% } %>>pm</option>
                 </select>
                 </div>
+            </div>
+            <!-- Need to change onclick function, rideRequest() is not defined -->
+            <button class = "button" id = "rideRequestButton" type="submit"> Search </button>
+            
+        </div>
+    </form>
+    
+    <div id = "travelWall">
+        <h2 class = "title">Search Results</h2>
+        
+        <%data.searches.post.forEach(function(post) { %>
+            
+            <form method="post" action="/connect">
+                <label></label>
+                <label>From: <%=post.FromStreet%>, <%=post.FromCity%>, <%=post.FromState%></label>
+                <label>To: <%=post.ToStreet%>, <%=post.ToCity%>, <%=post.ToState%></label>
+                <label>Depart: <%=post.Day%>-<%=post.Month%>-<%=post.Year%> at <%=post.Hour%>:<%=post.Minute%> <%=post.Meridian%></label>
+            </form>
+            <div id = "currentPosts" class = "text">
+                <div id = "location">
+                From: <p><%=post.FromLocation%> </p> 
+                To: <p><%=post.ToLocation%> </p> 
+            </div> <br>
                 
-            </div>
-            
-            <div id = "cp_extraInfo">
-            
-            <h4 class = "title">Extra Info: </h4>
-            
-            <label for="f_passengers">Number of Passengers: </label>
-            <select id ="f_passengers" name = "Passengers">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5 or more">5 or more</option>
-            </select> <br>
-            
-            <label for="f_fare">Fare: $ </label>
-            <input id ="f_fare" name = "Fare" type="text">    <br>
-            
-            <div id="f_driverOptions" hidden="true">
-                <label for="f_travelTime">Travel Time</label>
-                <input id="f_travelTime" name="TravelTime>
-            
-                <label for="f_seats">Seats Available: </label>
-                <select id ="f_seats" name = "SeatsAvailable">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5 or more">5 or more</option>
-                </select>
-            </div>
-            <br>
+            <div id = "currentPosts_timeOfDeparture"> 
+                Departure Date: <p> <%=post.DepartureDate%></p>
+                Departure Time: <p></p>
+            </div> <br>
                 
+            <div id = "currentPosts_extraInfo">
+                Number of Passengers: <p><%=post.Passengers%></p>
+                Seats Available: <p><%=post.SeatsAvailable%></p>
+                Fare: <p><%=post.Fare%></p>
             </div>
-            
-            <div id = "cp_Button">
-            <input class = "button" id="submitPost" type = "submit">
-            </div>    
-                
-            </div>
-        </form>
-            
-<% include chunks/footer %>                                                                                                                                                                                                                                                                   
+        <%})%>
+    </div>
+    
+<% include chunks/footer %>

@@ -1,51 +1,77 @@
 <% include chunks/header %>
 <% include chunks/nav %>
 
-    <form method="post" action="/getSearchResults">
-        <div id = "searchBox">
+    <form method="post" id = "searchBoxForm" action="/getSearchResults">
+        
+        <!-- Search Box is an area that takes user inputs to generate results in the Travel Wall -->
+        <div id = "pp_searchBox">
             
-            <h3 class = "title">Search Form</h3>
+            <h2 class = "title">Search</h2>
                 
             <label for = "f_RideOrDriveOption"> I am... </label>
             <select id = "f_RideOrDriveOption" name = "RideOrDriveOption" required>
-                <option name="rider">Riding</option>
-                <option name="driver">Driving</option>
+                <option value="rider">Riding</option>
+                <option value="driver">Driving</option>
             </select>
             <br>
-            
+
+            <!-- The location where the user will be leaving from-->
             <div id = "pp_from">
-            <h4 class = "title">From: </h4>
-            <label for = "f_fromAddress">Address: </label>
-            <input id = "f_fromAddress" name = "fromAddress" type = "text" required>
-            <label for = "f_fromCity">City: </label>
-            <input id = "f_fromCity" name = "fromCity" required>
-            <label for = "f_fromState">State: </label>
-            <input id = "f_fromState" name = "fromState" required>
-            <br>
-            </div>
-            
-            <div id = "pp_to">
-            <h4 class = "title">To: </h4>
-            <label for = "f_toAddress">Address: </label>
-            <input id = "f_toAddress" name = "toAddress" type = "text" required>
-            <label for = "f_toCity">City: </label>
-            <input id = "f_toCity" name = "toCity" required>
-            <label for = "f_toState">State: </label>
-            <input id = "f_toState" name = "toState" required>
-            <br>
+                <h4 class = "title">From: </h4>
+                <label for = "f_fromAddress">Address: </label>
+                <input id = "f_fromAddress" name = "fromAddress" type = "text" required> <br>
+                <label for = "f_fromCity">City: </label>
+                <input id = "f_fromCity" name = "fromCity" required> <br>
+                <label for = "f_fromState">State: </label>
+                <select id = "f_fromState" name = "fromState">
+                    <script>
+                        var selector = document.getElementById('f_fromState');
+                        var states = ["Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "Florida", "Georgia", "Hawaii",
+                                      "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan",
+                                      "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey", "New Mexico",
+                                      "New York", "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island","South Carolina",
+                                      "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"];
+                        for (var i=0; i<states.length; i++){
+                            selector.options[i] = new Option(states[i], states[i]);
+                        }
+                    </script>
+                </select>
+                <br>
             </div>
 
-            <div id = "timeOfDeparture">
-                
-                <!-- TIME INPUT HERE -->                
-                <h4 class = "title">Time of Departure (required)</h4>
-                
+            <!-- The location where the user will be going to-->
+            <div id = "pp_to">
+                <h4 class = "title">To: </h4>
+                <label for = "f_toAddress">Address: </label>
+                <input id = "f_toAddress" name = "toAddress" type = "text" required> <br>
+                <label for = "f_toCity">City: </label>
+                <input id = "f_toCity" name = "toCity" required> <br>
+                <label for = "f_toState">State: </label>
+                <select id = "f_toState" name = "toState">
+                  <script>
+                        var selector = document.getElementById('f_toState');
+                        var states = ["Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "Florida", "Georgia", "Hawaii",
+                                  "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan",
+                                  "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey", "New Mexico",
+                                  "New York", "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island","South Carolina",
+                                  "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"];
+                        for (var i=0; i<states.length; i++){
+                        selector.options[i] = new Option(states[i], states[i]);
+                    }
+                    </script>
+                </select>
+            </div>
+
+            
+            <!-- The time that the user will depart for his or her location -->
+            <div id = "pp_timeOfDeparture">                     
+                <h4 class = "title">Departure Time:</h4>
                 <label>Day: </label>
                 <select id ="f_DepartureDay" name = "DepartureDay">
                     <script>
                         var selector = document.getElementById('f_DepartureDay');
                         for (var i=1; i<32; i++){
-                            selector.options[i-1] = new Option(i.toString(), i.toString());
+                            selector.options[i-1] = new Option(i, i);
                         }
                     </script>
                 </select>
@@ -86,13 +112,16 @@
                 </select>
                 <br>
                 
-                <div id = "pp_departTime">
                 <label>Time: </label>
                 <select id ="f_DepartureHour" name = "DepartureHour">
                     <script>
                         var selector = document.getElementById('f_DepartureHour');
                         for (var i=1; i<13; i++){
-                            selector.options[i-1] = new Option(i.toString(), i.toString());
+                            var hour = i.toString();
+                            if (i<10){
+                                hour = "0" + i.toString();
+                            }
+                            selector.options[i-1] = new Option(hour, i);
                         }
                     </script>
                 </select>
@@ -100,8 +129,12 @@
                 <select id ="f_DepartureMinute" name = "DepartureMinute">
                     <script>
                         var selector = document.getElementById('f_DepartureMinute');
-                        for (var i=1; i<12; i++){
-                            selector.options[i-1] = new Option((5*i).toString(), (5*i).toString());
+                        for (var i=0; i<12; i++){
+                            var minute = (5*i).toString();
+                            if (i<2){
+                                minute = "0" + (5*i).toString();
+                            }
+                            selector.options[i] = new Option(minute, (5*i));
                         }
                     </script>
                 </select>
@@ -109,95 +142,10 @@
                     <option value="am">am</option>
                     <option value="pm">pm</option>
                 </select>
-                </div>
-            </div>
-           
-            <div id = "timeOfArrival">              
-                <h4 class = "title">Time of Arrival (Optional)</h4>
-                
-                <label>Day: </label>
-                <select id ="f_ArrivalDay" name = "ArrivalDay">
-                    <script>
-                        var selector = document.getElementById('f_ArrivalDay')
-                        for (var i=1; i<32; i++){
-                            selector.options[i-1] = new Option(i.toString(), i.toString());
-                        }
-                    </script>
-                </select>
-                <script>
-                    var selector = document.getElementById('f_ArrivalDay');
-                    var date = new Date();
-                    var day = date.getDate();
-                    selector.selectedIndex = day - 1
-                </script>
-                <select id="f_ArrivalMonth" name="ArrivalMonth">
-                    <option value="1">January</option>
-                    <option value="2">February</option>
-                    <option value="3">March</option>
-                    <option value="4">April</option>
-                    <option value="5">May</option>
-                    <option value="6">June</option>
-                    <option value="7">July</option>
-                    <option value="8">August</option>
-                    <option value="9">September</option>
-                    <option value="10">October</option>
-                    <option value="11">November</option>
-                    <option value="12">December</option>
-                </select>
-                <script>
-                    var selector = document.getElementById('f_ArrivalMonth');
-                    var date = new Date();
-                    var month = date.getMonth();
-                    selector.selectedIndex = month
-                </script>
-                <select id="f_ArrivalYear" name="ArrivalYear">
-                    <script>
-                        var selector = document.getElementById('f_ArrivalYear')
-                        for (var i=0; i<= 1; i++){
-                            var year = new Date().getFullYear() + i;
-                            selector.options[i] = new Option(year.toString(), year.toString());
-                        }
-                    </script>
-                </select>
-                <br>
-                
-                <div id = "pp_arriveTime">
-                <label>Time: </label>
-                <select id ="f_ArrivalHour" name = "ArrivalHour">
-                    <script>
-                        var selector = document.getElementById('f_ArrivalHour');
-                        for (var i=1; i<13; i++){
-                            selector.options[i-1] = new Option(i.toString(), i.toString());
-                        }
-                    </script>
-                </select>
-                <label></label>
-                <select id ="f_ArrivalMinute" name = "ArrivalMinute">
-                    <script>
-                        var selector = document.getElementById('f_ArrivalMinute');
-                        for (var i=1; i<12; i++){
-                            selector.options[i-1] = new Option((5*i).toString(), (5*i).toString());
-                        }
-                    </script>
-                </select>
-                <select id ="f_ArrivalMeridian" name = "ArrivalMeridian">
-                    <option value="am">am</option>
-                    <option value="pm">pm</option>
-                </select>
-            </div>
-           
             </div>
             
-           <!-- Need to change onclick function, rideRequest() is not defined -->
-            <input class = "button" id = "searchButton" onclick = "rideRequest()" type = "submit">
-    
-    
-    
-    <div id = "travelWall">
-
-        Put all your stuff here and it will scroll.  You can change the width and height to your needs.  and the background as well by putting background-color: #000000  instead of background.
-
-    </div>
+            <!-- Need to change onclick function, rideRequest() is not defined -->
+            <button class = "button" id = "rideRequestButton" type="submit"> Search </button>
     </form>
     
-<% include chunks/footer %>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+<% include chunks/footer %>
