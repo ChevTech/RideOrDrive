@@ -6,42 +6,43 @@ var db_driver = mongojs('db_RideOrDrive', ['DriverPosts']);
 var db_rider = mongojs('db_RideOrDrive', ['RiderPosts']);
 
 // Register a new user
-module.exports.createDriverPost = function(username, FromAddress, FromCity, FromState,
-                                          ToAddress, ToCity, ToState, DepartureDate, DepartureHour,
-                                          DepartureMinute, DepartureMeridian, ArrivalDate, ArrivalHour, ArrivalMinute,
-                                          ArrivalMeridian, Passengers, SeatsAvailable, Fare, callback) {
-   db_driver.DriverPosts.save({Username:username, FromAddress:FromAddress, FromCity:FromCity, FromState:FromState,
-                              ToAddress:ToAddress, ToCity:ToCity, ToState:ToState, DepartureDate:DepartureDate,
+module.exports.createDriverPost = function(username, FromStreet, FromCity, FromState,
+                                          ToStreet, ToCity, ToState, DepartureDate, DepartureHour,
+                                          DepartureMinute, DepartureMeridian, Passengers,
+                                          SeatsAvailable, Fare, TravelTime, callback) {
+   db_driver.DriverPosts.save({Username:username, FromStreet:FromStreet, FromCity:FromCity, FromState:FromState,
+                              ToStreet:ToStreet, ToCity:ToCity, ToState:ToState, DepartureDate:DepartureDate,
                               DepartureHour:DepartureHour, DepartureMinute:DepartureMinute, DepartureMeridian:DepartureMeridian,
-                              ArrivalDate:ArrivalDate, ArrivalHour:ArrivalHour, ArrivalMinute:ArrivalMinute, ArrivalMeridian:ArrivalMeridian,
-                              Passengers:Passengers, SeatsAvailable:SeatsAvailable, Fare:Fare});
+                              Passengers:Passengers, SeatsAvailable:SeatsAvailable, Fare:Fare, TravelTime:TravelTime});
     callback(true);
 };
     
-// Register a new user
-module.exports.createRiderPost = function(username, FromAddress, FromCity, FromState,
-                                          ToAddress, ToCity, ToState, DepartureDate, DepartureHour,
-                                          DepartureMinute, DepartureMeridian, ArrivalDate, ArrivalHour, ArrivalMinute,
-                                          ArrivalMeridian, Passengers, SeatsAvailable, Fare, callback) {
-    db_rider.RiderPosts.save({Username:username, FromAddress:FromAddress, FromCity:FromCity, FromState:FromState,
-                              ToAddress:ToAddress, ToCity:ToCity, ToState:ToState, DepartureDate:DepartureDate,
+//Create a Rider Post
+module.exports.createRiderPost = function(username, FromStreet, FromCity, FromState,
+                                          ToStreet, ToCity, ToState, DepartureDate, DepartureHour,
+                                          DepartureMinute, DepartureMeridian, Passengers, Fare, callback) {
+    db_rider.RiderPosts.save({Username:username, FromStreet:FromStreet, FromCity:FromCity, FromState:FromState,
+                              ToStreet:ToStreet, ToCity:ToCity, ToState:ToState, DepartureDate:DepartureDate,
                               DepartureHour:DepartureHour, DepartureMinute:DepartureMinute, DepartureMeridian:DepartureMeridian,
-                              ArrivalDate:ArrivalDate, ArrivalHour:ArrivalHour, ArrivalMinute:ArrivalMinute, ArrivalMeridian:ArrivalMeridian,
-                              Passengers:Passengers, SeatsAvailable:SeatsAvailable, Fare:Fare});
+                              Passengers:Passengers, Fare:Fare});
     callback(true);
 };
 
-
-module.exports.retrieveUserPosts = function(username, callback){
-        db_rider.RiderPosts.find({Username:username}, function(error, post) {
+//Function to retrieve Rider Posts
+module.exports.retrieveRiderPosts = function(username, callback){
+        db_rider.RiderPosts.find({Username:username}, function(error, posts) {
 		if (error) throw error;
-		callback(post);
+		callback(posts);
 	});
-};		
-		
+};
 
-
-
+//Function to retrieve Driver Posts
+module.exports.retrieveDriverPosts = function(username, callback){
+        db_driver.DriverPosts.find({Username:username}, function(error, posts) {
+		if (error) throw error;
+		callback(posts);
+	});
+};
 
 // Delete all users
 module.exports.deleteAll = function(callback) {

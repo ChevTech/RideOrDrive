@@ -6,8 +6,7 @@
         <form method ='post' action='/createPost'>
             
             <div id = "cp_Box">
-            
-            
+                
             <!-- Shows the driver options only if the user is a driver-->
             <script>
                 function checkOption(){
@@ -79,7 +78,6 @@
                 <!-- TIME INPUT HERE -->                
                 <h4 class = "title">Departure:</h4>
                 
-                
                 <label>Day: </label>
                 <div id = "cp_day">
                 <select id ="f_DepartureDay" name = "DepartureDay">
@@ -132,8 +130,6 @@
                     </script>
                 </select>
                 </div>
-                <br>
-                
                 
                 
                 <label>Time: </label>
@@ -181,14 +177,14 @@
                 <option value="3">3</option>
                 <option value="4">4</option>
                 <option value="5 or more">5 or more</option>
-            </select> <br>
+            </select> 
             
             <label for="f_fare">Fare: $ </label>
-            <input id ="f_fare" name = "Fare" type="text">    <br>
+            <input id ="f_fare" name = "Fare" type="text"> 
             
             <div id="f_driverOptions" hidden="true">
-                <label for="f_travelTime">Travel Time</label>
-                <input id="f_travelTime" name="TravelTime>
+                <label for="f_travelTime">Travel Time:</label>
+                <input id="f_travelTime" name="TravelTime">
             
                 <label for="f_seats">Seats Available: </label>
                 <select id ="f_seats" name = "SeatsAvailable">
@@ -210,4 +206,4 @@
             </div>
         </form>
             
-<% include chunks/footer %>
+<% include chunks/footer %>               
