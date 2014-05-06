@@ -7,13 +7,21 @@ module.exports = function(request,response) {
     
     posts.retrieveUserPosts(username, function(posts){
         
-        var currentPosts = [];
-        
-        posts.forEach(function(post) {
-            if (currentDate <= post.DepartureDate)
-                currentPosts.push(post);
-        });
-        
-        response.render('ViewCurrentPosts', {currentPosts:currentPosts});
-    });
+         var currentPosts = [];
+    
+   	 //Compute the current date
+   	 var getDate = new Date();
+	 var year  = getDate.getFullYear();
+   	 var month = getDate.getMonth() + 1;
+   	 var day   = getDate.getDate();
+   	 var currentDate = year + "-" + month + "-" + day;
+
+         RiderPosts.forEach(function(post) {
+             if (currentDate <= post.DepartureDate){
+                 currentPosts.push(post);   		
+		}
+       	});
+
+	 response.render('ViewCurrentPosts', {currentPost:currentPost});
+	});
 };

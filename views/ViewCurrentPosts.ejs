@@ -6,7 +6,8 @@
 <h2 class = "title">Your Active Posts</h2>
 
 <h3 class = "RiderPosts">Current Posts You Are Riding: </h3>
-<%currentRiderPosts.forEach(function(post) { %>
+
+<%currentPosts.forEach(function(post) { %>
     
     <div id = "currentPosts" class = "text">
         <div id = "location">
@@ -35,38 +36,6 @@
         Fare: <p><%=post.Fare%></p>
         </div>
     </div>
-<%})%>
-
-<h3 class = "DriverPosts">Current Posts You Are Driving: </h3>
-
-<%currentDriverPosts.forEach(function(post) { %>
-    <div id = "currentPosts" class = "text">
-        <div id = "location">
-        From Address: <p><%=post.FromAddress%> </p>
-        From City: <p><%=post.FromCity%></p>
-        From State: <p><%=post.FromState%></p>
-        
-        To Address: <p><%=post.ToAddress%> </p>
-        To City: <p><%=post.ToCity%></p>
-        To State: <p><%=post.ToState%></p>
-        </div> <br>
-        
-        <div id = "currentPosts_timeOfDeparture"> 
-            Departure Date: <p><%=post.DepartureDate%></p>
-            Departure Time: <p><%=post.DepartureHour%>:<%=post.DepartureMinute%> <%=post.DepartureMeridian%></p>
-        </div> <br>
-        
-        <div id = "currentPosts_timeOfArrival">
-            Arrival Date: <p><%=post.ArrivalDate%></p>
-            Arrival Time: <p><%=post.ArrivalHour%>:<%=post.ArrivalMinute%> <%=post.ArrivalMeridian%></p>           
-        </div>
-        
-        <div id = "currentPosts_extraInfo">
-        Number of Passengers: <p><%=post.Passengers%></p>
-        Seats Available: <p><%=post.SeatsAvailable%></p>
-        Fare: <p><%=post.Fare%></p>
-        </div>
-    </div>
-<%})%>
+<%}%>
 
 <% include chunks/footer %>
