@@ -4,14 +4,6 @@
             
             <h3 class = "title">Register Form</h3>
             
-            <div id = "pictureUpload">
-                <a href = ""> <img src ="http://www.iitk.ac.in/ame/sae/img/default2.gif" width = "100" height = "100"></a> <br>
-                <input type="file" name="dataFile" id="fileChooser" />
-                <button type = "button" id = "uploadButton">Upload Picture (optional)</button>
-            </div>
-            
-            
-            
             <!-- This script checks to see if the password is at least 6 characters long or not. -->
             <!-- If it is not then it shows an error message in the label. -->
             <script>
@@ -51,6 +43,7 @@
             
             <form id = "registerForms" method = "post" action="/register">
                 
+                <div class = registerInput>
                 <p style="color:#ff0000;">The username you entered already exists. Please enter a different username.</p>
                 
                 <label for="f_username">Username : </label>
@@ -80,6 +73,9 @@
                 <label for="f_birthday">Birthday: </label>
                 <label style="color:#ff0000;">*</label>
                 <br>
+                    
+                <div class = "birthdayInput">
+                    
                 <select id ="birthday_day" name = "birthday_day">
                     <script>
                         var selector = document.getElementById('birthday_day')
@@ -113,6 +109,8 @@
                         selector.selectedIndex = <%=datalist.birthday_year%> + 100 - new Date().getFullYear();
                     </script>
                 </select>
+                
+                </div>
                 <br>
                 
                 <label for="f_gender">Gender: </label>
@@ -134,8 +132,17 @@
                 
                 <label for="f_email">Email: </label>
                 <input id = "f_email" name = "email" value = <%=datalist.email%>> <br>
+                
+                </div> 
+                
             
-                <div class = "box" id = "aboutMe">
+                <div class = "pictureUpload">
+                    <a href = ""> <img src ="http://www.iitk.ac.in/ame/sae/img/default2.gif" width = "100" height = "100"></a> <br>
+                    <input type="file" name="dataFile" id="fileChooser" />
+                </div>
+            
+            
+                <div class = "aboutMe">
                     <label for ="tb_about">About Me: </label>
                     <input id= "tb_about" name = "AboutMe" value=<%=datalist.aboutMe%>></textarea>
                 </div>
@@ -144,4 +151,4 @@
             </form>  
         </div>
 
-<% include chunks/footer %>
+<% include chunks/footer %>                                                                                                    
