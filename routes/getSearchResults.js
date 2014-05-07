@@ -24,6 +24,8 @@ module.exports = function(request, response){
     var minute = request.body.DepartureMinute;
     var meridian = request.body.DepartureMeridian;
     
+    var date = year + "-" + month + "-" + day;
+    
     //a dictionary to pass in the values to the next page
     var criteria = {option:option,fromAddress:fromStreet,fromCity:fromCity,fromState:fromState,
                     toAddress:toStreet,toCity:toCity,toState:toState,
@@ -32,9 +34,9 @@ module.exports = function(request, response){
     
     //array that will contain all the relevant search results
     var searches = [];
-    
+    console.log(option);
     //retrieves the relevant searches
-    posts.retrieveSearches(option, fromState, toState, day, month, year, function(posts){
+    posts.retrieveSearches(option, fromState, toState, date, function(posts){
         posts.forEach(function(post) {
             
             //checks if the cities entered by the user matches closely with any of the cities posted or not
@@ -53,12 +55,12 @@ module.exports = function(request, response){
                     //calculates a total score based on the departure location, destination, day and time matches
                     var totalScore = fromScore + toScore + dayScore + timeScore;
                     var result = {score:totalScore,post:post};
-                    
+                    console.log(result);
                     searches.push(result);
                 }
             }
         });
-        
+        console.log(searches);
         //Sorts the search results in ascending order based on the score.
         searches.sort(function (a, b) {
             if (a.score > b.score)
@@ -70,7 +72,7 @@ module.exports = function(request, response){
         });
         
         var data = {criteria:criteria,searches:searches}
-        
+        console.log(data);    
         response.render('ViewSearchResults', {data:data});
     });
 

@@ -152,6 +152,8 @@
         <h2 class = "title">Search Results</h2>
         
         <% if (data.searches.length === 0) {%>
+            <p><%=data.searches.length%></p>
+            <p>Sushi</p>
             <p>There are no results to display. Please try nearby locations or a different date.</p>
         <% } else{%>
         <%data.searches.post.forEach(function(post) { %>
