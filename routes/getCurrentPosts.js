@@ -20,24 +20,14 @@ module.exports = function(request,response) {
    
             //Get the current rider posts
             RiderPosts.forEach(function(post) {
-                var postDate  = post.DepartureDate.split("-");
-                var postYear  = postDate[0];
-                var postMonth = postDate[1];
-                var postDay   = postDate[2];
-                
-                if (currentYear <= postYear && currentMonth <= postMonth && currentDay <= postDay){
+                if (currentYear <= post.Year && currentMonth <= post.Month && currentDay <= post.Day){
                         currentRiderPosts.push(post);   		
                     }
             });
             
             //Get the current driver posts
-            DriverPosts.forEach(function(post) {
-                var postDate  = post.DepartureDate.split("-");
-                var postYear  = postDate[0];
-                var postMonth = postDate[1];
-                var postDay   = postDate[2];
-                
-                if (currentYear <= postYear && currentMonth <= postMonth && currentDay <= postDay){
+            DriverPosts.forEach(function(post) {                
+                if (currentYear <= post.Year && currentMonth <= post.Month && currentDay <= post.Day){
                         currentDriverPosts.push(post);   		
                     }
             });
