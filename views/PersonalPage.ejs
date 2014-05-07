@@ -68,7 +68,7 @@
             <div id = "pp_timeOfDeparture">                     
                 <h4 class = "title">Departure Time:</h4>
                 <label>Day: </label>
-                <select id ="f_DepartureDay" name = "DepartureDay">
+                <select id ="f_DepartureDay" class = "numberSelect" name = "DepartureDay">
                     <script>
                         var selector = document.getElementById('f_DepartureDay');
                         for (var i=1; i<32; i++){
@@ -82,7 +82,7 @@
                     var day = date.getDate();
                     selector.selectedIndex = day - 1
                 </script>
-                <select id="f_DepartureMonth" name="DepartureMonth">
+                <select id="f_DepartureMonth" class = "monthSelect" name="DepartureMonth">
                     <option value="1">January</option>
                     <option value="2">February</option>
                     <option value="3">March</option>
@@ -102,7 +102,7 @@
                     var month = date.getMonth();
                     selector.selectedIndex = month
                 </script>
-                <select id="f_DepartureYear" name="DepartureYear">
+                <select id="f_DepartureYear" class = "numberSelect" name="DepartureYear">
                     <script>
                         var selector = document.getElementById('f_DepartureYear')
                         for (var i=0; i<= 1; i++){
@@ -113,7 +113,7 @@
                 </select>
                 
                 <label>Time: </label>
-                <select id ="f_DepartureHour" name = "DepartureHour">
+                <select id ="f_DepartureHour" class = "numberSelect" name = "DepartureHour">
                     <script>
                         var selector = document.getElementById('f_DepartureHour');
                         for (var i=1; i<13; i++){
@@ -126,7 +126,7 @@
                     </script>
                 </select>
                 <label></label>
-                <select id ="f_DepartureMinute" name = "DepartureMinute">
+                <select id ="f_DepartureMinute" class = "numberSelect" name = "DepartureMinute">
                     <script>
                         var selector = document.getElementById('f_DepartureMinute');
                         for (var i=0; i<12; i++){
@@ -138,7 +138,7 @@
                         }
                     </script>
                 </select>
-                <select id ="f_DepartureMeridian" name = "DepartureMeridian">
+                <select id ="f_DepartureMeridian" class = "numberSelect" name = "DepartureMeridian">
                     <option value="am">am</option>
                     <option value="pm">pm</option>
                 </select>

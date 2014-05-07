@@ -29,10 +29,9 @@ module.exports = function(request,response) {
     var TravelTime        = request.body.TravelTime;
     
     var typeOfPost        = request.body.RideOrDriveOption;
-    var DepartureDate     = DepartureYear + "-" + DepartureMonth + "-" + DepartureDay;
     
     if (typeOfPost === "rider"){
-       posts.createRiderPost(username, FromStreet, FromCity, FromState, ToStreet, ToCity, ToState, DepartureDate, DepartureHour, DepartureMinute, DepartureMeridian,
+       posts.createRiderPost(username, FromStreet, FromCity, FromState, ToStreet, ToCity, ToState, DepartureDay, DepartureMonth, DepartureYear, DepartureHour, DepartureMinute, DepartureMeridian,
                              Passengers, Fare, function(success){
                         
                         if (success) {
@@ -41,7 +40,7 @@ module.exports = function(request,response) {
                         }
                      });
     }else if (typeOfPost === "driver") {
-        posts.createDriverPost(username, FromStreet, FromCity, FromState, ToStreet, ToCity, ToState, DepartureDate, DepartureHour, DepartureMinute, DepartureMeridian,
+        posts.createDriverPost(username, FromStreet, FromCity, FromState, ToStreet, ToCity, ToState, DepartureDay, DepartureMonth, DepartureYear, DepartureHour, DepartureMinute, DepartureMeridian,
                              Passengers, SeatsAvailable, Fare, TravelTime, function(success){
                         
                         if (success) {
