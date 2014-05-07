@@ -1,0 +1,74 @@
+<% include chunks/header %>
+<% include chunks/nav %>
+
+<!-- User will be able to view his or her active posts -->
+
+<h1 class = "title">Your Active Posts</h1>
+
+<h3 class = "RiderPosts">Riding Posts: </h3>
+
+<%if (currentRiderPosts.length === 0) { %>
+    <p>You have no current Riding Posts</p>
+    <a href="/getCreatePost">Create a Rider Post</a>
+<%}%>
+
+<%currentRiderPosts.forEach(function(post) { %>
+    
+    <div id = "currentPosts" class = "text">
+        <div id = "location">
+        From Address: <p><%=post.FromStreet%> </p>
+        From City: <p><%=post.FromCity%></p>
+        From State: <p><%=post.FromState%></p>
+        
+        To Address: <p><%=post.ToStreet%> </p>
+        To City: <p><%=post.ToCity%></p>
+        To State: <p><%=post.ToState%></p>
+        </div> <br>
+        
+        <div id = "currentPosts_timeOfDeparture"> 
+            Departure Date: <p><%=post.Day%>/<%=post.Month%>/<%=post.Year%></p>
+            Departure Time: <p><%=post.DepartureHour%>:<%=post.DepartureMinute%> <%=post.DepartureMeridian%></p>
+        </div> <br>
+        
+        <div id = "currentPosts_extraInfo">
+        Number of Passengers: <p><%=post.Passengers%></p>
+        Fare: <p><%=post.Fare%></p>
+        </div>
+    </div>
+<% }); %>
+
+<h3 class = "DriverPosts">Driving Posts: </h3>
+
+<%if (currentDriverPosts.length === 0) { %>
+    <p>You have no current Driving Posts</p>
+    <a href="/getCreatePost">Create a Driver Post</a>
+<%}%>
+
+<%currentDriverPosts.forEach(function(post) { %>
+    
+    <div id = "currentPosts" class = "text">
+        <div id = "location">
+        From Address: <p><%=post.FromStreet%> </p>
+        From City: <p><%=post.FromCity%></p>
+        From State: <p><%=post.FromState%></p>
+        
+        To Address: <p><%=post.ToStreet%> </p>
+        To City: <p><%=post.ToCity%></p>
+        To State: <p><%=post.ToState%></p>
+        </div> <br>
+        
+        <div id = "currentPosts_timeOfDeparture"> 
+            Departure Date: <p><%=post.Day%>/<%=post.Month%>/<%=post.Year%></p>
+            Departure Time: <p><%=post.DepartureHour%>:<%=post.DepartureMinute%> <%=post.DepartureMeridian%></p>
+        </div> <br>
+        
+        <div id = "currentPosts_extraInfo">
+        Number of Passengers: <p><%=post.Passengers%></p>
+        Seats Available: <p><%=post.SeatsAvailable%></p>
+        Fare: <p><%=post.Fare%></p>
+        Travel Time: <p><%=post.TravelTime%></p>
+        </div>
+    </div>
+<% }); %>
+
+<% include chunks/footer %>
