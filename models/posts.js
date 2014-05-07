@@ -7,11 +7,11 @@ var db_rider = mongojs('db_RideOrDrive', ['RiderPosts']);
 
 // Register a new user
 module.exports.createDriverPost = function(username, FromStreet, FromCity, FromState,
-                                          ToStreet, ToCity, ToState, DepartureDate, DepartureHour,
+                                          ToStreet, ToCity, ToState, DepartureDay, DepartureMonth, DepartureYear, DepartureHour,
                                           DepartureMinute, DepartureMeridian, Passengers,
                                           SeatsAvailable, Fare, TravelTime, callback) {
    db_driver.DriverPosts.save({Username:username, FromStreet:FromStreet, FromCity:FromCity, FromState:FromState,
-                              ToStreet:ToStreet, ToCity:ToCity, ToState:ToState, DepartureDate:DepartureDate,
+                              ToStreet:ToStreet, ToCity:ToCity, ToState:ToState, Day:DepartureDay, Month:DepartureMonth, Year:DepartureYear,
                               DepartureHour:DepartureHour, DepartureMinute:DepartureMinute, DepartureMeridian:DepartureMeridian,
                               Passengers:Passengers, SeatsAvailable:SeatsAvailable, Fare:Fare, TravelTime:TravelTime});
     callback(true);
@@ -19,10 +19,10 @@ module.exports.createDriverPost = function(username, FromStreet, FromCity, FromS
     
 //Create a Rider Post
 module.exports.createRiderPost = function(username, FromStreet, FromCity, FromState,
-                                          ToStreet, ToCity, ToState, DepartureDate, DepartureHour,
+                                          ToStreet, ToCity, ToState, DepartureDay, DepartureMonth, DepartureYear, DepartureHour,
                                           DepartureMinute, DepartureMeridian, Passengers, Fare, callback) {
     db_rider.RiderPosts.save({Username:username, FromStreet:FromStreet, FromCity:FromCity, FromState:FromState,
-                              ToStreet:ToStreet, ToCity:ToCity, ToState:ToState, DepartureDate:DepartureDate,
+                              ToStreet:ToStreet, ToCity:ToCity, ToState:ToState, Day:DepartureDay, Month:DepartureMonth, Year:DepartureYear,
                               DepartureHour:DepartureHour, DepartureMinute:DepartureMinute, DepartureMeridian:DepartureMeridian,
                               Passengers:Passengers, Fare:Fare});
     callback(true);
