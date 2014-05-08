@@ -12,7 +12,8 @@ module.exports = function(request, response){
     var option = "rider";
     
     posts.getRiderConnections(username, function(allposts){
-        allposts.forEach(function(post){
+        if (allposts.length != 0){
+            allposts.forEach(function(post){
             posts.getUserInformationById(option, post.RiderPostID, function(data){
                 
                 if (data.length != 0){
@@ -46,9 +47,12 @@ module.exports = function(request, response){
                     
                     rider_posts.push(dict);    
                 }
-                console.log("Got Here");
+                
                 response.render('RiderConnections',{rider_posts:rider_posts});
             });
         });
+        } else{
+            response.render('RiderConnections', {rider_posts:rider_posts});
+        }
     });
 };
