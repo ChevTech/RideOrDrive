@@ -167,7 +167,7 @@
         <% } else{%>
         <%searches.forEach(function(post) { %>
             
-            <form method="post" action="/connect">
+            <form id ="searchPosts" method="post" action="/connect">
                 <div>
                     
                     <!--  Gets the post_id so that it can be passed to the next route -->
@@ -175,34 +175,34 @@
                     <input name = "user_option" type="hidden" value="<%=criteria.option%>">
                     <input name = "post_username" type ="hidden" value="<%=post.Username%>">
                     
-                    <label>Posted by: </label> <label name="post1_username"><%=post.Username%></label>
+                    <label>Posted by: </label> <label class="text" name="post1_username"><%=post.Username%></label>
                     <br>
                     
-                    <label>From: </label> <label name="post_fromStreet"><%=post.FromStreet%></label> <label>, </label>
-                    <label name="post_fromCity"><%=post.FromCity%></label> <label>, </label>
-                    <label name="post_fromState"><%=post.FromState%></label>
+                    <label>From: </label> <label class="text" name="post_fromStreet"><%=post.FromStreet%></label> <label>, </label>
+                    <label class="text" name="post_fromCity"><%=post.FromCity%></label> <label>, </label>
+                    <label class="text" name="post_fromState"><%=post.FromState%></label>
                     <br>
                         
-                    <label>To: </label> <label name="post_toStreet"><%=post.ToStreet%></label> <label>, </label>
-                    <label name="post_toCity"><%=post.ToCity%></label> <label>, </label>
-                    <label name="post_toState"><%=post.ToState%></label>
+                    <label>To: </label> <label class="text" name="post_toStreet"><%=post.ToStreet%></label> <label>, </label>
+                    <label class="text" name="post_toCity"><%=post.ToCity%></label> <label>, </label>
+                    <label class="text" name="post_toState"><%=post.ToState%></label>
                     <br>
                         
-                    <label>Departs on: </label> <label name="post_month"><%=post.Month%></label> <label>-</label> <label name="post_day"><%=post.Day%></label> <label>-</label> <label name="post_year"><%=post.Year%></label>    
+                    <label>Departs on: </label> <label class="text" name="post_month"><%=post.Month%></label> <label class="text">-</label> <label class="text" name="post_day"><%=post.Day%></label> <label class="text">-</label> <label class="text" name="post_year"><%=post.Year%></label>    
                     <br>
-                    <label>Time: </label> <label name="post_hour"><%=post.DepartureHour%></label><label>:</label>
-                    <label name="post_minute"><%=post.DepartureMinute%></label> <label name="post_meridian"><%=post.DepartureMeridian%></label>
+                    <label>Time: </label> <label class="text" name="post_hour"><%=post.DepartureHour%></label><label>:</label>
+                    <label class="text" name="post_minute"><%=post.DepartureMinute%></label> <label class="text" name="post_meridian"><%=post.DepartureMeridian%></label>
                     <br>
                     
-                    <label>Passengers: </label> <label name="post_passengers"><%=post.Passengers%></label>
+                    <label>Passengers: </label> <label class="text" name="post_passengers"><%=post.Passengers%></label>
                     <br>
-                    <label>Fare: </label> <label name="post_fare"> <% if (post.Fare){ %> <%=post.Fare%> <% } else { %> --- <% } %> </label>
+                    <label>Fare: </label> <label class="text" name="post_fare"> <% if (post.Fare){ %> <%=post.Fare%> <% } else { %> --- <% } %> </label>
                     <br>
                     
                     <% if (criteria.option == "rider"){ %>
-                        <label>Travel time: </label> <label name="post_travelTime"> <% if (post.TravelTime){ %> <%=post.TravelTime%> <%}else{%> --- <%}%></label>
+                        <label>Travel time: </label> <label class="text" name="post_travelTime"> <% if (post.TravelTime){ %> <%=post.TravelTime%> <%}else{%> --- <%}%></label>
                         <label>     </label>
-                        <label>Seats Available: </label> <label name="post_seatsAvailable"><%=post.SeatsAvailable%></label> <br>
+                        <label>Seats Available: </label> <label class="text" name="post_seatsAvailable"><%=post.SeatsAvailable%></label> <br>
                     <% } %>
                 </div>
                 
