@@ -211,7 +211,9 @@
                 </div>
                 
                 <div>
-                    <button id="btn_connect" class="button" type="submit"> Connect </button>
+                    <% if (criteria.sessionName != post.Username){%>
+                        <button id="btn_connect" class="button" type="submit"> Connect </button>
+                    <%}%>
                 </div>
                 
             </form>
