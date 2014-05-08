@@ -28,7 +28,7 @@ var compareStrings = function(str1, str2){
             //with the string for the same index in the other array
             if (str1_array[i] != str2_array[i]){
                 
-                mismatch = mismatch + (compareWords(str1_array[i],str2_array[i])/str1_array[i].length);
+                mismatch = mismatch + (compareWords(str1_array[i],str2_array[i]))/str1_array[i].length;
                 
                 //reduces the penalty if a nearby character is the same
                 //this will be important if the user had made a typo
