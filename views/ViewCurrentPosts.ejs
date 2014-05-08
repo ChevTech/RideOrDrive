@@ -3,13 +3,15 @@
 
 <!-- User will be able to view his or her active posts -->
 
-<h2 class = "title">Your Active Posts</h2>
+<h1 class = "title">Your Active Posts</h1>
 
 <h3 id = "cp" class = "RiderPosts" >Riding Posts: </h3>
 
 <%if (currentRiderPosts.length === 0) { %>
+<div id="noPosts">
     <p>You have no current Riding Posts</p>
     <a href="/getCreatePost">Create a Rider Post</a>
+</div>
 <%}%>
 
 <%currentRiderPosts.forEach(function(post) { %>
@@ -51,8 +53,10 @@
 <h3 class = "DriverPosts">Driving Posts: </h3>
 
 <%if (currentDriverPosts.length === 0) { %>
-    <p>You have no current Driving Posts</p>
-    <a href="/getCreatePost">Create a Driver Post</a>
+<div id="noPosts">
+    <p id = "noPosts" >You have no current Driving Posts</p>
+    <a id = "noPosts" href="/getCreatePost">Create a Driver Post</a>
+</div>
 <%}%>
 
 <%currentDriverPosts.forEach(function(post) { %>
@@ -95,7 +99,7 @@
     </div>
 <% }); %>
 
-<h2 class = "title">Your Expired Posts</h2>
+<h1 class = "title">Your Expired Posts</h1>
 
 <h3 class = "DriverPosts">Expired Riding Posts: </h3>
 
