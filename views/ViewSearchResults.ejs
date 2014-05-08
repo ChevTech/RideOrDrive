@@ -1,6 +1,12 @@
+<!--     Page that the user is brought to upon a search query. Shows the result of that query and allows the user to
+    change and info in the form -->
+
+
 <% include chunks/header %>
 <% include chunks/nav %>
 
+
+    <!-- This is where the user can edit their most recent search query -->
     <form method="post" action="/getSearchResults">
         <div id = "searchBox">
             
@@ -142,11 +148,14 @@
                 </select>
                 </div>
             </div>
-            <!-- Need to change onclick function, rideRequest() is not defined -->
+            
+            <!-- Submits a search query based on the form info -->
             <button class = "button" id = "rideRequestButton" type="submit"> Search </button>
             
         </div>
     </form>
+    
+    <!-- Search Results are posted in this section of the page -->
     
     <div id = "travelWall">
         <h2 class = "title">Search Results</h2>
