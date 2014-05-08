@@ -5,7 +5,7 @@ var match = require('../modules/stringMatchModule');
 module.exports = function(request, response){
     
     var username = request.session.username;
-    
+    console.log(request.body.lbl)
     //get all the information from the page
     var option = request.body.RideOrDriveOption;
 
@@ -24,7 +24,6 @@ module.exports = function(request, response){
     var minute = request.body.DepartureMinute;
     var meridian = request.body.DepartureMeridian;
     
-    var date = year + "-" + month + "-" + day;
     
     //a dictionary to pass in the values to the next page
     var criteria = {option:option,fromAddress:fromStreet,fromCity:fromCity,fromState:fromState,
@@ -34,33 +33,34 @@ module.exports = function(request, response){
     
     //array that will contain all the relevant search results
     var searches = [];
-    console.log(option);
+    
     //retrieves the relevant searches
-    posts.retrieveSearches(option, fromState, toState, date, function(posts){
+    posts.retrieveSearches(option, fromState, toState, day, month, year, function(posts){
         posts.forEach(function(post) {
             
             //checks if the cities entered by the user matches closely with any of the cities posted or not
-            if (match.compareStrings(fromCity,post.FromCity) <= 0.2 && match.compareStrings(toCity,post.ToCity) <= 0.2){
+            if (match.compareStrings(fromCity,post.FromCity) <= 0.3 && match.compareStrings(toCity,post.ToCity) <= 0.3){
                 
                 var fromScore = match.compareStrings(fromStreet, post.FromStreet);
                 var toScore = match.compareStrings(toStreet, post.ToStreet);
                 
                 //checks if the street address entered by the user matches closely with any of the address posted or not
-                if (fromScore <= 0.2 && toScore <= 0.3){
+                if (fromScore <= 0.3 && toScore <= 0.3){
                     
                     //assigns a score depending on how close to the searched day and time the post is
                     var dayScore = Math.abs(day - post.Day);
-                    var timeScore = Math.abs(match.timeConverter(hour, minute, meridian) - match.timeConverter(post.Hour, post.Minute, post.Meridian));
+                    
+                    var timeScore = Math.abs(match.timeConverter(hour, minute, meridian) - match.timeConverter(post.DepartureHour, post.DepartureMinute,
+                                                                                                               post.DepartureMeridian));
                     
                     //calculates a total score based on the departure location, destination, day and time matches
                     var totalScore = fromScore + toScore + dayScore + timeScore;
-                    var result = {score:totalScore,post:post};
-                    console.log(result);
-                    searches.push(result);
+                    
+                    searches.push(post)
                 }
             }
         });
-        console.log(searches);
+        
         //Sorts the search results in ascending order based on the score.
         searches.sort(function (a, b) {
             if (a.score > b.score)
@@ -70,10 +70,8 @@ module.exports = function(request, response){
             // a must be equal to b
             return 0;
         });
-        
-        var data = {criteria:criteria,searches:searches}
-        console.log(data);    
-        response.render('ViewSearchResults', {data:data});
+            
+        response.render('ViewSearchResults', {criteria:criteria,searches:searches});
     });
 
 };

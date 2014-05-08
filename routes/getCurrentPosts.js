@@ -1,4 +1,3 @@
-// Profile page: profile or redirect
 var posts = require('../models/posts');
 
 module.exports = function(request,response) {

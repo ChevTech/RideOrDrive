@@ -1,0 +1,40 @@
+<% include chunks/header %>
+<% include chunks/nav %>
+
+<div>
+    
+    <div>
+        
+        <h3 class = "text"><a id="getRiderConnections" href="/getRiderConnections">Rider Connections</a></h3>
+        
+        <br>
+        <br>
+        
+        <h3 class = "text"><a id="getDriverConnections" href="/getConnectionsPage">Driver Connections</a></h3>
+        
+        <% if (driver_posts.length === 0){%>
+            <p>Oops! You have not made any rider connections yet!</p>
+        <% } else { %>
+            <% driver_posts.forEach(function(post){ %>
+                <form method="post" action="/message">
+                        
+                    <input name = "post_option" type="hidden" value="<%=post.option%>">
+                    <input name = "post_id" type="hidden" value="<%=post.id%>">
+                    
+                    <div>
+                        <p>Posted by: <%=post.username%></p>
+                        <p>From: <%=post.fromStreet%>, <%=post.fromCity%>, <%=post.fromState%></p>
+                        <p>To: <%=post.toStreet%>, <%=post.toCity%>, <%=post.toState%></p>
+                        <p>Departure: <%=post.month%>-<%=post.day%>-<%=post.year%>  at  <%=post.hour%>:<%=post.minute%> <%=post.meridian%></p>
+                        <p><%=post.responderUsername%>: <%=post.responseMessage%></p>
+                        <button class="button" type="submit">Message</button>
+                    </div>
+                </form>
+            <% })%>
+        <% } %>
+    </div>
+    
+
+</div>
+
+<% include chunks/footer %>

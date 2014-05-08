@@ -1,9 +1,14 @@
 // A model for a visitor collection
 var mongojs = require('mongojs');
+var ObjectId = mongojs.ObjectId;
 
 // Access the database
 var db_driver = mongojs('db_RideOrDrive', ['DriverPosts']);
 var db_rider = mongojs('db_RideOrDrive', ['RiderPosts']);
+
+var db_driverConnection = mongojs('db_RideOrDrive', ['DriverPostConnection']);
+var db_riderConnection = mongojs('db_RideOrDrive', ['RiderPostConnection']);
+
 
 // Register a new user
 module.exports.createDriverPost = function(username, FromStreet, FromCity, FromState,
@@ -65,24 +70,78 @@ module.exports.close = function(callback) {
 //returns search results
 module.exports.retrieveSearches = function(type, fromState, toState, day, month, year, callback){
         
-        var date_arr = date.split("-");
-        
+        //if the search is for a drive, then looks for rider posts
         if(type === "driver"){
                 db_rider.RiderPosts.find(
-                        {$and:[{FromState:fromState}, {ToState:toState}, {Month:month}, {Year:year},
-                                {Day:{$gt:day - 1}}, {Day:{$lt:day+1}}]},
+                        {$and:[{FromState:fromState}, {ToState:toState}, {Month:month}, {Year:year}]},
                         function(error, posts){
                                 if(error) throw error;
                                 callback(posts);
                         });
         }
+        //if the search is for a ride, then looks for driver posts
         else{
                 db_driver.DriverPosts.find(
-                         {$and:[{FromState:fromState}, {ToState:toState}, {Month:month}, {Year:year},
-                                {Day:{$gt:day - 1}}, {Day:{$lt:day+1}}]},
+                         {$and:[{FromState:fromState}, {ToState:toState}, {Month:month}, {Year:year}]},
                          function(error, posts){
                                 if(error) throw error;
                                 callback(posts);
                         });
+        }
+};
+
+
+//creates a connection between two users
+module.exports.connect = function(type, postID, username, responderUsername, responseMessage, callback){
+        
+        //if the connection is happening on a riding post
+        if(type === "driver"){
+                db_riderConnection.RiderPostConnection.insert({RiderPostID:postID, Username:username,
+                                                    ResponderUsername:responderUsername, ResponseMessage:responseMessage});
+                callback(true);
+        }
+        //if the connection is happening on a driving post
+        else{
+                db_driverConnection.DriverPostConnection.insert({DriverPostID:postID, Username:username,
+                                                      ResponderUsername: responderUsername, ResponseMessage:responseMessage});
+                callback(true);
+        }
+};
+
+
+//gets data for all the driver connections that the user has made
+module.exports.getDriverConnections = function(username, callback){
+        db_driverConnection.DriverPostConnection.find({$or:[{Username:username},{ResponderUsername:username}]}, function(error, posts) {
+		if (error) throw error;
+		callback(posts);
+	});
+};
+
+
+//gets data for all the rider connections that the user has made
+module.exports.getRiderConnections = function(username, callback){
+        db_riderConnection.RiderPostConnection.find({$or:[{Username:username},{ResponderUsername:username}]}, function(error, posts){
+                if (error) throw error;
+                callback(posts);
+        });
+};
+
+
+//gets data of a post given the id of the post
+module.exports.getUserInformationById = function(option, id, callback){
+        
+        //if it is a rider post
+        if (option === "rider"){
+                db_rider.RiderPosts.find({_id: ObjectId(id)}, function(error, posts){
+                        if (error) throw error;
+                        callback(posts);
+                });
+        }
+        //if it is a driver post
+        else{
+                db_driver.DriverPosts.find({_id: ObjectId(id)}, function(error, posts){
+                        if (error) throw error;
+                        callback(posts);
+                });
         }
 };
