@@ -12,7 +12,8 @@ module.exports = function(request, response){
     var option = "driver";
     
     posts.getDriverConnections(username, function(allposts){
-        allposts.forEach(function(post){
+        if(allposts.length != 0){
+                allposts.forEach(function(post){
             posts.getUserInformationById(option, post.DriverPostID, function(data){
                 
                 if(data.length != 0){
@@ -49,6 +50,9 @@ module.exports = function(request, response){
                 
                 response.render('DriverConnections',{driver_posts:driver_posts});
             });
-        });
+        });    
+        } else{
+            response.render('DriverConnections', {driver_posts:driver_posts});
+        }
     });
 };
