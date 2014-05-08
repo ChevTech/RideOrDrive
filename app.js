@@ -20,6 +20,7 @@ app.post('/changePassword', require('./routes/changePassword'));
 app.post('/createPost', require('./routes/createPost'));
 app.post('/editProfile', require('./routes/editProfile'));
 app.post('/getSearchResults', require('./routes/getSearchResults'));
+app.post('/connect', require('./routes/connect'));
 
 app.get('/', require('./routes/index'));
 app.get('/getRegisterForm', require('./routes/getRegisterForm'));
@@ -31,8 +32,9 @@ app.get('/logout', require('./routes/logout'));
 app.get('/history', require('./routes/history'));
 app.get('/notifications', require('./routes/notifications'));
 app.get('/changePassword', require('./routes/getChangePassword'));
-
-
+app.get('/getConnectionsPage', require('./routes/getConnectionsPage'));
+app.get('/getRiderConnections',require('./routes/getRiderConnections'));
+app.get('/getDriverConnections',require('./routes/getDriverConnections'));
 
 
 // Default route
