@@ -1,3 +1,4 @@
+
 //connects a user with another user who has made a post
 
 var posts = require('../models/posts');
