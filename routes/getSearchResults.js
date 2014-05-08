@@ -26,7 +26,7 @@ module.exports = function(request, response){
     
     
     //a dictionary to pass in the values to the next page
-    var criteria = {option:option,fromAddress:fromStreet,fromCity:fromCity,fromState:fromState,
+    var criteria = {sessionName:username, option:option,fromAddress:fromStreet,fromCity:fromCity,fromState:fromState,
                     toAddress:toStreet,toCity:toCity,toState:toState,
                     departureDay:day,departureMonth:month,departureYear:year,
                     departureHour:hour,departureMinute:minute,departureMeridian:meridian};
