@@ -15,12 +15,12 @@ exports['make an account (success)'] = function(test) {
     
     browser.visit('http://localhost:9090/', function() {
         
-        //Check to see if the sign-up button is there
+        //Check to see if the login button is there
         test.ok(browser.query('#registerForm'));
         
         //Check to see if the sign-up button works and gets the registerForm
         browser.pressButton('#getRegisterForm', function() {
-            test.ok(browser.query('#registerForm'));
+            test.ok(browser.query('#registerBox'));
             console.log("got the the register form");
             
             //Test the registerForm        
@@ -28,39 +28,50 @@ exports['make an account (success)'] = function(test) {
                 fill('#f_username', 'username').
                 fill('#f_password', 'password').
                 fill('#f_confirmPassword', 'password').
+                fill('#f_firstName', 'firstName').
+                fill('#f_lastName', 'lastName').
                 pressButton('#signUpButton', function() {
                     console.log("Register button pressed");
-                    //test.ok(browser.query('#logout'));
                     test.ok(browser.query('#login'));
-                    //browser.clickLink('#logout', function() {
-                        //test.done();
-               // });
                     test.done();
             });
         });
     });
 }
 
-/*
+//Try to register a user that already exists
 exports['make an account (failure)'] = function(test) {
-    test.expect(2);
+    test.expect(3);
     
-    browser.visit('http://localhost:8080/', function() {
-        test.ok(browser.query('#register'));
+    browser.visit('http://localhost:9090/', function() {
         
-        browser.
-            fill('#register_name', 'username').
-            fill('#register_password', 'password').
-            pressButton('#register_submit', function() {
-                test.ok(browser.query('#error'));
-                test.done();
+        //Check to see if the login button is there
+        test.ok(browser.query('#registerForm'));
+        
+        //Check to see if the sign-up button works and gets the registerForm
+        browser.pressButton('#getRegisterForm', function() {
+            test.ok(browser.query('#registerBox'));
+            console.log("got the the register form");
+            
+            //Test the registerForm        
+            browser.
+                fill('#f_username', 'username').
+                fill('#f_password', 'password').
+                fill('#f_confirmPassword', 'password').
+                fill('#f_firstName', 'firstName').
+                fill('#f_lastName', 'lastName').
+                pressButton('#signUpButton', function() {
+                    console.log("Register button pressed");
+                    test.ok(browser.query('#error'))
+                    test.done();
             });
+        });
     });
 }
-*/
 
-exports['log in (success)'] = function(test) {
-    test.expect(2);
+//Test to login and create a post
+exports['log in (success) and create a post'] = function(test) {
+    test.expect(4);
     
     browser.visit('http://localhost:9090/', function() {
         test.ok(browser.query('#login'));
@@ -70,29 +81,63 @@ exports['log in (success)'] = function(test) {
             fill('#password', 'password').
             pressButton('#login_submit', function() {
                 test.ok(browser.query('#logout'));
-                browser.clickLink('#logout', function() {
-                    test.done();
+                browser.clickLink('#createpost', function() {
+                   test.ok(browser.query('#cp_Box'));
+                   browser.
+                        fill('#f_fromAddress', '23 Romoda Drive').
+                        fill('#f_fromCity', 'Canton').
+                        fill('#f_toAddress', '5401 Westbard Ave').
+                        fill('#f_toCity', 'Bethesda').
+                        pressButton('#submitPost', function(){
+                            test.ok(browser.query('#searchBoxForm'));
+                            browser.clickLink('#logout', function() {
+                            test.done();
+                    });
                 });
             });
+        });
     });
 }
 
-/*
-exports['log in (failure)'] = function(test) {
-    test.expect(2);
+//Test to login and view posts
+exports['log in (success) and view posts'] = function(test) {
+    test.expect(3);
     
-    browser.visit('http://localhost:8080/', function() {
+    browser.visit('http://localhost:9090/', function() {
         test.ok(browser.query('#login'));
         
         browser.
-            fill('#login_name', 'badusername').
-            fill('#login_password', 'badpassword').
+            fill('#username', 'username').
+            fill('#password', 'password').
+            pressButton('#login_submit', function() {
+                console.log("Logged In");
+                test.ok(browser.query('#logout'));
+                browser.clickLink('#getCurrentPosts', function() {
+                    test.ok(browser.query('#cp'));
+                    browser.clickLink('#logout', function() {
+                        test.done();
+                });
+            });
+        });
+    });
+}
+
+//Test to login with bad credentials
+exports['log in (failure)'] = function(test) {
+    test.expect(2);
+    
+    browser.visit('http://localhost:9090/', function() {
+        test.ok(browser.query('#login'));
+        
+        browser.
+            fill('#username', 'badusername').
+            fill('#password', 'badpassword').
             pressButton('#login_submit', function() {
                 test.ok(browser.query('#error'));
                 test.done();
             });
     });
-}*/
+}
 
 // Empty the database and close the connection
 exports['cleanup'] = function(test) {

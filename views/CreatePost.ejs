@@ -1,3 +1,7 @@
+
+<!-- Page that allows the user to create a post that is submitted into a post database -->
+
+
 <% include chunks/header %>
 <% include chunks/nav %>
 
@@ -26,6 +30,8 @@
                 <option value="driver">Driver</option>
             </select>
             <br>
+            
+            <!-- Requires user to fill out necessary information for database submission -->
             
             <div id="cp_fromLocation">
             <h4 class = "title">From: </h4>
@@ -168,36 +174,38 @@
             
             <div id = "cp_extraInfo">
             
-            <h4 class = "title">Extra Info: </h4>
+                <h4 class = "title">Extra Info: </h4>
             
-            <label for="f_passengers">Number of Passengers: </label>
-            <select id ="f_passengers" name = "Passengers">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5 or more">5 or more</option>
-            </select> 
-            
-            <label for="f_fare">Fare: $ </label>
-            <input id ="f_fare" name = "Fare" type="text"> 
-            
-            <div id="f_driverOptions" hidden="true">
-                <label for="f_travelTime">Travel Time:</label>
-                <input id="f_travelTime" name="TravelTime">
-            
-                <label for="f_seats">Seats Available: </label>
-                <select id ="f_seats" name = "SeatsAvailable">
+                <label for="f_passengers">Number of Passengers: </label>
+                <select id ="f_passengers" name = "Passengers">
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
                     <option value="4">4</option>
                     <option value="5 or more">5 or more</option>
-                </select>
-            </div>
-            <br>
+                </select> 
+            
+                <label for="f_fare">Fare: $ </label>
+                <input id ="f_fare" name = "Fare" type="text"> 
+                
+                <div id="f_driverOptions" hidden="true">
+                    <label for="f_travelTime">Travel Time:</label>
+                    <input id="f_travelTime" name="TravelTime">
+                
+                    <label for="f_seats">Seats Available: </label>
+                    <select id ="f_seats" name = "SeatsAvailable">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5 or more">5 or more</option>
+                    </select>
+                </div>
+                <br>
                 
             </div>
+            
+            <!-- button that submits the newly created post -->
             
             <div id = "cp_Button">
             <input class = "button" id="submitPost" type = "submit">

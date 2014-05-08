@@ -9,6 +9,8 @@ module.exports = function(request,response) {
             
             var currentRiderPosts  = [];
             var currentDriverPosts = [];
+            var expiredRiderPosts  = [];
+            var expiredDriverPosts = [];
     
             //Compute the current date
             var getDate = new Date();
@@ -21,6 +23,8 @@ module.exports = function(request,response) {
             RiderPosts.forEach(function(post) {
                 if (currentYear <= post.Year && currentMonth <= post.Month && currentDay <= post.Day){
                         currentRiderPosts.push(post);   		
+                    }else{
+                        expiredRiderPosts.push(post);
                     }
             });
             
@@ -28,10 +32,15 @@ module.exports = function(request,response) {
             DriverPosts.forEach(function(post) {                
                 if (currentYear <= post.Year && currentMonth <= post.Month && currentDay <= post.Day){
                         currentDriverPosts.push(post);   		
+                    }else{
+                        expiredDriverPosts.push(post);
                     }
             });
         
-            response.render('ViewCurrentPosts', {currentRiderPosts:currentRiderPosts, currentDriverPosts:currentDriverPosts});
+            response.render('ViewCurrentPosts', {currentRiderPosts:currentRiderPosts,
+                                                currentDriverPosts:currentDriverPosts,
+                                                expiredRiderPosts:expiredRiderPosts,
+                                                expiredDriverPosts:expiredDriverPosts});
         });
     }); 
 };

@@ -2,6 +2,7 @@
 var users = require('../models/users');
 var validator = require('validator');
 
+//Function to register a user
 module.exports = function(request,response) {
    
     //Username and Password gets validated
@@ -9,7 +10,7 @@ module.exports = function(request,response) {
     var password = validator.escape(request.body.password);
     var confirmPassword = validator.escape(request.body.confirm_password);
     
-    //User Information
+    //User Information comes from submitting the registration form
     var firstName = request.body.firstName;
     var lastName= request.body.lastName;
     var birthday_day = request.body.birthday_day;

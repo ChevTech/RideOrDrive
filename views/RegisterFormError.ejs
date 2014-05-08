@@ -1,3 +1,6 @@
+
+<!-- Page that the user is brought to when an error occurs when he or she is registering for an account -->
+
 <% include chunks/header %>
 
         <div id = "registerBox">
@@ -44,7 +47,7 @@
             <form id = "registerForms" method = "post" action="/register">
                 
                 <div class = registerInput>
-                <p style="color:#ff0000;">The username you entered already exists. Please enter a different username.</p>
+                <p id ="error" style="color:#ff0000;">The username you entered already exists. Please enter a different username.</p>
                 
                 <label for="f_username">Username : </label>
                 <label style="color:#ff0000;">*</label>
@@ -135,6 +138,7 @@
                 
                 </div> 
                 
+            <!-- To be implemented at a later date... Allows user to upload a picture to represent his or her profile -->
             
                 <div class = "pictureUpload">
                     <label for ="erPic"> Upload a Picture: </label>
@@ -142,7 +146,7 @@
                     <input type="file" name="dataFile" id="fileChooser" class = "fileChooser" />
                 </div>
             
-            
+            <!-- Text area that allows user to give a brief description about themselves -->
                 <div class = "aboutMe">
                     <label for ="tb_about">About Me: </label>
                     <input id= "tb_about" name = "AboutMe" value="<%=datalist.aboutMe%>"></textarea>

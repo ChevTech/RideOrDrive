@@ -5,12 +5,13 @@ module.exports = function(request,response) {
     
     var username = request.session.username;
     
+    //Get the user information
     users.getUserInformation(username, function(user){
         
+        //Render user profile.
         if (user) {            
             response.render('ProfilePage', {user:user});
         }else{
-            // Implement error if user info not found.
             response.redirect('/');
         }
     });
