@@ -44,19 +44,24 @@ module.exports = function(request, response){
                 var fromScore = match.compareStrings(fromStreet, post.FromStreet);
                 var toScore = match.compareStrings(toStreet, post.ToStreet);
                 
+                console.log(fromScore);
+                console.log(toScore);
+                
                 //checks if the street address entered by the user matches closely with any of the address posted or not
                 if (fromScore <= 0.3 && toScore <= 0.3){
                     
                     //assigns a score depending on how close to the searched day and time the post is
                     var dayScore = Math.abs(day - post.Day);
                     
-                    var timeScore = Math.abs(match.timeConverter(hour, minute, meridian) - match.timeConverter(post.DepartureHour, post.DepartureMinute,
+                    if (dayScore <= 1){
+                        var timeScore = Math.abs(match.timeConverter(hour, minute, meridian) - match.timeConverter(post.DepartureHour, post.DepartureMinute,
                                                                                                                post.DepartureMeridian));
+                        
+                        //calculates a total score based on the departure location, destination, day and time matches
+                        var totalScore = fromScore + toScore + dayScore + timeScore;
                     
-                    //calculates a total score based on the departure location, destination, day and time matches
-                    var totalScore = fromScore + toScore + dayScore + timeScore;
-                    
-                    searches.push(post)
+                        searches.push(post)
+                    }
                 }
             }
         });
