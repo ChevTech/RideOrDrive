@@ -22,6 +22,10 @@
         color: green;
     }
     
+    #noPosts {
+        text-align: center;
+    }
+    
     #currentPosts label {
         text-decoration: underline;
         font-size: 20px;
