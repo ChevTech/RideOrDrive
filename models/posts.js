@@ -1,3 +1,5 @@
+// posts.js collects all information regarding posts
+
 // A model for a visitor collection
 var mongojs = require('mongojs');
 var ObjectId = mongojs.ObjectId;

@@ -1,3 +1,5 @@
+//The main hub of the website. Handles all page requests and database posts.
+
 var express = require('express');
 
 //Create a server
